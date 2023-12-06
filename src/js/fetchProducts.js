@@ -17,6 +17,17 @@ async function getServerProductsCategories() {
     console.log(error.message);
   }
 }
+async function getServerProducts() {
+  const URL = 'https://food-boutique.b.goit.study/api';
+  const endPoint = 'products/categories';
+  console.log(1);
+  try {
+    const users = await axios.get(`${URL}/?${endPoint}&`);
+    console.log(users);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 async function getServerProductsDiscount() {
   const URL = 'https://food-boutique.b.goit.study/api';
   const endPoint = 'products/discount';
