@@ -50,3 +50,4 @@ async function openModal(event) {
     console.error('Error fetching product:', error);
   }
 };
+
