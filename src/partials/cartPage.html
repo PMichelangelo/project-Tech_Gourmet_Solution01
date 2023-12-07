@@ -13,47 +13,42 @@
   <load src="partials/header.html" />
   <main>
     <section class="main-content">
-        <div class ="container">
-            <div> 
-                <button type="button">
-                    <svg class="svg-baskets" width="12" height="12"> 
-                        <use href=""></use>
-                    </svg>
-                </button>
-                    <h2>CART</h2>
-                    <p> Delete all 
-                        <svg class="svg-baskets" width="24" height="24"> 
-                            <use href=""></use>
-                        </svg>
-                    </p>
-                <div class="gallery">
-                    <!--список товарів-->
-                </div>
-            </div>
-            <div class ="container">
-                <h2>Your Order</h2>
-                <div>
-                    <p>Total</p>
-                    <p>Sum</p>
-                </div>
-            </div>
-                <form id="checkoutForm">
-                    <label class="label-class"> 
-                    <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class=""/>
-                </label>
-                    <button type="submit" id="checkoutBtn">Checkout </button>
+      <div class="container">
+        <div>
+          <button type="button">
+            <svg class="svg-baskets" width="12" height="12">
+              <use href=""></use>
+            </svg>
+          </button>
+          <h2>CART</h2>
+          <p> Delete all
+            <svg class="svg-baskets" width="24" height="24">
+              <use href=""></use>
+            </svg>
+          </p>
+          <div class="gallery js-gallery">
+            <!--список товарів-->
+          </div>
         </div>
+        <div class="container">
+          <h2>Your Order</h2>
+          <div>
+            <p>Total</p>
+            <p>Sum</p>
+          </div>
+        </div>
+        <form id="checkoutForm">
+          <label class="label-class">
+            <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class="" />
+          </label>
+          <button type="submit" id="checkoutBtn">Checkout </button>
+      </div>
     </section>
   </main>
 
   <!--Vitaliy-->
   <load src="partials/footer.html" />
-
-  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/cartPage.js"></script>
 </body>
 
 </html>
-
-
-
-

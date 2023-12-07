@@ -4,7 +4,7 @@ const emailInput = document.getElementById('email');
 checkoutForm.addEventListener('submit', function(event) {
     event.preventDefault();
     if (validateEmail(emailInput.value)) {
-        sendFormData(emailInput.value); 
+        sendFormData(emailInput.value);
       } else {
         alert('Please, please enter the correct email!');
       }
@@ -23,15 +23,16 @@ function sendFormData(email) {
 
 
 async function addBook(book) {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(book),
-    };
-  
-    const response = await fetch(`${BASE_URL}/books`, options);
-    const newBook = await response.json();
-  
-    return newBook;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(book),
+  };
+
+  const response = await fetch(`${BASE_URL}/books`, options);
+  const newBook = await response.json();
+
+  return newBook
+}
