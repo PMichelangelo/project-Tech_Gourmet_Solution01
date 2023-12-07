@@ -83,6 +83,9 @@
 }
 
 @media (min-width: 768px) {
+  .header {
+    padding: 29px 0;
+  }
   .header-logo {
     height: 32px;
     width: 195px;
@@ -115,4 +118,7 @@
     text-transform: uppercase;
     display: inline-block;
   }
+}
+
+@media (min-width: 1440px) {
 }
