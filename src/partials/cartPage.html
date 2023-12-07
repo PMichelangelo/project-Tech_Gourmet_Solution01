@@ -13,6 +13,7 @@
   <load src="partials/header.html" />
   <main>
     <section class="main-content">
+
         <div class ="container">
             <div class="container-two"> 
                 <h2 class="title-baskets">CART</h2>
@@ -37,14 +38,28 @@
                     <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class=""/>
                 </label>
                     <button type="submit" id="checkoutBtn">Checkout </button>
+
         </div>
+        <div class="container">
+          <h2>Your Order</h2>
+          <div>
+            <p>Total</p>
+            <p>Sum</p>
+          </div>
+        </div>
+        <form id="checkoutForm">
+          <label class="label-class">
+            <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class="" />
+          </label>
+          <button type="submit" id="checkoutBtn">Checkout </button>
+      </div>
     </section>
   </main>
 
   <!--Vitaliy-->
   <load src="partials/footer.html" />
+  <script type="module" src="../js/cartPage.js"></script>
 
-  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

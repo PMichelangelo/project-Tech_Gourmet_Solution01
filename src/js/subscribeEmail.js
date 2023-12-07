@@ -8,7 +8,7 @@ checkoutForm.addEventListener('submit', onsubmit)
 function onsubmit(event) {
   event.preventDefault();
     if (validateEmail(emailInput.value)) {
-        sendFormData(emailInput.value); 
+        sendFormData(emailInput.value);
       } else {
         alert('Please, please enter the correct email!');
       }
@@ -35,3 +35,4 @@ function sendFormData(email) {
           });
       }
     
+
