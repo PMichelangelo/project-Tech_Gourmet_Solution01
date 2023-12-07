@@ -1,7 +1,5 @@
 # Vanilla App Template
-
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+This project was created by Vite. Make sure to find more <a href="https://vitejs.dev/" target="_blank" rel="noreferrer">details</a>
 
 ## Technology(which were used)
   <ul align="left"> <li><a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> </li>
