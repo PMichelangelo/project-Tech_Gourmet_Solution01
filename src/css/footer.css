@@ -1,1 +1,74 @@
-/**/
+.basement {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  background-color: var(--green-bg, #6d8434);
+}
+
+.footer-logo-social {
+  margin-bottom: 40px;
+}
+
+.logo-link {
+}
+
+.footer-socials-list {
+}
+
+.footer-socials-item {
+}
+
+.footer-socials-link {
+}
+
+.footer-description {
+  margin-bottom: 80px;
+}
+
+.footer-description-title {
+  margin-bottom: 14px;
+  color: var(--white-txt, #e8e8e2);
+  font-family: Neue Montreal;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.footer-description-text {
+  color: var(--grey, #a3a3a3);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.footer-form-text {
+  color: var(--white-txt, #e8e8e2);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.footer-form {
+}
+
+.footer-field {
+  display: flex;
+  position: relative;
+}
+
+.footer-input {
+  color: rgba(232, 232, 226, 0.6);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.footer-input-icon {
+}
+
+.footer-submit-btn {
+  margin-bottom: 80px;
+}
+
+.footer-terms {
+}
