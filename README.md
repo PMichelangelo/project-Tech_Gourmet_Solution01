@@ -9,5 +9,5 @@
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a></li> </ul>
 
 ## JS library (which were used)
-<ul align="left"> <li><a href="https://axios-http.com/docs/intro" target="_blank" rel="noreferrer">  <img src="https://axios-http.com/assets/logo.svg" alt="html5" width="40" height="40"/> Axios </a></li>
+<ul align="left"> <li><a href="https://axios-http.com/docs/intro" target="_blank" rel="noreferrer">  Axios </a></li>
 
