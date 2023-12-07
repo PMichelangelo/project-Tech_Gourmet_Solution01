@@ -34,3 +34,4 @@ function sendFormData(email) {
             console.error(error);
           });
       }
+    
