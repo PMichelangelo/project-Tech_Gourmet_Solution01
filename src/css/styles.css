@@ -4,6 +4,7 @@
   | default @import url()
   |============================
 */
+@import url('./stylesheet.css');
 @import url('./reset.css');
 @import url('./header.css');
 @import url('./hero.css');
@@ -14,7 +15,7 @@
 @import url('./filters.css');
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Neue Montreal', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -33,6 +34,7 @@
   --black-txt: #010101;
   --white-txt: #e8e8e2;
   --grey: #a3a3a3;
+  --font: 'Neue Montreal';
 }
 
 .container {
