@@ -1,1 +1,120 @@
 /**/
+/* .filters-form {
+
+} */
+
+.section-filters {
+    margin: 0;
+}
+
+.filters-label {
+    margin-bottom: 8px;
+    color: rgba(1, 1, 1, 0.30);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+.filters-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filters-input-wrap {
+    position: relative;
+}
+
+.filters-input {
+    box-sizing: border-box;
+    display: block;
+    padding: 14px 20px;
+    color: var(--black-txt);
+    background-color: inherit;
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid rgba(1, 1, 1, 0.30);
+    width: calc(100%);
+}
+
+.filters-input:focus {
+    border-color: var(--green-bg);
+}
+
+.filters-input::placeholder {
+    color: var(--black-txt);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+.filters-btn {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    background-color: inherit;
+    outline: none;
+    border: none;
+}
+
+.icon-magnifying-glass {
+    width: 20px;
+    height: 20px;
+}
+
+.filters-select-wrap {
+    position: relative;
+}
+
+.filters-select {
+    padding: 14px 20px;
+    color: var(--black-txt);
+    background-color: inherit;
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid rgba(1, 1, 1, 0.30);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    width: calc(100%);
+}
+
+.filters-select-placeholder {
+    color: var(--black-txt);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+.icon-chevron-down {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 14px;
+    right: 20px;
+}
+
+
+@media screen and (min-width: 375px) {
+    .filters-input {
+        width: 335px;
+    }
+
+    .filters-select {
+        width: 335px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1440px) {
+    
+}
