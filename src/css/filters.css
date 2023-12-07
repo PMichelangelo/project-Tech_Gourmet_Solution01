@@ -1,8 +1,3 @@
-/**/
-/* .filters-form {
-
-} */
-
 .section-filters {
     margin: 0;
 }
@@ -58,11 +53,11 @@
     background-color: inherit;
     outline: none;
     border: none;
+    padding: 0;
 }
 
 .icon-magnifying-glass {
-    width: 20px;
-    height: 20px;
+    fill: var(--black-txt);
 }
 
 .filters-select-wrap {
@@ -93,11 +88,11 @@
 }
 
 .icon-chevron-down {
-    width: 20px;
-    height: 20px;
     position: absolute;
     top: 14px;
     right: 20px;
+    stroke: var(--black-txt);
+    fill: var(--white-txt);
 }
 
 
@@ -112,7 +107,27 @@
 }
 
 @media screen and (min-width: 768px) {
-    
+    .filters-form-wrap {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .filters-input {
+        font-size: 18px;
+        line-height: 1.33;
+        width: 269px;
+    }
+
+    .filters-select {
+        font-size: 18px;
+        line-height: 1.33;
+        width: 189px;
+    }
+
+    .filters-select-placeholder {
+        font-size: 18px;
+        line-height: 1.33;
+    }
 }
 
 @media screen and (min-width: 1440px) {
