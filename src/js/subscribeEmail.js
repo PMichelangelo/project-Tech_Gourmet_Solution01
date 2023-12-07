@@ -1,15 +1,19 @@
-const checkoutForm = document.getElementById('checkoutForm');
-const emailInput = document.getElementById('email');
+import axios from 'axios';
 
-checkoutForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+const checkoutForm = document.querySelector('.checkoutForm');
+const emailInput = document.querySelector('.email');
+
+checkoutForm.addEventListener('submit', onsubmit) 
+
+function onsubmit(event) {
+  event.preventDefault();
     if (validateEmail(emailInput.value)) {
         sendFormData(emailInput.value); 
       } else {
         alert('Please, please enter the correct email!');
       }
-    });
-
+    };
+  
 function validateEmail(email) {
         const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return pattern.test(email);
@@ -18,20 +22,15 @@ function validateEmail(email) {
 function sendFormData(email) {
     const serverUrl = 'https://food-boutique.b.goit.study/api';
 
-}
-
-
-
-async function addBook(book) {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(book),
+    const formData = {
+      email: email
     };
-  
-    const response = await fetch(`${BASE_URL}/books`, options);
-    const newBook = await response.json();
-  
-    return newBook;
+
+    axios.post(serverUrl, formData)
+          .then(response => {
+            alert('Welcome to the Food Boutique! 🥦🍓 With Food Boutique, youre not just subscribing to food, youre signing up for a fresher, fitter, and happier you. Get ready to elevate your wellness journey, one bite at a time!');
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
