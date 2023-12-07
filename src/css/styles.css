@@ -37,6 +37,10 @@
   --font: 'Neue Montreal';
 }
 
+body {
+  font-family: var(--font);
+}
+
 .container {
   margin: 0 auto;
   padding: 0 16px;
