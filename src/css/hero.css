@@ -1,11 +1,16 @@
-/**/
 img {
   width: 100%;
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-sect {
   padding-top: 72px;
+}
+
+.hero-container {
+  display: block;
 }
 
 .hero-title {
@@ -15,7 +20,8 @@ img {
   font-weight: 500;
   line-height: 109%;
   letter-spacing: -0.04em;
-  margin-bottom: 16px;
+  margin: auto;
+  padding-bottom: 16px;
 }
 
 .hero-title span {
@@ -28,10 +34,22 @@ img {
   font-size: 14px;
   font-weight: 400;
   line-height: 129%;
-  margin-bottom: 32px;
+  margin: auto;
+  padding-bottom: 32px;
 }
 
 @media screen and (min-width: 375px) {
+  img {
+    max-width: 335px;
+  }
+
+  .hero-title {
+    width: 335px;
+  }
+
+  .hero-text {
+    width: 292px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -41,7 +59,10 @@ img {
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.02em;
+    width: 658px;
+    padding-bottom: 20px;
   }
+
   .hero-title span {
     color: var(--green-bg);
   }
@@ -49,8 +70,22 @@ img {
   .hero-text {
     font-size: 18px;
     line-height: 133%;
+    width: 492px;
+    padding-bottom: 40px;
+  }
+
+  img {
+    max-width: 704px;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  img {
+    max-width: 1240px;
+  }
+
+  .hero-title {
+    width: 1042px;
+    padding-bottom: 20px;
+  }
 }
