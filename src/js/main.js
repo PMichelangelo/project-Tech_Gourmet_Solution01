@@ -1,5 +1,3 @@
-
-
 import {
   getServerProductsCategories,
   getServerProductsDiscount,
@@ -8,5 +6,12 @@ import {
   getServerProducts,
 } from './fetchProducts';
 
-
 // getServerProducts(1, null, null);
+
+import {
+  appendPopularProductsMarkup,
+  appendDiscountProductsMarkup,
+} from './createMarkupMoreProducts.js';
+
+appendPopularProductsMarkup();
+appendDiscountProductsMarkup();
