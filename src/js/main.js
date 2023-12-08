@@ -15,3 +15,6 @@ import {
 
 appendPopularProductsMarkup();
 appendDiscountProductsMarkup();
+
+import {createProductsMarkup} from "./createMarkup.js";
+createProductsMarkup(1, null, null)
