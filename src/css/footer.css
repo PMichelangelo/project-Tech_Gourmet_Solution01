@@ -4,6 +4,11 @@
   background-color: var(--green-bg, #6d8434);
 }
 
+.basement-wrap {
+  display: block;
+  margin-bottom: 80px;
+}
+
 .footer-logo-social {
   display: flex;
   flex-direction: column;
@@ -12,9 +17,13 @@
 }
 
 .logo-link {
-  width: 28px;
+  width: 158px;
   height: 28px;
-  fill: currentColor;
+}
+
+.logo-icon {
+  width: 158px;
+  height: 28px;
 }
 
 .footer-socials-list {
@@ -23,13 +32,30 @@
 }
 
 .footer-socials-item {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   border: 1px solid rgba(232, 232, 226, 0.3);
 }
 
+.footer-socials-item:hover,
+.footer-socials-item:focus {
+  background-color: rgba(232, 232, 226, 0.2);
+}
+
 .footer-socials-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-socials-icon {
+  width: 24px;
+  height: 24px;
+  fill: #e8e8e2;
 }
 
 .footer-description {
@@ -99,12 +125,12 @@
 .footer-submit-btn {
   width: 100%;
   display: flex;
-  padding: 12px 149px;
+  padding: 12px;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
+  border: none;
   background: #e8e8e2;
-  margin-bottom: 80px;
   color: #010101;
   font-family: Neue Montreal;
   font-size: 14px;
@@ -127,4 +153,11 @@
 .footer-terms-text {
   opacity: 0.9;
   margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .basement-wrap {
+    display: flex;
+    gap: 78px;
+  }
 }
