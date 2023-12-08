@@ -12,21 +12,25 @@ const refs = {
 /*Popular Products fnct*/
 
 export async function appendPopularProductsMarkup() {
-  const data = await getServerProductsPopular();
-  refs.popularProductCards.insertAdjacentHTML(
-    'beforeend',
-    createPopularMarkup(data)
-  );
+  try {
+    const data = await getServerProductsPopular();
+    refs.popularProductCards.insertAdjacentHTML(
+      'beforeend',
+      createPopularMarkup(data.results)
+    );
+  } catch (error) {
+    console.error(error);
+  }
 }
-
-function createPopularMarkup(data) {
-  return data
+function createPopularMarkup(results) {
+  return results
     .map(
-      ({ _id, name, img, category, size, popularity }) =>
+      ({ _id, img, name, category, size, popularity, icons }) =>
         `<div class="container-for-popular-items" id="${_id}">
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
+                      width="16" height="16"
                           src="${img}"
                           alt="${name}">
                   </div>
@@ -54,7 +58,7 @@ function createPopularMarkup(data) {
                   <div class="product-card-prices-btn">
                       <button type="button" class="products-card-btn" id="${_id}">
                           <svg width="16" height="16">
-                              <use class="popular-button-icon" href="${icons}#icon-cart"></use>
+                              <use class="popular-button-icon" href="../img/icons.svg#icon-shop"></use>
                           </svg>
                       </button>
                   </div>
@@ -67,16 +71,20 @@ function createPopularMarkup(data) {
 /*Discount Products fnct*/
 
 export async function appendDiscountProductsMarkup() {
-  const data = await getServerProductsDiscount();
-  refs.discountProductCards.insertAdjacentHTML(
-    'beforeend',
-    createDiscountMarkup(data)
-  );
+  try {
+    const data = await getServerProductsDiscount();
+    refs.discountProductCards.insertAdjacentHTML(
+      'beforeend',
+      createDiscountMarkup(data.results)
+    );
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-function createDiscountMarkup(data) {
-  const renderData = data.slice(0, 2);
-  return renderData
+function createDiscountMarkup(results) {
+  // const renderData = data.slice(0, 2);
+  return results
     .map(
       ({ _id, name, img, price }) =>
         `<div class="container-for-discount-items" id="${_id}">
@@ -98,7 +106,7 @@ function createDiscountMarkup(data) {
                       <p class="product-card-price">$${price}</p>
                       <button type="button" class="discount-product-card-btn" id="${_id}">
                           <svg width="18" height="18">
-                              <use class="discount-button-icon" href="${icons}#icon-cart"></use>
+                              <use class="discount-button-icon" href="icons.svg#icon-shop#icon-cart"></use>
                           </svg>
                       </button>
                   </div>
