@@ -26,7 +26,7 @@ function sendFormData(email) {
       email: email
     };
 
-    axios.post(serverUrl, formData)
+  axios.post(serverUrl, formData)
           .then(response => {
             alert('Welcome to the Food Boutique! 🥦🍓 With Food Boutique, youre not just subscribing to food, youre signing up for a fresher, fitter, and happier you. Get ready to elevate your wellness journey, one bite at a time!');
           })
