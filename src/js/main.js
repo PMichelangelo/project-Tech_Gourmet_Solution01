@@ -15,7 +15,7 @@ import {
 
 // Count of carts
 import { getCountCarts } from './header.js';
-getCountCarts();
+//getCountCarts();
 
 appendPopularProductsMarkup();
 appendDiscountProductsMarkup();
