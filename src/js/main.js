@@ -23,6 +23,6 @@ appendDiscountProductsMarkup();
 import { createProductsMarkup } from './createMarkup.js';
 createProductsMarkup(1, null, null);
 
-import { filterCategories, onSubmit } from './filters.js';
+import { filterCategories, filterProducts } from './filters.js';
 filterCategories();
-onSubmit();
+filterProducts();
