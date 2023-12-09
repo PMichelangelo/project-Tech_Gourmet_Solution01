@@ -45,27 +45,58 @@ async function filterCategories () {
     })
 }
 
-function onSubmit () {
+function onSubmit() {
+    refs.productCard.classList.remove("product-list-not-found");
+    if (load("filtersOfProducts") === undefined) {
+        save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6 });
+    }
+    let keyword = load("filtersOfProducts").keyword;
+    let category = load("filtersOfProducts").category;
+    getServerProducts(1, keyword, category).then(({ results, totalPages }) => {
+        const markup = createMarkup(results);
+        refs.productCard.innerHTML = markup;
+    })
     refs.submitBtn.addEventListener("click", e => {
         e.preventDefault();
-        const keyword = refs.input.value;
-        const category = refs.selectedCategory.value;
+        keyword = refs.input.value || null;
+        category = refs.selectedCategory.value || null;
         refs.form.reset();
         refs.selectBtn.textContent = "Categories";
-        getServerProducts(1, keyword, category).then(({ results, totalPages }) => {
+        getServerProducts(1, keyword, category).then(({ results, totalPages, page }) => {
             if (totalPages === 0) {
                 const str = `<li class="products-not-found">
-                    <h3 class="products-heading ${totalPages}">Nothing was found for the selected <span class="products-heading-accent">filters...</span></h3>
+                    <h3 class="products-heading">Nothing was found for the selected <span class="products-heading-accent">filters...</span></h3>
                     <p class="products-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.</p>
                 </li>`;
                 refs.productCard.innerHTML = str;
+                refs.productCard.classList.add("product-list-not-found");
                 return
             }
+            refs.productCard.classList.remove("product-list-not-found");
+            save("filtersOfProducts", { keyword, category, page, limit: 6 });
             const markup = createMarkup(results);
             refs.productCard.innerHTML = markup;
         })
     })
 }
+
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error("Set state error: ", error.message);
+  }
+};
+
+const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error("Get state error: ", error.message);
+  }
+};
 
 export {
     filterCategories,
