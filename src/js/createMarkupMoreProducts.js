@@ -75,7 +75,7 @@ export async function appendDiscountProductsMarkup() {
     const data = await getServerProductsDiscount();
     refs.discountProductCards.insertAdjacentHTML(
       'beforeend',
-      createDiscountMarkup(data.results)
+      createDiscountMarkup(data)
     );
   } catch (error) {
     console.error(error);

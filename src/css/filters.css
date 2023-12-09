@@ -118,6 +118,7 @@
 
 .icon-chevron-down {
     stroke: var(--black-txt);
+    fill: var(--white-txt);
     position: absolute;
     top: 14px;
     right: 20px;
