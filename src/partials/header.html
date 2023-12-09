@@ -1,5 +1,6 @@
 <header class="header">
-  <div class="container">
+  <div class="container header-container">
+
     <a href="./index.html" class="header-logo">
       <svg class="header-logo-img">
         <use href="./img/icons.svg#icon-logo-mobile"></use>
@@ -10,14 +11,21 @@
       <a class="to-home" href="./index.html" role="link"> Home </a>
 
       <div class="header-cart">
-        <a class="header-cart-btn" href="./cartPage.html" role=" link">
-          <svg class="header-cart-icon">
-            <use href="./img/icons.svg#icon-cart"></use>
-          </svg>
+        <a class="header-cart-link" href="./cartPage.html" role="link">
+          <div class="header-cart-btn">
+            <svg class="header-cart-icon">
+              <use href="./img/icons.svg#icon-cart"></use>
+            </svg>
+          </div>
+
+          <div class="header-cart-text">
+            <a href="./cartPage.html">CART <span class="header-counter">(0)</span>
+            </a>
+
+          </div>
         </a>
         <a class="header-cart-text" href="./cartPage.html" role=" link">
-          CART (<span class="header-counter">0</span>)</a
-        >
+          CART (<span class="header-counter">0</span>)</a>
       </div>
     </div>
   </div>
