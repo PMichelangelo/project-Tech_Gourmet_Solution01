@@ -11,6 +11,7 @@ img {
 
 .hero-container {
   display: block;
+  position: relative;
 }
 
 .hero-title {
@@ -36,6 +37,14 @@ img {
   line-height: 129%;
   margin: auto;
   padding-bottom: 32px;
+}
+
+.icon-organic-food {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 192px;
+  right: 33px;
 }
 
 @media screen and (min-width: 375px) {
@@ -76,6 +85,12 @@ img {
 
   img {
     max-width: 704px;
+    border-radius: 60px;
+  }
+
+  .icon-organic-food {
+    top: 237px;
+    right: 42px;
   }
 }
 
@@ -87,5 +102,10 @@ img {
   .hero-title {
     width: 1042px;
     padding-bottom: 20px;
+  }
+
+  .icon-organic-food {
+    top: 138px;
+    right: 160px;
   }
 }
