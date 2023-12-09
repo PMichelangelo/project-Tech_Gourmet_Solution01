@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <link rel="icon" type="image/png" href="public/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodBoutique 🥦🍓</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <!--Dmitro-->
+  <load src="partials/header.html" />
+  <main>
+    <section class="main-content">
+      <div class="container container-basket">
+        <div class="class-cart">
+          <svg class="svg-cart">
+            <use href="./img/icons.svg#icon-cart"></use>
+          </svg>
+            <h2 class="title-baskets">CART</h2>
+        </div>
+        <div class="gallery-desctop">
+          <p class="delete"> Delete all
+            <svg class="svg-baskets" width="24" height="24">
+              <use href="./img/icons.svg#"></use>
+            </svg>
+          </p>
+          <div class="gallery gallery-js">
+            <!--список товарів-->
+          </div>
+      </div>
+        <div class="class-desctop">
+          <h2 class="title-order">Your Order</h2>
+          <div class="total">
+            <p class="title-total">Total</p>
+            <p class="title-sum">Sum</p>
+          </div>
+        <form id="checkoutForm" class="form-class">
+          <label class="label-class">
+            <input type="email" name="user-email" id="email" placeholder="Mail: Enter your email" class="placeholder-email" required/>
+          </label>
+          <button class="button-submit" type="submit" id="checkoutBtn">Checkout </button>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <!--Vitaliy-->
+  <load src="partials/footer.html" />
+  <script type="module" src="js/cartPage.js"></script>
+
+</body>
+
+</html>
