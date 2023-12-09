@@ -6,7 +6,7 @@ const refs = {
     selectDropdown: document.querySelector(".filters-options"),
     selectedCategory: document.querySelector(".filters-select-input"),
     selectOptions: document.querySelectorAll(".filters-option"),
-    productCard: document.querySelector('.product-list')
+    productCard: document.querySelector(".product-list")
 }
 
 import {
@@ -25,7 +25,7 @@ async function filterCategories () {
             }
             return `<li data-value="${el}" class="filters-option">${newEl}</li>`
         }).join("");
-        const str = strCategories + `<li class="filters-option">Show all</li>`
+        const str = strCategories + `<li data-value="null" class="filters-option">Show all</li>`
         refs.selectDropdown.insertAdjacentHTML("beforeend", str);
 
         refs.selectBtn.addEventListener("click", e => {
@@ -52,9 +52,18 @@ function onSubmit () {
         const category = refs.selectedCategory.value;
         refs.form.reset();
         refs.selectBtn.textContent = "Categories";
-        const arrayOfProducts = getServerProducts(1, keyword, category);
-        const markup = createMarkup(arrayOfProducts);
-        productCard.innerHTML = markup;
+        getServerProducts(1, keyword, category).then(({ results, totalPages }) => {
+            if (totalPages === 0) {
+                const str = `<li class="products-not-found">
+                    <h3 class="products-heading ${totalPages}">Nothing was found for the selected <span class="products-heading-accent">filters...</span></h3>
+                    <p class="products-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.</p>
+                </li>`;
+                refs.productCard.innerHTML = str;
+                return
+            }
+            const markup = createMarkup(results);
+            refs.productCard.innerHTML = markup;
+        })
     })
 }
 
