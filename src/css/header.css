@@ -44,6 +44,12 @@
 
 .header-cart {
 }
+
+.header-cart-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 .header-cart-btn {
   display: flex;
   align-items: center;
@@ -120,7 +126,7 @@
     font-weight: 500;
     line-height: 1.3;
     text-transform: uppercase;
-    display: inline-block;
+    display: flex;
   }
 }
 
