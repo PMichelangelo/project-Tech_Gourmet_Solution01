@@ -1,5 +1,10 @@
 import {getServerProducts} from "./fetchProducts"
 const productCard = document.querySelector('.product-list');
+import { openModal } from "./modal";
+
+//modal triger
+productCard.addEventListener('click', openModal)
+
 
 export async function createProductsMarkup() {
   try {
@@ -18,12 +23,12 @@ export function createMarkup(arr) {
    return arr
      .map(
        ({ img, _id, name, price, size, category, popularity }) =>
-         `<li class="product-item js-card " data-id="${_id}"> 
-           <div class="container-card"> 
-           
+         `<li class="product-item js-card " data-id="${_id}">
+           <div class="container-card">
+
                 <div class="container-img">
                   <img class = "item-img" src="${img}" alt="${name}" loading="lazy" />
-                </div>           
+                </div>
                    <h3 class="item-name">${name}</h3>
                  <div class="container-info">
                   <p class="item-info">Category: <span class="span-info">${category.replace('_',' ' ).replace('_',' ' )
@@ -33,7 +38,7 @@ export function createMarkup(arr) {
                     'g'
                   )}</span></p>
                   <p class="item-info">Popularity: <span class="span-info" >${popularity}</span></p>
-                 </div> 
+                 </div>
                  <div class="container-price">
                   <p class="item-price">$${price}</p>
                   <button type="button" class=" btn-item js-btn  ">
@@ -41,9 +46,9 @@ export function createMarkup(arr) {
                               <use  href="../img/icons.svg#icon-shop"></use>
                           </svg>
                   </button>
-                 </div> 
+                 </div>
              </div>
-                    
+
            </li>`
      )
      .join('');
