@@ -16,7 +16,7 @@ const load = key => {
   }
 };
 
-export default {
+export {
   save,
   load,
 };
