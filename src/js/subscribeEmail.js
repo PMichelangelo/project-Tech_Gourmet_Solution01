@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const checkoutForm = document.querySelector('.checkoutForm');
-const emailInput = document.querySelector('.email');
+const emailInput = document.querySelector('.placeholder-email');
 
 checkoutForm.addEventListener('submit', onsubmit) 
 

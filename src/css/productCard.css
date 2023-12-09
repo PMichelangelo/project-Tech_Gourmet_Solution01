@@ -1,1 +1,132 @@
 /**/
+@media screen and (min-width: 375px) {
+  .products-container {
+    padding-bottom: 80px;
+    padding-top: 40px;
+  }
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container-card {
+    padding: 20px;
+  }
+
+  .product-item {
+    display: inline-block;
+    background-color: #fafafa;
+    border-radius: 20px;
+    width: 335px;
+  }
+  .container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .item-img {
+    background-color: #e8e8e2;
+    padding: 19px 58px 19px 58px;
+    border-radius: 10px;
+    width: 100%;
+    height: 140px;
+  }
+
+  .container-info {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 40px;
+  }
+  .item-name {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: var(--black-txt);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11;
+  }
+
+  .item-info {
+    color: rgba(1, 1, 1, 0.3);
+    font-size: 12px;
+    line-height: 1.16;
+  }
+  .span-info {
+    color: var(--black-txt);
+  }
+
+  .container-price {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+    position: relative;
+  }
+  .item-price {
+    color: var(--black-txt);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11;
+  }
+  .product-button-icon {
+    stroke: #e8e8e2;
+    color: white;
+  }
+
+  .btn-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 30px;
+    background: #6d8434;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-radius 0.3s ease;
+  }
+  .btn-item:hover,
+  .btn-item:hover {
+    stroke: #e8e8e2;
+    background: #e8e8e2;
+  }
+}
+@media screen and (min-width: 768px) {
+  .products-section {
+    padding-bottom: 100px;
+  }
+  .product-list {
+    flex-wrap: wrap;
+    gap: 32px 32px;
+    flex-direction: unset;
+  }
+  .product-item {
+    width: calc((100% - 32px) / 2);
+  }
+}
+@media screen and (min-width: 1440px) {
+
+  .product-item {
+    width: calc((100% - 40px) / 3);
+  }
+  .product-list {
+    gap: 20px 20px;
+  }
+
+  .products-container {
+    width:925px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  
+  } 
+  .container-img {
+    width: 255px;
+  }
+  .container-info {
+    flex-wrap: wrap;
+  }
+}

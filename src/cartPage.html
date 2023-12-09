@@ -14,48 +14,38 @@
   <load src="partials/header.html" />
   <main>
     <section class="main-content">
-
-      <div class="container">
-        <div class="container-two">
-          <h2 class="title-baskets">CART</h2>
+      <div class="container container-basket">
+        <div class="class-cart">
+          <svg class="svg-cart">
+            <use href="./img/icons.svg#icon-cart"></use>
+          </svg>
+            <h2 class="title-baskets">CART</h2>
+        </div>
+        <div class="gallery-desctop">
           <p class="delete"> Delete all
             <svg class="svg-baskets" width="24" height="24">
-              <use href=""></use>
+              <use href="./img/icons.svg#"></use>
             </svg>
           </p>
           <div class="gallery gallery-js">
             <!--список товарів-->
           </div>
-        </div>
-        <div class="container">
+      </div>
+        <div class="class-desctop">
           <h2 class="title-order">Your Order</h2>
-          <div>
+          <div class="total">
             <p class="title-total">Total</p>
             <p class="title-sum">Sum</p>
           </div>
-        </div>
-        <form id="checkoutForm">
+        <form id="checkoutForm" class="form-class">
           <label class="label-class">
-            <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class="" />
+            <input type="email" name="user-email" id="email" placeholder="Mail: Enter your email" class="placeholder-email" required/>
           </label>
-          <button type="submit" id="checkoutBtn">Checkout </button>
-
-      </div>
-      <div class="container">
-        <h2>Your Order</h2>
-        <div>
-          <p>Total</p>
-          <p>Sum</p>
+          <button class="button-submit" type="submit" id="checkoutBtn">Checkout </button>
         </div>
       </div>
-      <form id="checkoutForm">
-        <label class="label-class">
-          <input type="email" name="user-email" id="emailInput" placeholder="E-mail: Enter your email" class="" />
-        </label>
-        <button type="submit" id="checkoutBtn">Checkout </button>
-        </div>
     </section>
-  </main>
+</main>
 
   <!--Vitaliy-->
   <load src="partials/footer.html" />
