@@ -1,12 +1,16 @@
 /**/
 .header {
-  padding: 18px 0;
+  padding-top: 18px;
 }
-.container {
+
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+}
+
+.container {
 }
 .header-logo {
   height: 28px;
@@ -39,6 +43,12 @@
 }
 
 .header-cart {
+}
+
+.header-cart-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .header-cart-btn {
   display: flex;
@@ -84,7 +94,7 @@
 
 @media (min-width: 768px) {
   .header {
-    padding: 29px 0;
+    padding-top: 29px;
   }
   .header-logo {
     height: 32px;
@@ -116,7 +126,7 @@
     font-weight: 500;
     line-height: 1.3;
     text-transform: uppercase;
-    display: inline-block;
+    display: flex;
   }
 }
 
