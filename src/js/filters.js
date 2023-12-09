@@ -52,10 +52,9 @@ function filterProducts() {
     if (load("filtersOfProducts") === undefined) {
         save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6 });
     }
-    const keyword = load("filtersOfProducts").keyword;
-    const category = load("filtersOfProducts").category;
+    const {keyword, category, page, limit} = load("filtersOfProducts");
 
-    getServerProducts(1, keyword, category).then(({ results }) => {
+    getServerProducts(page, keyword, category, limit).then(({ results }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
     })
@@ -66,9 +65,20 @@ function filterProducts() {
 function onSubmit (event) {
     event.preventDefault();
     refs.submitBtn.disabled = true;
+
+    let limit;
+
+    if (window.innerWidth >= 1440) {
+        limit = 9;
+    } else if (window.innerWidth >= 768) {
+        limit = 8;
+    } else {
+        limit = 6;
+    }
+
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
-    getServerProducts(1, keyword, category).then(({ results, totalPages, page }) => {
+    getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page }) => {
         if (totalPages === 0) {
             const str =
             `<li class="products-not-found">
@@ -83,7 +93,7 @@ function onSubmit (event) {
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-        save("filtersOfProducts", { keyword, category, page, limit: 6 });
+        save("filtersOfProducts", { keyword, category, page, limit });
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
         refs.form.reset();
