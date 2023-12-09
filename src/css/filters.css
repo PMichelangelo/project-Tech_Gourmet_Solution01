@@ -74,7 +74,7 @@
     width: calc(100%);
 }
 
-.filters-options {
+/* .filters-options {
     position: absolute;
     top: calc(100% + 8px);
     z-index: 1;
@@ -86,6 +86,28 @@
     border-radius: 15px;
     background: #FFF;
     box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
+} */
+
+.filters-options-list {
+    text-align: left;
+}
+
+.filters-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    z-index: 1;
+    background-color: inherit;
+    display: block;
+    border: none;
+    width: calc(100%);
+    padding: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 1.29;
+        border-radius: 15px;
+        background: #FFF;
+        box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
 }
 
 .filters-option {
