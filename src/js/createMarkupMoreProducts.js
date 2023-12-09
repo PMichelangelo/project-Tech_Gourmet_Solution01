@@ -23,7 +23,9 @@ export async function appendPopularProductsMarkup() {
   }
 }
 function createPopularMarkup(results) {
-  return results
+  const limitedResults = results.slice(0, 5);
+
+  return limitedResults
     .map(
       ({ _id, img, name, category, size, popularity, icons }) =>
         `<div class="container-for-popular-items" id="${_id}">
@@ -75,7 +77,7 @@ export async function appendDiscountProductsMarkup() {
     const data = await getServerProductsDiscount();
     refs.discountProductCards.insertAdjacentHTML(
       'beforeend',
-      createDiscountMarkup(data.results)
+      createDiscountMarkup(data)
     );
   } catch (error) {
     console.error(error);
@@ -83,8 +85,8 @@ export async function appendDiscountProductsMarkup() {
 }
 
 function createDiscountMarkup(results) {
-  // const renderData = data.slice(0, 2);
-  return results
+  const limitedResults = results.slice(0, 2);
+  return limitedResults
     .map(
       ({ _id, name, img, price }) =>
         `<div class="container-for-discount-items" id="${_id}">
@@ -106,7 +108,7 @@ function createDiscountMarkup(results) {
                       <p class="product-card-price">$${price}</p>
                       <button type="button" class="discount-product-card-btn" id="${_id}">
                           <svg width="18" height="18">
-                              <use class="discount-button-icon" href="icons.svg#icon-shop#icon-cart"></use>
+                              <use class="discount-button-icon" href="../img/icons.svg#icon-cart"></use>
                           </svg>
                       </button>
                   </div>
