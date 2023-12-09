@@ -52,19 +52,11 @@ async function getServerProductsById(id) {
     console.log(error.message);
   }
 }
-async function getServerProducts(page, key, category) {
+async function getServerProducts(page, key, category, limit) {
   const array = await getServerProductsCategories();
   const URL = 'https://food-boutique.b.goit.study/api';
   const endPoint = 'products';
-  let limit;
 
-  if (window.innerWidth >= 1440) {
-    limit = 9;
-  } else if (window.innerWidth >= 768) {
-    limit = 8;
-  } else {
-    limit = 6;
-  }
   if (key !== undefined && key !== null && array.includes(category)) {
     const params = new URLSearchParams({
       page: page,
