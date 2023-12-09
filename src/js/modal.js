@@ -1,6 +1,6 @@
 import { getServerProductsById } from "./fetchProducts.js";
 
-import basicLightbox from "basiclightbox";
+import * as basicLightbox from "basiclightbox";
 
 export {
   openModal

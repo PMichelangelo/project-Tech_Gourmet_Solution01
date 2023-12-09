@@ -1,15 +1,23 @@
-import {getServerProducts} from "./fetchProducts"
-const productCard = document.querySelector('.product-list');
+
+import { getServerProducts } from "./fetchProducts"
 import { openModal } from "./modal";
 
-//modal triger
-productCard.addEventListener('click', openModal)
+const productCard = document.querySelector('.product-list');
 
 
 export async function createProductsMarkup() {
   try {
     const data = await getServerProducts(1, null, null);
     productCard.innerHTML = createMarkup(data.results);
+    const productCards = document.querySelectorAll('.js-card');
+    const cardsArray = Array.from(productCards);
+
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const productId = card.getAttribute('data-id');
+        openModal(productId)
+      });
+    });
   } catch (error) {
     console.error(error);
   }
