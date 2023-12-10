@@ -1,6 +1,7 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
+import { updateCartCounter } from "./updateCartCounter";
 
 const productCard = document.querySelector('.product-list');
 
@@ -23,11 +24,10 @@ export async function createProductsMarkup() {
         console.log("Product clicked:", productId);
 
         if (btn) {
-          // Если клик был по кнопке, вывести сообщение в консоль
           console.log("Button clicked within the product card");
           addToCart(productId)
+          updateCartCounter()
         } else {
-          // Если клик был не по кнопке, открыть модальное окно
           openModal(productId);
         }
       }
