@@ -59,7 +59,7 @@ function createPopularMarkup(results) {
                   <div class="product-card-prices-btn">
                       <button type="button" class="products-card-btn" id="${_id}">
                           <svg width="16" height="16">
-                              <use class="popular-button-icon" href="../img/icons.svg#icon-shop"></use>
+                              <use class="popular-button-icon" href="./img/icons.svg#icon-shop"></use>
                           </svg>
                       </button>
                   </div>
