@@ -52,10 +52,34 @@ body {
     max-width: 375px;
     padding: 0 16px;
   }
+
+  .container-products {
+    margin: 0 auto;
+    max-width: 375px;
+    padding: 0 16px;
+  }
+
+  .container-popular {
+    margin: 0 auto;
+    max-width: 375px;
+    padding: 0 16px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .container-products {
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .container-popular {
+    margin: 0 auto;
     max-width: 768px;
     padding: 0 32px;
   }
@@ -64,13 +88,23 @@ body {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-    padding: 0 60px;
+    padding: 0 100px;
   }
-<<<<<<< Updated upstream
-=======
 
   .container-products {
-    display: flex;
+    max-width: 925px;
+    padding-left: 0;
+    padding-right: 40px;
   }
->>>>>>> Stashed changes
+
+  .container-popular {
+    padding: 0;
+  }
+
+  .container-products-style {
+    display: flex;
+    max-width: 1440px;
+    padding: 0 100px;
+    margin: 0 auto;
+  }
 }

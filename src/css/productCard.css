@@ -16,7 +16,7 @@
     display: inline-block;
     background-color: #fafafa;
     border-radius: 20px;
-    width: 335px;
+    max-width: 335px;
   }
   .container-img {
     display: flex;
@@ -33,6 +33,8 @@
   }
 
   .container-info {
+    justify-content: flex-start;
+    white-space: nowrap;
     display: flex;
     gap: 8px;
     padding-bottom: 40px;
@@ -94,6 +96,7 @@
     background: #e8e8e2;
   }
 }
+
 @media screen and (min-width: 768px) {
   .products-section {
     padding-bottom: 100px;
@@ -128,5 +131,9 @@
 
   .products-section {
     padding-right: 40px;
+  }
+
+  .popular-item-info {
+    width: 100%;
   }
 }
