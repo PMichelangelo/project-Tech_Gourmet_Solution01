@@ -107,7 +107,7 @@ function createDiscountMarkup(results) {
                       <p class="product-card-price">$${price}</p>
                       <button type="button" class="discount-product-card-btn" id="${_id}">
                           <svg width="18" height="18">
-                              <use class="discount-button-icon" href="./img/icons.svg#icon-cart"></use>
+                              <use class="discount-button-icon" href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-cart"></use>
                           </svg>
                       </button>
                   </div>
