@@ -1,32 +1,31 @@
 import { getServerProductsById } from "./fetchProducts.js";
-
 import * as basicLightbox from "basiclightbox";
 
 export {
   openModal
-}
-const modal = document.querySelector(".modalka");
-//const openModalBtn = document.getElementById("openModalBtn");
+};
 
-//openModalBtn.addEventListener("click", openModal);
 
-async function openModal(event) {
-  const productId = "640c2dd963a319ea671e383b";
-
+async function openModal(productId) {
   try {
     const productData = await getServerProductsById(productId);
-   // console.log(productData);
 
-    const instance = basicLightbox.create(`
-      <img src="${productData.img}" alt="${productData.name}">
+    const modalContent = document.createElement("div");
+
+    modalContent.innerHTML = `
+    <div class ="modal-test" ><img src="${productData.img}" alt="${productData.name}">
       <p>${productData.name}</p>
       <p>${productData.category}</p>
       <p>${productData.size}</p>
       <p>${productData.popularity}</p>
       <p>${productData.desc}</p>
       <p>${productData.price}</p>
-      <button>Add to cart</button>
-     `);
+      <button>Add to cart</button></div>
+
+    `;
+
+    const instance = basicLightbox.create(modalContent);
+
     instance.show();
 
     const closeModal = (event) => {
@@ -40,5 +39,4 @@ async function openModal(event) {
   } catch (error) {
     console.error('Error fetching product:', error);
   }
-};
-
+}
