@@ -1,8 +1,8 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
-import { updateCartCounter } from './updateCartCounter.js';
+import { updateCartCounterOnLoad } from "./updateCartCounter";
 document.addEventListener('DOMContentLoaded', () => {
-  updateCartCounter();
+  updateCartCounterOnLoad();
 });
 initCartStorage();
 

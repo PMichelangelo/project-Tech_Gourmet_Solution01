@@ -1,20 +1,21 @@
-
 import { getServerProductsById } from './fetchProducts'
 import { cartOrder } from './createCartMarkup'
 const galleryEl = document.querySelector('.js-carTgallery')
 
 
-const emptyCart = document.querySelector('.cart-empty'),
-  cartList = document.querySelector('.cart-list-wrapper'),
-  cartOrderList = document.querySelector('.cart-order-list');
+
+  const emptyCart = document.querySelector('.cart-empty'),
+   cartList = document.querySelector('.cart-list-wrapper'),
+   cartOrderList = document.querySelector('.cart-order-list');
 
 
-// async function getCardProducts(productsList) {
-//   // відмальовуємо якщо пустий масив в локал сторедж
-//   if (!productsList.length) {
-//     emptyCart.insertAdjacentHTML(
-//       'beforeend',
-//       `<div class="cart-empty-desc">
+
+//async function getCardProducts(productsList) {
+//  // відмальовуємо якщо пустий масив в локал сторедж
+//  if (!productsList.length) {
+//    emptyCart.insertAdjacentHTML(
+//      'beforeend',
+//      `<div class="cart-empty-desc">
 //             <img
 //               src="../img/shopping-basket.png"
 //               srcset=""
@@ -27,11 +28,11 @@ const emptyCart = document.querySelector('.cart-empty'),
 //             </p>
 //           </div>
 //         `
-//     );
-//     // приховуємо основну розмітку
-//     cartList.classList.add('visually-hidden');
-//   }
-
+//    );
+//    // приховуємо основну розмітку
+//    cartList.classList.add('visually-hidden');
+//  }
+//}
 async function getCardProducts(productsList) {
 
   if (!productsList.length) {
@@ -55,6 +56,7 @@ async function getCardProducts(productsList) {
   }
 
 
+
   try {
     const products = await Promise.all(
       productsList.map(productId => getServerProductsById(productId))
@@ -65,6 +67,7 @@ async function getCardProducts(productsList) {
     console.log(error);
   }
 }
+
 
 
 async function calculateTotalPrice() {
@@ -78,7 +81,7 @@ async function calculateTotalPrice() {
   for (const productId of productIds) {
     try {
       const result = await getServerProductsById(productId);
-      
+
       totalPrice += result.price;
     } catch (error) {
       console.error(`Error fetching product with id ${productId}: ${error.message}`);
