@@ -1,5 +1,8 @@
-import { getServerProductsById } from './fetchProducts';
-import { createMarkup } from './createMarkup';
+
+import { getServerProductsById } from './fetchProducts'
+import { createMarkup } from './createMarkup'
+const galleryEl = document.querySelector('.js-carTgallery')
+
 
 const emptyCart = document.querySelector('.cart-empty'),
   cartList = document.querySelector('.cart-list-wrapper'),

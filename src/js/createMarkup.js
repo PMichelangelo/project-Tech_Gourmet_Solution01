@@ -1,5 +1,7 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
+import { addToCart } from "./cartStorage";
+import { updateCartCounter } from "./updateCartCounter";
 
 const productCard = document.querySelector('.product-list');
 
@@ -13,20 +15,22 @@ export async function createProductsMarkup() {
     const productCards = document.querySelectorAll('.js-card');
     console.log("Number of product cards:", productCards.length);
 
-    productCards.forEach(card => {
-      card.addEventListener('click', (event) => {
-        const addToCartButton = event.target.closest('.js-btn');
+    productCard.addEventListener('click', (event) => {
+      const card = event.target.closest('.js-card');
+      const btn = event.target.closest('.js-btn');
 
-        if (addToCartButton) {
-          const productId = card.getAttribute('data-id');
-          console.log("Adding to cart:", productId);
-          addToCart(productId);
+      if (card) {
+        const productId = card.getAttribute('data-id');
+        console.log("Product clicked:", productId);
+
+        if (btn) {
+          console.log("Button clicked within the product card");
+          addToCart(productId)
+          updateCartCounter()
         } else {
-          const productId = card.getAttribute('data-id');
-          console.log("Product clicked:", productId);
           openModal(productId);
         }
-      });
+      }
     });
   } catch (error) {
     console.error(error);
