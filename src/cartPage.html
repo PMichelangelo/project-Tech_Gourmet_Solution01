@@ -23,9 +23,9 @@
           </span>
           <span class="cart-count">Cart</span>
         </div>
-          
 
-        
+
+
         <!--це сторінка при пустій сторінці-->
         <!-- <div class="cart-empty visually-hidden">
           <div class="cart-empty-desc">
@@ -42,57 +42,51 @@
           </div>
         </div> -->
         <div class="div">
-        <div class="cart-filled-list">
-          <button class="cart-clear-btn" type="button">
-            Delete all
-              <svg class="cart-clear-icon" >
+          <div class="cart-filled-list">
+            <button class="cart-clear-btn" type="button">
+              Delete all
+              <svg class="cart-clear-icon">
                 <use href="./img/icons.svg#icon-close-btn"></use>
                 <!-- <use
                   class="cart-clear-svg"
                   xlink:href="./img/sprite.svg#close-cross"
                 ></use> -->
               </svg>
-          </button>
-        </div>
-          
-            <div>
-              <ul class="cart-order-list">
-                <li class="cart-order-item">
-                  <!--тут приходить розмітка карток через функцію-->
-                </li>
-            
-              </ul>
-            </div>
-            
+            </button>
+          </div>
+
+          <div>
+            <ul class="cart-order-list">
+              <li class="cart-order-item js-carTgallery">
+                <!--тут приходить розмітка карток через функцію-->
+              </li>
+
+            </ul>
+          </div>
+
           <div class="cart_total_order">
             <p class="total-form-title">Your Order</p>
-          
+
             <div id="total-price">
               <p class="cart_total_input">Total</p>
               <p class="cart_total_sum">
                 Sum:<span class="total_price" id="cart_total">$0.00</span>
               </p>
             </div>
-          
-          <form card="cart_checkout" id="checkoutForm">
-            <div class="cart_input_container">
-              <input
-                type="email"
-                name="cart-client-email"
-                class="cart-basket-input"
-                placeholder="Enter your email"
-                pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
-                required
-              />
-              <span class="placeholder-text">Mail:</span>
-            </div>
-            <button class="cart_checkout_btn" type="submit" aria-label="Checkout cart">
-              Checkout
-            </button>
-          </form>
-        </div>
+
+            <form card="cart_checkout" id="checkoutForm">
+              <div class="cart_input_container">
+                <input type="email" name="cart-client-email" class="cart-basket-input" placeholder="Enter your email"
+                  pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}" required />
+                <span class="placeholder-text">Mail:</span>
+              </div>
+              <button class="cart_checkout_btn" type="submit" aria-label="Checkout cart">
+                Checkout
+              </button>
+            </form>
+          </div>
     </section>
-</main>
+  </main>
 
   <!--Vitaliy-->
   <load src="partials/footer.html" />

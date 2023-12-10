@@ -1,7 +1,6 @@
 import { getServerProductsById } from './fetchProducts'
 import { createMarkup } from './createMarkup'
-
-const galleryEl = document.querySelector('.js-gallery')
+const galleryEl = document.querySelector('.js-carTgallery')
 
 
 
