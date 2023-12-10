@@ -3,6 +3,7 @@ import {
   getServerProductsDiscount,
 } from './fetchProducts';
 import icons from '../img/icons.svg'
+import { openModal } from './modal';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),

@@ -8,6 +8,7 @@ const galleryEl = document.querySelector('.js-carTgallery')
 //   cartList = document.querySelector('.cart-list-wrapper'),
 //   cartOrderList = document.querySelector('.cart-order-list');
 
+
 // async function getCardProducts(productsList) {
 //   // відмальовуємо якщо пустий масив в локал сторедж
 //   if (!productsList.length) {
@@ -30,6 +31,29 @@ const galleryEl = document.querySelector('.js-carTgallery')
 //     // приховуємо основну розмітку
 //     cartList.classList.add('visually-hidden');
 //   }
+
+async function getCardProducts(productsList) {
+
+  if (!productsList.length) {
+    emptyCart.insertAdjacentHTML(
+      'beforeend',
+      `<div class="cart-empty-desc">
+            <img
+              src="../img/shopping-basket.png"
+              srcset=""
+              alt="Shopping Basket"
+            />
+            <h2>Your basket is <span class="cart-empty-cgreen">empty...</span></h2>
+            <p class="cart-empty-text">
+              Go to the main page to select your favorite products and add them to the
+              cart.
+            </p>
+          </div>
+        `
+    );
+    cartList.classList.add('visually-hidden');
+  }
+
 
 //   try {
 //     const products = await Promise.all(
