@@ -1,37 +1,12 @@
-<<<<<<< Updated upstream
-// import { getServerProductsById } from "./fetchProducts.js";
-=======
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
 import icons from '../img/icons.svg'
 import { addToCart } from './cartStorage';
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import {removeFromCart} from './cartStorage'
->>>>>>> Stashed changes
 
-const modal = document.querySelector(".modalka");
-const openModalBtn = document.getElementById("openModalBtn");
+export { openModal, openSubcribeModal, openErrorModal };
 
-openModalBtn.addEventListener("click", openModal);
-
-async function getServerProductsById(id) {
-  const URL = 'https://food-boutique.b.goit.study/api';
-  const endPoint = 'products';
-
-  try {
-    const result = await axios.get(`${URL}/${endPoint}/${id}`);
-    console.log(result.data);
-    return result.data;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-async function openModal(event) {
-  const productId = "640c2dd963a319ea671e383b";
-
-<<<<<<< Updated upstream
-=======
 function checkIfProductInCart(productId) {
   const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   return cartData.includes(productId);
@@ -39,24 +14,11 @@ function checkIfProductInCart(productId) {
 
 
 async function openModal(productId) {
->>>>>>> Stashed changes
   try {
     const productData = await getServerProductsById(productId);
-    console.log(productData);
 
+    const modalContent = document.createElement('div');
 
-<<<<<<< Updated upstream
-    const instance = basicLightbox.create(`
-      <img src="${productData.img}" alt="${productData.name}"> 
-      <p>${productData.name}</p>
-      <p>${productData.category}</p>
-      <p>${productData.size}</p>
-      <p>${productData.popularity}</p>
-      <p>${productData.desc}</p>
-      <p>${productData.price}</p>
-      <button>Add to cart</button>
-     `);
-=======
     modalContent.innerHTML = 
     `<div class="modal-container" data-id="${productData._id}">
     <div class="modal-img-info-container">
@@ -89,19 +51,9 @@ async function openModal(productId) {
 
     const instance = basicLightbox.create(modalContent);
    
->>>>>>> Stashed changes
     instance.show();
-    
-    const closeModal = (event) => {
-      if (event.key === "Escape") {
-        instance.close();
-        document.removeEventListener("keydown", closeModal);
-      }
-    };
+    addoOverflow()
 
-<<<<<<< Updated upstream
-    document.addEventListener("keydown", closeModal);
-=======
     function closeModal() {
       instance.close();
       revomeOverflow();
@@ -156,13 +108,9 @@ async function openModal(productId) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
->>>>>>> Stashed changes
   } catch (error) {
     console.log('Error fetching product:', error);
   }
-<<<<<<< Updated upstream
-};
-=======
 }
 
 
@@ -258,4 +206,3 @@ function addoOverflow() {
 function revomeOverflow() {
   document.body.style.overflow = '';
 }
->>>>>>> Stashed changes
