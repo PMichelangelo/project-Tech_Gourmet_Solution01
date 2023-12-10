@@ -1,15 +1,12 @@
-
-
 function updateCartCounter() {
-  const storage = JSON.parse(localStorage.getItem("cartData")) || [];
-  const counterElement = document.querySelector('.header-counter');
-  counterElement.textContent = storage.length.toString();
+  const storage = JSON.parse(localStorage.getItem('cartData')) || [];
+  const counterElement = document.querySelectorAll('.header-counter');
+  counterElement[0].textContent = storage.length.toString();
+  counterElement[1].textContent = storage.length.toString();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  updateCartCounter();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   updateCartCounter();
+// });
 
-export {
-  updateCartCounter
-}
+export { updateCartCounter };
