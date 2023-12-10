@@ -19,7 +19,7 @@ async function openModal(productId) {
 
     const modalContent = document.createElement('div');
 
-    modalContent.innerHTML = 
+    modalContent.innerHTML =
     `<div class="modal-container" data-id="${productData._id}">
     <div class="modal-img-info-container">
         <div class="modal-img-container">
@@ -50,7 +50,7 @@ async function openModal(productId) {
 </div>`;
 
     const instance = basicLightbox.create(modalContent);
-   
+
     instance.show();
     addoOverflow()
 
@@ -59,12 +59,12 @@ async function openModal(productId) {
       revomeOverflow();
     }
 
-    const modal = document.querySelector('.modal-container') 
+    const modal = document.querySelector('.modal-container')
     modal.addEventListener('click', (e) => {
       if(e.target !== modal)
       return closeModal();
     })
-    
+
 
     document.addEventListener('keydown', closeModal);
     const closeBtn = document.querySelector('.close-modal-icon');
@@ -158,22 +158,22 @@ function openSubcribeModal() {
         revomeOverflow();
       }
     }
-import modalEmailMob from '../img/modal-email-mob.png'
-import modalEmailMob2x from '../img/modal-email-mob-2x.png'
-import modalEmailTab from '../img/modal-email-tab.png'
-import modalEmailTab2X from '../img/modal-email-tab.png'
-import modalEmailDesk from '../img/modal-email-desk.png'
-import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
+    import modalEmailMob from '../img/modal-email-mob.png'
+    import modalEmailMob2x from '../img/modal-email-mob-2x.png'
+    import modalEmailTab from '../img/modal-email-tab.png'
+    import modalEmailTab2X from '../img/modal-email-tab.png'
+    import modalEmailDesk from '../img/modal-email-desk.png'
+    import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
 
-export { openModal, openSubcribeModal, openErrorModal };
+    export { openModal, openSubcribeModal, openErrorModal };
 
-async function openModal(productId) {
-  try {
-    const productData = await getServerProductsById(productId);
+    async function openModal(productId) {
+      try {
+        const productData = await getServerProductsById(productId);
 
-    const modalContent = document.createElement('div');
+        const modalContent = document.createElement('div');
 
-    modalContent.innerHTML = `
+        modalContent.innerHTML = `
     <div class ="modal-test" ><img src="${productData.img}" alt="${productData.name}">
       <p>${productData.name}</p>
       <p>${productData.category}</p>
@@ -184,46 +184,46 @@ async function openModal(productId) {
       <button>Add to cart</button></div>
     `;
 
-    const instance = basicLightbox.create(modalContent);
+        const instance = basicLightbox.create(modalContent);
 
-    instance.show();
-    addoOverflow()
+        instance.show();
+        addoOverflow()
 
 
-    function closeModal() {
-      instance.close();
-      revomeOverflow();
+        function closeModal() {
+          instance.close();
+          revomeOverflow();
+        }
+
+
+        document.addEventListener('keydown', closeModalEsp);
+        const closeBtn = document.querySelector('.close-footer-modal');
+        closeBtn.addEventListener('click', closeModal);
+      } catch (error) {
+        console.error(error);
+      }
     }
-
-
-    document.addEventListener('keydown', closeModalEsp);
-    const closeBtn = document.querySelector('.close-footer-modal');
-    closeBtn.addEventListener('click', closeModal);
-  } catch (error) {
-    console.error(error);
-  }
-}
-function openErrorModal() {
-  try {
-    const instance = basicLightbox.create(`<div class="footer-modal-err">
+    function openErrorModal() {
+      try {
+        const instance = basicLightbox.create(`<div class="footer-modal-err">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
     </div>`);
-    instance.show();
-    addoOverflow();
+        instance.show();
+        addoOverflow();
 
-    document.addEventListener('keydown', closeModal);
-  } catch (error) {
-    console.error('Error fetching product:', error);
-  }
-}
+        document.addEventListener('keydown', closeModal);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    }
 
-function openSubcribeModal() {
-  try {
-    const instance = basicLightbox.create(`<div class="footer-modal">
+    function openSubcribeModal() {
+      try {
+        const instance = basicLightbox.create(`<div class="footer-modal">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
@@ -255,62 +255,65 @@ function openSubcribeModal() {
     </picture>
     </div>`);
 
-    instance.show();
-    addoOverflow();
+        instance.show();
+        addoOverflow();
 
-    function closeModalEsp(event) {
-      if (event.key === 'Escape') {
-        instance.close();
-        revomeOverflow();
+        function closeModalEsp(event) {
+          if (event.key === 'Escape') {
+            instance.close();
+            revomeOverflow();
+          }
+        }
+        function closeModal() {
+          instance.close();
+          revomeOverflow();
+        }
+
+        document.addEventListener('keydown', closeModalEsp);
+        const closeBtn = document.querySelector('.close-footer-modal');
+        closeBtn.addEventListener('click', closeModal);
+      } catch (error) {
+        console.error(error);
       }
     }
-    function closeModal() {
-      instance.close();
-      revomeOverflow();
-    }
 
-    document.addEventListener('keydown', closeModalEsp);
-    const closeBtn = document.querySelector('.close-footer-modal');
-    closeBtn.addEventListener('click', closeModal);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function openErrorModal() {
-  try {
-    const instance = basicLightbox.create(`<div class="footer-modal-err">
+    function openErrorModal() {
+      try {
+        const instance = basicLightbox.create(`<div class="footer-modal-err">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
     </div>`);
-    instance.show();
-    addoOverflow();
-    function closeModalEsp(event) {
-      if (event.key === 'Escape') {
-        instance.close();
-        revomeOverflow();
+        instance.show();
+        addoOverflow();
+        function closeModalEsp(event) {
+          if (event.key === 'Escape') {
+            instance.close();
+            revomeOverflow();
+          }
+        }
+        function closeModal() {
+          instance.close();
+          revomeOverflow();
+        }
+
+        document.addEventListener('keydown', closeModalEsp);
+        const closeBtn = document.querySelector('.close-footer-modal');
+        closeBtn.addEventListener('click', closeModal);
+      } catch (error) {
+        console.error(error);
       }
     }
-    function closeModal() {
-      instance.close();
-      revomeOverflow();
+
+
+    function addoOverflow() {
+      document.body.style.overflow = 'hidden';
     }
 
-    document.addEventListener('keydown', closeModalEsp);
-    const closeBtn = document.querySelector('.close-footer-modal');
-    closeBtn.addEventListener('click', closeModal);
-  } catch (error) {
-    console.error(error);
-  }
-}
+    function revomeOverflow() {
+      document.body.style.overflow = '';
+    }
 
-function addoOverflow() {
-  document.body.style.overflow = 'hidden';
-}
 
-function revomeOverflow() {
-  document.body.style.overflow = '';
-}
