@@ -1,5 +1,4 @@
 
-
 function initCartStorage() {
   const hasCartData = localStorage.getItem("cartData")
   !hasCartData && localStorage.setItem("cartData", JSON.stringify([]))

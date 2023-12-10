@@ -24,19 +24,19 @@ async function openModal(productId) {
     const instance = basicLightbox.create(modalContent);
 
     instance.show();
+    addoOverflow()
 
-    const closeModal = event => {
-      if (event.key === 'Escape') {
-        instance.close();
-        document.removeEventListener('keydown', closeModal);
-      }
-    };
+    function closeModal() {
+      instance.close();
+      revomeOverflow();
+    }
 
     document.addEventListener('keydown', closeModal);
   } catch (error) {
     console.error('Error fetching product:', error);
   }
 }
+
 function openSubcribeModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal">
@@ -45,10 +45,13 @@ function openSubcribeModal() {
         </svg></button>
         <div class='footer-modal-content'><h3 class='footer-modal-title'>Thanks for subscribing for <span class='span'>new</span> products</h3>
         <p class='footer-modal-text'>We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.</p>
-        <img href='../img/footer-img.png'>
+        <img href='/project-Tech_Gourmet_Solution01/assets/footer-img.png'>
+
     </div>`);
+
     instance.show();
     addoOverflow();
+
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
@@ -75,7 +78,6 @@ function openErrorModal() {
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
-        <div class='footer-modal-img'></div>
     </div>`);
     instance.show();
     addoOverflow();
