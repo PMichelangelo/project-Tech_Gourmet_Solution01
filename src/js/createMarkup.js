@@ -1,7 +1,7 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
-import { updateCartCounter } from "./updateCartCounter";
+import { updateCartCounterOnLoad } from "./updateCartCounter";
 import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
@@ -27,7 +27,7 @@ export async function createProductsMarkup() {
         if (btn) {
           console.log("Button clicked within the product card");
           addToCart(productId)
-          updateCartCounter()
+          updateCartCounterOnLoad()
         } else {
           openModal(productId);
         }
