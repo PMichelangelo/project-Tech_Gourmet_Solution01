@@ -1,12 +1,12 @@
 
 import { getServerProductsById } from './fetchProducts'
-import { createMarkup } from './createMarkup'
+import { cartOrder } from './createCartMarkup'
 const galleryEl = document.querySelector('.js-carTgallery')
 
 
-// const emptyCart = document.querySelector('.cart-empty'),
-//   cartList = document.querySelector('.cart-list-wrapper'),
-//   cartOrderList = document.querySelector('.cart-order-list');
+const emptyCart = document.querySelector('.cart-empty'),
+  cartList = document.querySelector('.cart-list-wrapper'),
+  cartOrderList = document.querySelector('.cart-order-list');
 
 
 // async function getCardProducts(productsList) {
@@ -55,19 +55,18 @@ async function getCardProducts(productsList) {
   }
 
 
-//   try {
-//     const products = await Promise.all(
-//       productsList.map(productId => getServerProductsById(productId))
-//     );
-//     const cartMarkup = createMarkup(products);
-//     cartOrderList.insertAdjacentHTML('beforeend', cartMarkup);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+  try {
+    const products = await Promise.all(
+      productsList.map(productId => getServerProductsById(productId))
+    );
+    const cartMarkup = cartOrder(products);
+    cartOrderList.insertAdjacentHTML('beforeend', cartMarkup);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
-// export { getCardProducts };
 async function calculateTotalPrice() {
   const cartDataString = localStorage.getItem('cartData');
   if (!cartDataString) {
