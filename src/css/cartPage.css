@@ -773,6 +773,8 @@
     .cart-clear-btn {
       margin-right: 120px;
       margin-bottom: 46px;
+      float: right;
+      margin-right: 0;
     }
   
     .cart-filled-list {
@@ -1112,7 +1114,8 @@ left: 20px;
         font-weight: 400;
         line-height: 24px;
     }
-    .div{
+    .div {
         display: flex;
+        gap:101px
     }
   }
