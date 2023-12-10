@@ -872,10 +872,8 @@
     position: relative;
     margin-bottom: 14px;
   }
-  .cart-basket-input:hover,
-  .cart-basket-input:focus {
-    border: 1px solid var(--background-color);
-  }
+  
+  
   .cart-basket-input::placeholder {
     font-size: 14px;
     line-height: 1.29;
@@ -898,8 +896,8 @@
   }
   .cart_checkout_btn:hover,
   .cart_checkout_btn:focus {
-    background-color: var(--hover-color);
-    transition: var(--animation);
+    background-color: var(--dark-green-bg);
+    transition: var(--dark-green-bg);
   }
   
   .cart_total_order {
