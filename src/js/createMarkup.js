@@ -2,6 +2,7 @@ import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
 import { updateCartCounter } from "./updateCartCounter";
+import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
 
@@ -58,7 +59,7 @@ export function createMarkup(arr) {
               <p class="item-price">$${price}</p>
               <button type="button" class="btn-item js-btn">
                 <svg class="product-button-icon" width="18" height="18">
-                  <use href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-shop"></use>
+                  <use href="${icons}#icon-shop"></use>
                 </svg>
               </button>
             </div>
