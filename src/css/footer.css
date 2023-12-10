@@ -160,7 +160,103 @@
   opacity: 0.9;
   margin-bottom: 8px;
 }
+.footer-modal {
+  max-width: 335px;
+  height: 276px;
+  background-color: #e8e8e2;
+  border-radius: 20px;
+}
+.close-footer-modal {
+  position: fixed;
+  top: 5%;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: inherit;
+  border: none;
+  transition: all 0.5s ease;
+}
+.close-footer-modal:hover,
+.close-footer-modal:focus {
+  transform: scale(1.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+.footer-modal-title {
+  color: #010101;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 14px;
+  padding-left: 45.5px;
+  padding-right: 45.5px;
+  padding-top: 100px;
+}
+.footer-modal-title .span {
+  color: #6d8434;
+}
+.footer-modal-text {
+  text-align: center;
+  color: rgba(1, 1, 1, 0.7);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  padding-left: 44px;
+  padding-right: 43px;
+}
+.footer-modal-img {
+  background-image: '../img/footer-img.png';
+}
+.footer-modal-err {
+  max-width: 335px;
+  height: 276px;
+  background-color: #e8e8e2;
+  border-radius: 20px;
+}
 
+.footer-modal-err-title {
+  color: #010101;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  padding-top: 80px;
+  padding-left: 45.5px;
+  padding-right: 45.5px;
+  margin-bottom: 14px;
+}
+.footer-modal-err-title span {
+  color: #6d8434;
+}
+.footer-modal-err-text {
+  text-align: center;
+  color: rgba(1, 1, 1, 0.7);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  padding-left: 44px;
+  padding-right: 43px;
+  margin-bottom: 80px;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.85);
+  }
+}
+.icon-close-footer {
+  width: 12px;
+  height: 12px;
+}
 @media screen and (min-width: 768px) {
   .basement-wrap {
     display: flex;
@@ -238,6 +334,36 @@
   .footer-terms {
     display: flex;
     justify-content: space-between;
+  }
+  .footer-modal {
+    max-width: 490px;
+  }
+  .icon-close-footer {
+    width: 16px;
+    height: 16px;
+  }
+  .footer-modal-title {
+    font-size: 24px;
+    padding-top: 90px;
+    padding-left: 122.5px;
+    padding-right: 122.5px;
+  }
+
+  .footer-modal-text {
+    font-size: 16px;
+    padding-right: 81px;
+    padding-left: 81px;
+  }
+  .footer-modal-err {
+    max-width: 469px;
+  }
+  .footer-modal-err-title {
+    padding-left: 112px;
+    padding-right: 112px;
+  }
+  .footer-modal-err-text {
+    padding-left: 60px;
+    padding-right: 60px;
   }
 }
 
