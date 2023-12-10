@@ -27,6 +27,10 @@ function createPopularMarkup(data) {
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
+<<<<<<< Updated upstream
+=======
+                      width="56" height="56"
+>>>>>>> Stashed changes
                           src="${img}"
                           alt="${name}">
                   </div>
@@ -82,6 +86,9 @@ function createDiscountMarkup(data) {
         `<div class="container-for-discount-items" id="${_id}">
           <div class="discount-product-card" id="${_id}">
                   <div class="discount-product-card-img">
+                  <svg class="icon-discount">
+      <use href="./img/icons.svg#icon-discount"></use>
+    </svg>
                       <img class="discount-card-img"
                           src="${img}"
                           alt="${name}">
