@@ -99,15 +99,11 @@
 }
 
 @media screen and (min-width: 1440px) {
-<<<<<<< Updated upstream
   .hero-sect {
     padding-top: 77px;
   }
 
-  img {
-=======
   .hero-img {
->>>>>>> Stashed changes
     max-width: 1240px;
   }
 
