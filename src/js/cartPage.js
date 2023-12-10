@@ -1,7 +1,10 @@
-import { getCardProducts } from "./cartProducts";
-import { initCartStorage } from "./cartStorage";
+import { getCardProducts } from './cartProducts';
+import { initCartStorage } from './cartStorage';
+import { updateCartCounterOnLoad } from "./updateCartCounter";
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartCounterOnLoad();
+});
+initCartStorage();
 
-initCartStorage()
-
-const cartProductsList = JSON.parse(localStorage.getItem("cartData"))
-getCardProducts(cartProductsList)
+const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
+getCardProducts(cartProductsList);

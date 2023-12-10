@@ -2,6 +2,7 @@
 @media screen and (min-width: 375px) {
   .products-container {
     padding-bottom: 80px;
+
   }
   .product-list {
     display: flex;
@@ -33,6 +34,9 @@
   }
 
   .container-info {
+
+    justify-content: flex-start;
+    white-space: nowrap;
     display: flex;
     gap: 8px;
     padding-bottom: 40px;
@@ -94,6 +98,7 @@
     background: #e8e8e2;
   }
 }
+
 @media screen and (min-width: 768px) {
   .products-section {
     padding-bottom: 100px;
@@ -108,6 +113,7 @@
   }
 }
 @media screen and (min-width: 1440px) {
+
   .product-item {
     width: calc((100% - 40px) / 3);
   }
@@ -129,4 +135,10 @@
   .products-section {
     padding-right: 40px;
   }
+
+  .popular-item-info {
+    width: 100%;
+  }
 }
+
+
