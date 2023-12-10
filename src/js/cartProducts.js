@@ -9,7 +9,7 @@ const emptyCart = document.querySelector('.cart-empty'),
   cartOrderList = document.querySelector('.cart-order-list');
 
 async function getCardProducts(productsList) {
-  // відмальовуємо якщо пустий масив в локал сторедж
+
   if (!productsList.length) {
     emptyCart.insertAdjacentHTML(
       'beforeend',
@@ -27,7 +27,6 @@ async function getCardProducts(productsList) {
           </div>
         `
     );
-    // приховуємо основну розмітку
     cartList.classList.add('visually-hidden');
   }
 
