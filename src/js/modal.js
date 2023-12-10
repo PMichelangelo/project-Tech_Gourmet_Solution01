@@ -8,15 +8,15 @@ import modalEmailTab2X from '../img/modal-email-tab.png'
 import modalEmailDesk from '../img/modal-email-desk.png'
 import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
 
-    export { openModal, openSubcribeModal, openErrorModal };
+export { openModal, openSubcribeModal, openErrorModal };
 
-    async function openModal(productId) {
-      try {
-        const productData = await getServerProductsById(productId);
+async function openModal(productId) {
+  try {
+    const productData = await getServerProductsById(productId);
 
-        const modalContent = document.createElement('div');
+    const modalContent = document.createElement('div');
 
-        modalContent.innerHTML = `
+    modalContent.innerHTML = `
     <div class ="modal-test" ><img src="${productData.img}" alt="${productData.name}">
       <p>${productData.name}</p>
       <p>${productData.category}</p>
@@ -28,10 +28,10 @@ import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
 
     `;
 
-        const instance = basicLightbox.create(modalContent);
+    const instance = basicLightbox.create(modalContent);
 
-        instance.show();
-        addoOverflow()
+    instance.show();
+    addoOverflow()
 
     function closeModal() {
       instance.close();
@@ -44,9 +44,9 @@ import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
   }
 }
 
-    function openSubcribeModal() {
-      try {
-        const instance = basicLightbox.create(`<div class="footer-modal">
+function openSubcribeModal() {
+  try {
+    const instance = basicLightbox.create(`<div class="footer-modal">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
@@ -78,26 +78,18 @@ import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
     </picture>
     </div>`);
 
-        instance.show();
-        addoOverflow();
+    instance.show();
+    addoOverflow();
 
-        function closeModalEsp(event) {
-          if (event.key === 'Escape') {
-            instance.close();
-            revomeOverflow();
-          }
-        }
-        function closeModal() {
-          instance.close();
-          revomeOverflow();
-        }
-
-        document.addEventListener('keydown', closeModalEsp);
-        const closeBtn = document.querySelector('.close-footer-modal');
-        closeBtn.addEventListener('click', closeModal);
-      } catch (error) {
-        console.error(error);
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        revomeOverflow();
       }
+    }
+    function closeModal() {
+      instance.close();
+      revomeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -116,30 +108,17 @@ function openErrorModal() {
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
     </div>`);
-        instance.show();
-        addoOverflow();
-        function closeModalEsp(event) {
-          if (event.key === 'Escape') {
-            instance.close();
-            revomeOverflow();
-          }
-        }
-        function closeModal() {
-          instance.close();
-          revomeOverflow();
-        }
-
-        document.addEventListener('keydown', closeModalEsp);
-        const closeBtn = document.querySelector('.close-footer-modal');
-        closeBtn.addEventListener('click', closeModal);
-      } catch (error) {
-        console.error(error);
+    instance.show();
+    addoOverflow();
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        revomeOverflow();
       }
     }
-
-
-    function addoOverflow() {
-      document.body.style.overflow = 'hidden';
+    function closeModal() {
+      instance.close();
+      revomeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -153,3 +132,6 @@ function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
 
+function revomeOverflow() {
+  document.body.style.overflow = '';
+}
