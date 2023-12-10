@@ -1,12 +1,26 @@
-<header>
-  <div class="container">
-    <a href="../index.html" role="link">
-      <button>Home</button>
+<header class="header">
+  <div class="container header-container">
+
+    <a href="./index.html" class="header-logo">
+      <svg class="header-logo-img">
+        <use href="./img/icons.svg#icon-logo-mobile"></use>
+      </svg>
     </a>
 
-    <a href="../partials/cartPage.html" role=" link">
-      <button>CART</button>
-    </a>
+    <div class="header-navigation">
+      <a class="to-home" href="./index.html" role="link"> Home </a>
 
+      <div class="header-cart">
+        <a class="header-cart-link" href="./cartPage.html" role="link">
+          <div class="header-cart-btn">
+            <svg class="header-cart-icon">
+              <use href="./img/icons.svg#icon-cart"></use>
+            </svg>
+          </div>
+        </a>
+        <a class="header-cart-text" href="./cartPage.html" role=" link">
+          CART (<span class="header-counter">0</span>)</a>
+      </div>
+    </div>
   </div>
 </header>

@@ -1,43 +1,33 @@
+import { getCardProducts } from './cartProducts';
+import { initCartStorage } from './cartStorage';
+import { updateCartCounterOnLoad } from "./updateCartCounter";
+document.addEventListener('DOMContentLoaded', () => {
+ updateCartCounterOnLoad();
+});
+initCartStorage();
+
+const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
+getCardProducts(cartProductsList);
 
 
-// const gallery = document.querySelector(".gallery");
- 
+///////////sendForm/////////////////
+const form = document.querySelector('.cart_checkout_btn')
+form.addEventListener('submit', onForm)
+function onForm(event) {
+  event.preventDefault();
+  console.dir(event);
+}
+ // const emailInput = event.target.........
+  //const email = emailInput.value;
+  
+  // console.log(email);
 
-// const cartList = localStorage.getItems('cartItems');
+//  
+//   const orderProducts = cartProductsList.map(product => {
+//     return {
+//       productId: product._id,
+//       amount: product.price,
+//     };
+//   });
 
-// const getPromises = () =>{
-//   return cartList.map(id => {
-//     const url = 'some_url'
-//     const headers = {
-//       body: 'id'
-//     }
-
-//     return fetch(url, { headers })
-//     .then(res => {
-//       if (!res.ok) {
-//         throw new Error('API request failed with status ' + res.status);
-//       }
-//       return res.json();
-//     })
-//     .catch(e => {
-//       console.log('Error:', e);
-//       return {};
-//     });
-//   })
-// }
-// // getPromises*() === [Promise, Promise, Promise]
-
-// const prodList = []
-
-// const fetch = () => {
-//   const promises = getPromises();
-//   Promise.all(promises)
-//   .then(res => {
-//     prodList.push(res)
-//   })
-//   .catch(e => console.log('Error:', e));
-// }
-
-// export {
-//   prodList
-// }
+//  

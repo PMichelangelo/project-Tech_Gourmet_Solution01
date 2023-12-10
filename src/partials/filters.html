@@ -1,23 +1,23 @@
 <section class="section-filters container">
-    <form name="filters" autocomplete="off" class="filters-form">
-        <label for="filters-input" class="filters-label">Filters:</label>
-        <div class="filters-form-wrap">
-            <div class="filters-input-wrap">
-                <input type="text" name="keyword" placeholder="Search for anything" class="filters-input" id="filters-input">
-                <button type="submit" class="filters-btn">
-                    <svg class="icon-magnifying-glass">
-                        <use href="../img/javascript.svg#icon-magnifying-glass"></use>
-                    </svg>
-                </button>
-            </div>
-            <div class="filters-select-wrap">
-                <select name="categories" placeholder="Categories" class="filters-select">
-                    <option value="" default disabled selected class="filters-select-placeholder">Categories</option>
-                </select>
-                <svg class="icon-chevron-down">
-                    <use href="../img/javascript.svg#icon-chevron-down"></use>
-                </svg>
-            </div>
-        </div>
-    </form>
+  <form name="filters" autocomplete="off" class="filters-form">
+    <label for="filters-input" class="filters-label">Filters:</label>
+    <div class="filters-form-wrap">
+      <div class="filters-input-wrap">
+        <input type="text" name="keyword" placeholder="Search for anything" class="filters-input" id="filters-input">
+        <button type="submit" class="filters-btn">
+          <svg class="icon-magnifying-glass" width="15" height="15">
+            <use href="./img/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="filters-select-wrap">
+        <button type="button" class="filters-select">Categories</button>
+        <button type="submit" class="filters-options filters-visually-hidden"><ul class="filters-options-list"></ul></button>
+        <input type="text" name="category" class="filters-select-input filters-visually-hidden">
+        <svg class="icon-chevron-down" width="11" height="11">
+          <use href="./img/icons.svg#icon-chevron-down"></use>
+        </svg>
+      </div>
+    </div>
+  </form>
 </section>

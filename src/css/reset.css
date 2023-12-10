@@ -1,4 +1,9 @@
 /* Reset styles */
+
+body {
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -7,6 +12,11 @@ h5,
 h6,
 p {
   margin: 0;
+  outline: none;
+}
+
+input {
+  outline: none;
 }
 
 p:last-child {
@@ -22,10 +32,12 @@ ul {
 a {
   color: currentColor;
   text-decoration: none;
+  outline: none;
 }
 
 button {
   cursor: pointer;
+  outline: none;
 }
 
 img {

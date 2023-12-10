@@ -1,37 +1,42 @@
-const checkoutForm = document.getElementById('checkoutForm');
-const emailInput = document.getElementById('email');
+import axios from 'axios';
+import { openSubcribeModal, openErrorModal } from './modal.js';
+export { onSubmit };
+let emailInput;
+function onSubmit(event) {
+  event.preventDefault();
 
-checkoutForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    if (validateEmail(emailInput.value)) {
-        sendFormData(emailInput.value); 
-      } else {
-        alert('Please, please enter the correct email!');
-      }
-    });
+  emailInput = document.querySelector('.footer-input');
 
-function validateEmail(email) {
-        const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return pattern.test(email);
-      };
-
-function sendFormData(email) {
-    const serverUrl = 'https://food-boutique.b.goit.study/api';
-
+  if (validateEmail(emailInput.value)) {
+    sendFormData(emailInput.value);
+  } else {
+    alert('Please enter the correct email!');
+  }
 }
 
+function validateEmail(email) {
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return pattern.test(email);
+}
 
+function sendFormData(email) {
+  const serverUrl = 'https://food-boutique.b.goit.study/api/subscription';
 
-async function addBook(book) {
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(book),
-    };
-  
-    const response = await fetch(`${BASE_URL}/books`, options);
-    const newBook = await response.json();
-  
-    return newBook;
+  const formData = {
+    email: email,
+  };
+
+  axios
+    .post(serverUrl, formData)
+    .then(response => {
+      openSubcribeModal();
+    })
+    .catch(error => {
+      if (error.message.includes('409')) {
+        openErrorModal();
+      }
+    })
+    .finally(el => {
+      emailInput.value = '';
+    });
+}
