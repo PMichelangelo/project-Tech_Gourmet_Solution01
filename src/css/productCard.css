@@ -110,9 +110,6 @@
     opacity: 1;
   }
 
-  .btn-item:disabled:hover {
-  }
-
   .product-button-icon {
     transition: opacity 300ms ease-in;
     position: absolute;
