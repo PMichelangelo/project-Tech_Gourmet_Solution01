@@ -39,8 +39,8 @@
   position: absolute;
   background-color: transparent;
   border: none;
-  top: -7px;
-  right: 5px;
+  top: 3px;
+  right: 10px;
   transform-origin: center center;
 }
 
@@ -51,14 +51,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-.icon-discount {
-  position: absolute;
-  top: 3px;
-  right: 10px;
-  width: 60px;
-  height: 60px;
 }
 
 .discount-price-icon-container {
@@ -393,6 +385,10 @@
     font-size: 28px;
     line-height: 1.14;
     margin-bottom: 20px;
+  }
+
+  .discount-svg {
+    top: -3px;
   }
 }
 >>>>>>> Stashed changes
