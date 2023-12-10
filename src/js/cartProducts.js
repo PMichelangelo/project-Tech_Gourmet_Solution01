@@ -41,4 +41,27 @@ async function getCardProducts(productsList) {
   }
 }
 
-export { getCardProducts };
+async function calculateTotalPrice() {
+  const cartDataString = localStorage.getItem('cartData');
+  if (!cartDataString) {
+    return 0;
+  }
+  const cartData = JSON.parse(cartDataString);
+  const productIds = Object.values(cartData);
+  let totalPrice = 0;
+  for (const productId of productIds) {
+    try {
+      const result = await getServerProductsById(productId);
+      
+      totalPrice += result.price;
+    } catch (error) {
+      console.error(`Error fetching product with id ${productId}: ${error.message}`);
+    }
+  }
+  return totalPrice;
+}
+
+export {
+  getCardProducts,
+  calculateTotalPrice
+};

@@ -53,7 +53,7 @@ export function createMarkup(arr) {
             <div class="container-info">
               <p class="item-info">Category: <span class="span-info">${category.replace('_', ' ').replace('_', ' ')}</span></p>
               <p class="item-info">Size: <span class="span-info">${size.replace('oz', 'g')}</span></p>
-              <p class="item-info">Popularity: <span class="span-info">${popularity}</span></p>
+              <p class="item-info popular-item-info ">Popularity: <span class="span-info">${popularity}</span></p>
             </div>
             <div class="container-price">
               <p class="item-price">$${price}</p>
