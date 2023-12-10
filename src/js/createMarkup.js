@@ -28,6 +28,7 @@ export async function createProductsMarkup() {
           console.log("Button clicked within the product card");
           addToCart(productId)
           updateCartCounterOnLoad()
+          disabledBtn(btn)
         } else {
           openModal(productId);
         }
@@ -38,6 +39,10 @@ export async function createProductsMarkup() {
   }
 }
 
+function disabledBtn(btn){
+  btn.classList.add('added')
+  btn.setAttribute("disabled", "disabled")
+}
 
 
 export function createMarkup(arr) {
@@ -58,8 +63,11 @@ export function createMarkup(arr) {
             <div class="container-price">
               <p class="item-price">$${price}</p>
               <button type="button" class="btn-item js-btn">
-                <svg class="product-button-icon" width="18" height="18">
+                <svg class="product-button-icon icon-cart" width="18" height="18">
                   <use href="${icons}#icon-shop"></use>
+                </svg>
+                <svg class="product-button-icon icon-mark" width="18" height="18">
+                  <use href="${icons}#icon-search"></use>
                 </svg>
               </button>
             </div>
