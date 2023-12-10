@@ -32,7 +32,8 @@ function createPopularMarkup(results) {
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
-                      width="16" height="16"
+                      width="56" height="56"
+
                           src="${img}"
                           alt="${name}">
                   </div>
@@ -92,6 +93,9 @@ function createDiscountMarkup(results) {
         `<div class="container-for-discount-items" id="${_id}">
           <div class="discount-product-card" id="${_id}">
                   <div class="discount-product-card-img">
+                  <svg class="icon-discount">
+      <use href="./img/icons.svg#icon-discount"></use>
+    </svg>
                       <img class="discount-card-img"
                           src="${img}"
                           alt="${name}">

@@ -1,3 +1,4 @@
+
 .popular {
   padding: 80px 0;
 }
@@ -48,6 +49,16 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.icon-discount {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+
 }
 
 .discount-price-icon-container {
@@ -74,6 +85,7 @@
   justify-content: start;
   margin-top: 0;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
 .discount-products-title {
@@ -83,7 +95,8 @@
   display: flex;
   justify-content: start;
   margin: 0;
-}
+  font-weight: 500;
+
 
 .aside-product-card {
   width: 311px;
