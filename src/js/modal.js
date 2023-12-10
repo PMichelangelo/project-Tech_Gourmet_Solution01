@@ -45,7 +45,8 @@ function openSubcribeModal() {
         </svg></button>
         <div class='footer-modal-content'><h3 class='footer-modal-title'>Thanks for subscribing for <span class='span'>new</span> products</h3>
         <p class='footer-modal-text'>We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.</p>
-        <img href='./img/footer-img.png'>
+        <img href='/project-Tech_Gourmet_Solution01/assets/footer-img.png'>
+
     </div>`);
 
     instance.show();
@@ -77,7 +78,6 @@ function openErrorModal() {
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
-        <div class='footer-modal-img'></div>
     </div>`);
     instance.show();
     addoOverflow();
