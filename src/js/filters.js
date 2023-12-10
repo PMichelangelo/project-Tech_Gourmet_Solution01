@@ -6,15 +6,18 @@ const refs = {
     selectDropdown: document.querySelector(".filters-options"),
     selectedCategory: document.querySelector(".filters-select-input"),
     selectOptions: document.querySelectorAll(".filters-option"),
-    productCard: document.querySelector(".product-list")
+    productCard: document.querySelector(".product-list"),
+    selectList: document.querySelector(".filters-options-list")
 }
 
 import {
     getServerProductsCategories,
-    getServerProducts,
+    getServerProducts
 } from "./fetchProducts.js";
 
 import { createMarkup } from "./createMarkup.js";
+
+import { save, load } from "./storage.js";
 
 async function filterCategories () {
     await getServerProductsCategories().then(data => {
@@ -23,18 +26,17 @@ async function filterCategories () {
             if (newEl === "Breads & Bakery") {
                 newEl = newEl.replace(/&/g, "/")
             }
-            return `<li data-value="${el}" class="filters-option">${newEl}</li>`
+            return `<li class="filters-option" data-value="${el}">${newEl}</li>`
         }).join("");
-        const str = strCategories + `<li data-value="null" class="filters-option">Show all</li>`
-        refs.selectDropdown.insertAdjacentHTML("beforeend", str);
+        const str = strCategories + `<li class="filters-option" data-value="null">Show all</li>`
+        refs.selectList.insertAdjacentHTML("beforeend", str);
 
         refs.selectBtn.addEventListener("click", e => {
             e.stopPropagation();
             refs.selectDropdown.classList.toggle("filters-visually-hidden");
         })
 
-        refs.selectDropdown.addEventListener("click", e => {
-            refs.selectDropdown.classList.add("filters-visually-hidden");
+        refs.selectList.addEventListener("click", e => {
             const categoryForUser = e.target.textContent;
             const categoryForUs = e.target.dataset.value;
             refs.selectBtn.textContent = categoryForUser;
@@ -45,60 +47,62 @@ async function filterCategories () {
     })
 }
 
-function onSubmit() {
+function filterProducts() {
     refs.productCard.classList.remove("product-list-not-found");
     if (load("filtersOfProducts") === undefined) {
         save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6 });
     }
-    let keyword = load("filtersOfProducts").keyword;
-    let category = load("filtersOfProducts").category;
-    getServerProducts(1, keyword, category).then(({ results, totalPages }) => {
+    const {keyword, category, page, limit} = load("filtersOfProducts");
+
+    getServerProducts(page, keyword, category, limit).then(({ results }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
     })
-    refs.submitBtn.addEventListener("click", e => {
-        e.preventDefault();
-        keyword = refs.input.value || null;
-        category = refs.selectedCategory.value || null;
+
+    refs.form.addEventListener("submit", onSubmit);
+}
+
+function onSubmit (event) {
+    event.preventDefault();
+    refs.submitBtn.disabled = true;
+
+    let limit;
+
+    if (window.innerWidth >= 1440) {
+        limit = 9;
+    } else if (window.innerWidth >= 768) {
+        limit = 8;
+    } else {
+        limit = 6;
+    }
+
+    const keyword = refs.input.value || null;
+    const category = refs.selectedCategory.value || null;
+    getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page }) => {
+        if (totalPages === 0) {
+            const str =
+            `<li class="products-not-found">
+                <h3 class="products-heading">Nothing was found for the selected <span class="products-heading-accent">filters...</span></h3>
+                <p class="products-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.</p>
+            </li>`;
+            refs.productCard.innerHTML = str;
+            refs.productCard.classList.add("product-list-not-found");
+            refs.form.reset();
+            refs.selectBtn.textContent = "Categories";
+            refs.submitBtn.disabled = false;
+            return
+        }
+        refs.productCard.classList.remove("product-list-not-found");
+        save("filtersOfProducts", { keyword, category, page, limit });
+        const markup = createMarkup(results);
+        refs.productCard.innerHTML = markup;
         refs.form.reset();
         refs.selectBtn.textContent = "Categories";
-        getServerProducts(1, keyword, category).then(({ results, totalPages, page }) => {
-            if (totalPages === 0) {
-                const str = `<li class="products-not-found">
-                    <h3 class="products-heading">Nothing was found for the selected <span class="products-heading-accent">filters...</span></h3>
-                    <p class="products-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.</p>
-                </li>`;
-                refs.productCard.innerHTML = str;
-                refs.productCard.classList.add("product-list-not-found");
-                return
-            }
-            refs.productCard.classList.remove("product-list-not-found");
-            save("filtersOfProducts", { keyword, category, page, limit: 6 });
-            const markup = createMarkup(results);
-            refs.productCard.innerHTML = markup;
-        })
+        refs.submitBtn.disabled = false;
     })
 }
 
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error("Set state error: ", error.message);
-  }
-};
-
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error("Get state error: ", error.message);
-  }
-};
-
 export {
     filterCategories,
-    onSubmit
+    filterProducts
 }

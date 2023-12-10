@@ -2,7 +2,6 @@ import {
   getServerProductsPopular,
   getServerProductsDiscount,
 } from './fetchProducts';
-import icons from '../img/icons.svg';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -27,7 +26,7 @@ function createPopularMarkup(results) {
 
   return limitedResults
     .map(
-      ({ _id, img, name, category, size, popularity, icons }) =>
+      ({ _id, img, name, category, size, popularity}) =>
         `<div class="container-for-popular-items" id="${_id}">
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
@@ -60,7 +59,7 @@ function createPopularMarkup(results) {
                   <div class="product-card-prices-btn">
                       <button type="button" class="products-card-btn" id="${_id}">
                           <svg width="16" height="16">
-                              <use class="popular-button-icon" href="../img/icons.svg#icon-shop"></use>
+                              <use class="popular-button-icon" href="./img/icons.svg#icon-shop"></use>
                           </svg>
                       </button>
                   </div>
@@ -97,7 +96,7 @@ function createDiscountMarkup(results) {
                           alt="${name}">
                           <span class="discount-svg">
                           <svg width="60" height="60" >
-                              <use  href="${icons}#icon-discount"></use>
+                              <use  href="./img/icons.svg#icon-discount"></use>
                           </svg>
                           </span>
                   </div>
@@ -108,7 +107,7 @@ function createDiscountMarkup(results) {
                       <p class="product-card-price">$${price}</p>
                       <button type="button" class="discount-product-card-btn" id="${_id}">
                           <svg width="18" height="18">
-                              <use class="discount-button-icon" href="../img/icons.svg#icon-cart"></use>
+                              <use class="discount-button-icon" href="./img/icons.svg#icon-cart"></use>
                           </svg>
                       </button>
                   </div>
