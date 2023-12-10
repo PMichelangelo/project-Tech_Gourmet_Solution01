@@ -1,38 +1,42 @@
 import axios from 'axios';
-
-const checkoutForm = document.querySelector('.checkoutForm');
-const emailInput = document.querySelector('.email');
-
-checkoutForm.addEventListener('submit', onsubmit) 
-
-function onsubmit(event) {
+import { openSubcribeModal, openErrorModal } from './modal.js';
+export { onSubmit };
+let emailInput;
+function onSubmit(event) {
   event.preventDefault();
-    if (validateEmail(emailInput.value)) {
-        sendFormData(emailInput.value);
-      } else {
-        alert('Please, please enter the correct email!');
-      }
-    };
-  
+
+  emailInput = document.querySelector('.footer-input');
+
+  if (validateEmail(emailInput.value)) {
+    sendFormData(emailInput.value);
+  } else {
+    alert('Please enter the correct email!');
+  }
+}
+
 function validateEmail(email) {
-        const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return pattern.test(email);
-      };
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return pattern.test(email);
+}
 
 function sendFormData(email) {
-    const serverUrl = 'https://food-boutique.b.goit.study/api';
+  const serverUrl = 'https://food-boutique.b.goit.study/api/subscription';
 
-    const formData = {
-      email: email
-    };
+  const formData = {
+    email: email,
+  };
 
-    axios.post(serverUrl, formData)
-          .then(response => {
-            alert('Welcome to the Food Boutique! 🥦🍓 With Food Boutique, youre not just subscribing to food, youre signing up for a fresher, fitter, and happier you. Get ready to elevate your wellness journey, one bite at a time!');
-          })
-          .catch(error => {
-            console.error(error);
-          });
+  axios
+    .post(serverUrl, formData)
+    .then(response => {
+      openSubcribeModal();
+    })
+    .catch(error => {
+      if (error.message.includes('409')) {
+        openErrorModal();
       }
-    
-
+    })
+    .finally(el => {
+      emailInput.value = '';
+    });
+}
