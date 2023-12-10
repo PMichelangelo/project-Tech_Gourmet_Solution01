@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('cartData');
 
     updateCartCounterOnLoad();
+
+    const cards = document.querySelectorAll('.cart-order-item');
+    cards.forEach(card => {
+      card.style.opacity = 0;
+      card.style.transition = 'opacity 0.5s';
+    });
   });
 });
 
