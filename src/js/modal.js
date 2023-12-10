@@ -41,7 +41,7 @@ function openSubcribeModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
-          <use href="./img/icons.svg#icon-close-btn"></use>
+          <use href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content'><h3 class='footer-modal-title'>Thanks for subscribing for <span class='span'>new</span> products</h3>
         <p class='footer-modal-text'>We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.</p>
@@ -71,7 +71,7 @@ function openErrorModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal-err">
        <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
-          <use href="./img/icons.svg#icon-close-btn"></use>
+          <use href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
         <p class='footer-modal-err-text'>You have already subscribed to our new products. Watch for offers at the mailing address.</p>
