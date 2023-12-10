@@ -13,7 +13,7 @@
   /* ! Start cart-ware-count svg */
   
   /* .cart-svg-span {
-    
+
     width: 30px;
     height: 30px;
     display: flex;
@@ -955,9 +955,7 @@ position: absolute; }
   .checkout-input::placeholder {
       position: relative;
           
-  } 
-  #checkoutForm {
-  
+ 
 
   }
   .input-container {
@@ -1096,9 +1094,7 @@ left: 20px;
         justify-content: start;
         gap: 101px;
     }
-    .total-form-title {
-        
-    }
+  
     .cart_checkout_btn {
         padding: 15px 65px;
     }
@@ -1116,7 +1112,5 @@ left: 20px;
         font-weight: 400;
         line-height: 24px;
     }
-    .cart-basket-input {
-        
-    }
+    
   }
