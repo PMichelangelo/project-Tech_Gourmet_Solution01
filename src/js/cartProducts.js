@@ -1,12 +1,10 @@
-import { getServerProductsById } from './fetchProducts'
-import { createMarkup } from './createMarkup'
-const galleryEl = document.querySelector('.js-carTgallery')
+import { getServerProductsById } from './fetchProducts';
+import { cartOrder } from './createCartMarkup';
+const galleryEl = document.querySelector('.js-carTgallery');
 
-
-  const emptyCart = document.querySelector('.cart-empty'),
-   cartList = document.querySelector('.cart-list-wrapper'),
-   cartOrderList = document.querySelector('.cart-order-list');
-
+const emptyCart = document.querySelector('.cart-empty'),
+  cartListTotal = document.querySelector('.cart-list-total'),
+  cartOrderList = document.querySelector('.cart-order-list');
 
 //async function getCardProducts(productsList) {
 //  // відмальовуємо якщо пустий масив в локал сторедж
@@ -32,7 +30,6 @@ const galleryEl = document.querySelector('.js-carTgallery')
 //  }
 //}
 async function getCardProducts(productsList) {
-
   if (!productsList.length) {
     emptyCart.insertAdjacentHTML(
       'beforeend',
@@ -50,23 +47,20 @@ async function getCardProducts(productsList) {
           </div>
         `
     );
-    cartList.classList.add('visually-hidden');
+    cartListTotal.classList.add('visually-hidden');
   }
 
-
-   try {
-     const products = await Promise.all(
+  try {
+    const products = await Promise.all(
       productsList.map(productId => getServerProductsById(productId))
-     );
-     const cartMarkup = createMarkup(products);
-    cartOrderList.insertAdjacentHTML('beforeend', cartMarkup);
-   } catch (error) {
-     console.log(error);
-   }
- }
+    );
+    const cartMarkup = cartOrder(products);
+    cartOrderList.insertAdjacentHTML('beforebegin', cartMarkup);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-
-// export { getCardProducts };
 async function calculateTotalPrice() {
   const cartDataString = localStorage.getItem('cartData');
   if (!cartDataString) {
@@ -81,14 +75,12 @@ async function calculateTotalPrice() {
 
       totalPrice += result.price;
     } catch (error) {
-      console.error(`Error fetching product with id ${productId}: ${error.message}`);
+      console.error(
+        `Error fetching product with id ${productId}: ${error.message}`
+      );
     }
   }
   return totalPrice;
 }
 
-export {
-  getCardProducts,
-  calculateTotalPrice
-};
-
+export { getCardProducts, calculateTotalPrice };
