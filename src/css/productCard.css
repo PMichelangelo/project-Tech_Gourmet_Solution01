@@ -70,7 +70,6 @@
     line-height: 1.11;
   }
   .product-button-icon {
-    stroke: #e8e8e2;
     color: white;
   }
 
@@ -90,10 +89,9 @@
     transition: background-color 0.3s ease, color 0.3s ease,
       border-radius 0.3s ease;
   }
-  .btn-item:hover,
-  .btn-item:hover {
-    stroke: #e8e8e2;
-    background: #e8e8e2;
+
+  .icon-cart-fill {
+    fill: #e8e8e2;
   }
 
   .icon-cart {
@@ -110,6 +108,9 @@
 
   .btn-item.added .icon-mark {
     opacity: 1;
+  }
+
+  .btn-item:disabled:hover {
   }
 
   .product-button-icon {
