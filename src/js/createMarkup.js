@@ -14,7 +14,10 @@ export async function createProductsMarkup() {
     console.log("Number of product cards:", productCards.length);
 
      productCard.addEventListener('click', (event) => {
-      const card = event.target.closest('.js-card');
+       const card = event.target.closest('.js-card');
+
+      if (addToCartButton) return;
+
       if (card) {
         const productId = card.getAttribute('data-id');
         console.log("Product clicked:", productId);
