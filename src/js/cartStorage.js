@@ -5,9 +5,9 @@ function initCartStorage() {
 }
 
 function addToCart(productId) {
-  const storage = JSON.parse(localStorage.getItem("cartData"));
-  storage.push(productId)
-  localStorage.setItem("cartData",JSON.stringify(storage))
+  const storage = JSON.parse(localStorage.getItem("cartData")) || [];
+  storage.push(productId);
+  localStorage.setItem("cartData", JSON.stringify(storage));
 }
 
 function removeFromCart(productId) {

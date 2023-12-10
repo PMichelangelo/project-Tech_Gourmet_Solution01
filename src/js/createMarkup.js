@@ -1,5 +1,8 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
+import { addToCart } from "./cartStorage";
+import { updateCartCounterOnLoad } from "./updateCartCounter";
+import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
 
@@ -13,20 +16,22 @@ export async function createProductsMarkup() {
     const productCards = document.querySelectorAll('.js-card');
     console.log("Number of product cards:", productCards.length);
 
-    productCards.forEach(card => {
-      card.addEventListener('click', (event) => {
-        const addToCartButton = event.target.closest('.js-btn');
+    productCard.addEventListener('click', (event) => {
+      const card = event.target.closest('.js-card');
+      const btn = event.target.closest('.js-btn');
 
-        if (addToCartButton) {
-          const productId = card.getAttribute('data-id');
-          console.log("Adding to cart:", productId);
-          addToCart(productId);
+      if (card) {
+        const productId = card.getAttribute('data-id');
+        console.log("Product clicked:", productId);
+
+        if (btn) {
+          console.log("Button clicked within the product card");
+          addToCart(productId)
+          updateCartCounterOnLoad()
         } else {
-          const productId = card.getAttribute('data-id');
-          console.log("Product clicked:", productId);
           openModal(productId);
         }
-      });
+      }
     });
   } catch (error) {
     console.error(error);
@@ -48,13 +53,13 @@ export function createMarkup(arr) {
             <div class="container-info">
               <p class="item-info">Category: <span class="span-info">${category.replace('_', ' ').replace('_', ' ')}</span></p>
               <p class="item-info">Size: <span class="span-info">${size.replace('oz', 'g')}</span></p>
-              <p class="item-info">Popularity: <span class="span-info">${popularity}</span></p>
+              <p class="item-info popular-item-info ">Popularity: <span class="span-info">${popularity}</span></p>
             </div>
             <div class="container-price">
               <p class="item-price">$${price}</p>
               <button type="button" class="btn-item js-btn">
                 <svg class="product-button-icon" width="18" height="18">
-                  <use href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-shop"></use>
+                  <use href="${icons}#icon-shop"></use>
                 </svg>
               </button>
             </div>

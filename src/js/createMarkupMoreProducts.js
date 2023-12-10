@@ -2,6 +2,8 @@ import {
   getServerProductsPopular,
   getServerProductsDiscount,
 } from './fetchProducts';
+import icons from '../img/icons.svg'
+import { openModal } from './modal';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -31,7 +33,8 @@ function createPopularMarkup(results) {
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
-                      width="16" height="16"
+                      width="56" height="56"
+
                           src="${img}"
                           alt="${name}">
                   </div>
@@ -59,7 +62,7 @@ function createPopularMarkup(results) {
                   <div class="product-card-prices-btn">
                       <button type="button" class="products-card-btn" id="${_id}">
                           <svg width="16" height="16">
-                              <use class="popular-button-icon" href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-shop"></use>
+                              <use class="popular-button-icon" href="${icons}#icon-shop"></use>
                           </svg>
                       </button>
                   </div>
@@ -91,12 +94,15 @@ function createDiscountMarkup(results) {
         `<div class="container-for-discount-items" id="${_id}">
           <div class="discount-product-card" id="${_id}">
                   <div class="discount-product-card-img">
+                  <svg class="icon-discount">
+      <use href="./img/icons.svg#icon-discount"></use>
+    </svg>
                       <img class="discount-card-img"
                           src="${img}"
                           alt="${name}">
                           <span class="discount-svg">
                           <svg width="60" height="60" >
-                              <use  href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-discount"></use>
+                              <use  href="${icons}#icon-discount"></use>
                           </svg>
                           </span>
                   </div>
@@ -107,7 +113,7 @@ function createDiscountMarkup(results) {
                       <p class="product-card-price">$${price}</p>
                       <button type="button" class="discount-product-card-btn" id="${_id}">
                           <svg width="18" height="18">
-                              <use class="discount-button-icon" href="/project-Tech_Gourmet_Solution01/assets/icons-3f1614cc.svg#icon-cart"></use>
+                              <use class="discount-button-icon" href="${icons}#icon-cart"></use>
                           </svg>
                       </button>
                   </div>

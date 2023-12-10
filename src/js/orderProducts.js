@@ -20,7 +20,7 @@ function validateEmail(email) {
       };
 
 function sendFormData(email) {
-    const serverUrl = 'https://food-boutique.b.goit.study/api';
+    const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
 
     const formData = {
       email: email

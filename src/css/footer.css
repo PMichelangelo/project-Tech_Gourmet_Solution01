@@ -162,10 +162,10 @@
 }
 .footer-modal {
   max-width: 335px;
-  height: 276px;
   background-color: #e8e8e2;
   border-radius: 20px;
 }
+
 .close-footer-modal {
   position: fixed;
   top: 5%;
@@ -205,9 +205,13 @@
   line-height: 1.28;
   padding-left: 44px;
   padding-right: 43px;
+  padding-bottom: 22px;
 }
+
 .footer-modal-img {
-  background-image: '../img/footer-img.png';
+  max-width: 335px;
+  max-height: 144px;
+  border-radius: 0px;
 }
 .footer-modal-err {
   max-width: 335px;
@@ -354,6 +358,11 @@
     padding-right: 81px;
     padding-left: 81px;
   }
+
+  .footer-modal-img {
+    border-radius: 0px;
+  }
+
   .footer-modal-err {
     max-width: 469px;
   }
