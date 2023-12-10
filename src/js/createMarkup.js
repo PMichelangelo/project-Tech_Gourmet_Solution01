@@ -46,7 +46,7 @@ export function createMarkup(arr) {
               <p class="item-price">$${price}</p>
               <button type="button" class="btn-item js-btn">
                 <svg class="product-button-icon" width="18" height="18">
-                  <use href="./img/icons.svg#icon-shop"></use>
+                  <use href="../img/icons.svg#icon-shop"></use>
                 </svg>
               </button>
             </div>
