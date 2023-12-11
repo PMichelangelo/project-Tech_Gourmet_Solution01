@@ -1,8 +1,7 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
 import icons from '../img/icons.svg';
-import { addToCart } from './cartStorage';
-import { removeFromCart } from './cartStorage';
+import { addToCart,removeFromCart, updateCardState } from './cartStorage';
 import imageModalEmailMob from '../img/modal-email-mob.png';
 import imageModalEmailMob2x from '../img/modal-email-mob-2x.png';
 import imageModalEmailTab from '../img/modal-email-tab.png';
@@ -10,7 +9,6 @@ import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
 import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 import cardPageModalImg from '../img/cardPageModalImg.png';
-
 
 export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart };
 
@@ -69,21 +67,21 @@ async function openModal(productId) {
     instance.show();
     addoOverflow();
 
-    
+
 function outsideClickListener(event) {
       const modalContainer = document.querySelector('.modal-container');
       if (!modalContainer.contains(event.target)) {
         closeModal();
       }
     }
-    
+
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
       closeBtn.removeEventListener('click', closeModal);
     }
-    
+
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
@@ -120,6 +118,9 @@ function outsideClickListener(event) {
           buttonTextSpan.textContent = 'Add to';
           btn.classList.remove('added-to-cart');
         }
+
+        updateCardState(productId);
+
       }
     });
     const isProductInCart = checkIfProductInCart(productData._id);
@@ -132,7 +133,6 @@ function outsideClickListener(event) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
-    modalInstance = instance;
   } catch (error) {
     console.log('Error fetching product:', error);
   }
@@ -168,7 +168,7 @@ function openSubcribeModal() {
         "
         media="(min-width: 1440px)"
       />
-      <img src="./img/modal-email-mob.png" alt="vegetables" />
+      <img src="${imageModalEmailMob}" alt="vegetables" />
     </picture>
     </div>`);
 
@@ -182,13 +182,13 @@ function openSubcribeModal() {
         document.removeEventListener('keydown', closeModalEsp);
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
-      
+
       closeBtn.removeEventListener('click', closeModal);
 }
 
@@ -225,7 +225,7 @@ function openErrorModal() {
         document.removeEventListener('keydown', closeModalEsp);
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
@@ -270,7 +270,7 @@ function openCardPageModal() {
         removeOverflow();
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
@@ -302,3 +302,5 @@ function addoOverflow() {
 function removeOverflow() {
   document.body.style.overflow = '';
 }
+
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart }
