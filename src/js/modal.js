@@ -1,8 +1,7 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
 import icons from '../img/icons.svg';
-import { addToCart } from './cartStorage';
-import { removeFromCart } from './cartStorage';
+import { addToCart,removeFromCart, updateCardState } from './cartStorage';
 import imageModalEmailMob from '../img/modal-email-mob.png';
 import imageModalEmailMob2x from '../img/modal-email-mob-2x.png';
 import imageModalEmailTab from '../img/modal-email-tab.png';
@@ -10,8 +9,7 @@ import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
 import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 import cardPageModalImg from '../img/cardPageModalImg.png'
-
-export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart };
+;
 
 function checkIfProductInCart(productId) {
   const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
@@ -119,6 +117,9 @@ function outsideClickListener(event) {
           buttonTextSpan.textContent = 'Add to';
           btn.classList.remove('added-to-cart');
         }
+
+        updateCardState(productId);
+
       }
     });
     const isProductInCart = checkIfProductInCart(productData._id);
@@ -300,3 +301,5 @@ function addoOverflow() {
 function removeOverflow() {
   document.body.style.overflow = '';
 }
+
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart }

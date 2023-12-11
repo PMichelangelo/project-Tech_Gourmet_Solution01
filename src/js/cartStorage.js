@@ -1,4 +1,5 @@
 import { updateCartCounterOnLoad } from "./updateCartCounter";
+import { checkIfProductInCart } from "./modal";
 
 function initCartStorage() {
   const hasCartData = localStorage.getItem("cartData")
@@ -19,8 +20,22 @@ function removeFromCart(productId) {
   updateCartCounterOnLoad()
 }
 
+function updateCardState(productId) {
+  const cardElement = document.querySelector(`.js-card[data-id='${productId}']`);
+  const btnElement = document.querySelector(`.js-btn[data-id='${productId}']`);
+
+  if (checkIfProductInCart(productId)) {
+    btnElement.classList.add('added');
+    btnElement.setAttribute('disabled', 'disabled');
+  } else {
+    btnElement.classList.remove('added');
+    btnElement.removeAttribute('disabled');
+  }
+}
+
 export {
   initCartStorage,
   addToCart,
-  removeFromCart
+  removeFromCart,
+  updateCardState
 };

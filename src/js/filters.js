@@ -1,3 +1,13 @@
+import {
+    getServerProductsCategories,
+    getServerProducts,
+    getLimit
+} from "./fetchProducts.js";
+import { createMarkup, checkIsItemInCart } from "./createMarkup.js";
+import { save, load } from "./storage.js";
+import { createPagination } from "./pagination.js"
+
+
 const refs = {
     form: document.querySelector(".filters-form"),
     input: document.querySelector(".filters-input"),
@@ -9,17 +19,7 @@ const refs = {
     selectList: document.querySelector(".filters-options-list"),
 }
 
-import {
-    getServerProductsCategories,
-    getServerProducts,
-    getLimit
-} from "./fetchProducts.js";
 
-import { createMarkup } from "./createMarkup.js";
-
-import { save, load } from "./storage.js";
-
-import { createPagination } from "./pagination.js"
 
 async function filterCategories () {
     await getServerProductsCategories().then(data => {
@@ -60,12 +60,14 @@ function filterProducts() {
         const maxPage = Math.ceil(totalPages / perPage);
         if (maxPage < page) {
             getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
-                refs.productCard.innerHTML = createMarkup(results);
-                createPagination(totalPages, page, perPage);
+              refs.productCard.innerHTML = createMarkup(results);
+              createPagination(totalPages, page, perPage);
+              checkIsItemInCart()
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
-            createPagination(totalPages, page, perPage);
+          createPagination(totalPages, page, perPage);
+          checkIsItemInCart()
         }
     })
 
