@@ -2,6 +2,7 @@ import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
+import { checkIfProductInCart } from "./modal";
 import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
@@ -39,7 +40,8 @@ export async function createProductsMarkup() {
   }
 }
 
-function disabledBtn(btn){
+function disabledBtn(btn) {
+  checkIfProductInCart()
   btn.classList.add('added')
   btn.setAttribute("disabled", "disabled")
 }
@@ -64,10 +66,10 @@ export function createMarkup(arr) {
               <p class="item-price">$${price}</p>
               <button type="button" class="btn-item js-btn">
                 <svg class="product-button-icon icon-cart" width="18" height="18">
-                  <use href="${icons}#icon-shop"></use>
+                  <use href="${icons}#icon-shoping-cart"></use>
                 </svg>
                 <svg class="product-button-icon icon-mark" width="18" height="18">
-                  <use href="${icons}#icon-search"></use>
+                  <use href="${icons}#icon-check"></use>
                 </svg>
               </button>
             </div>

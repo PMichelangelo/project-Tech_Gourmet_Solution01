@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodBoutique 🥦🍓</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
   </head>
 
   <body>
@@ -24,7 +25,7 @@
               </svg>
             </span>
             <span class="cart-count">
-              CART (<span class="header-counter">0</span>)
+              CART (<span class="cart-counter">0</span>)
             </span>
           </div>
           <!--розмітка сторінки яка має приходити коли пустий кошик-->
@@ -58,7 +59,11 @@
               </div>
 
               <div class="input-container-main">
-                <form card="cart_checkout" id="checkoutForm">
+                <form
+                  card="cart_checkout"
+                  id="checkoutForm"
+                  class="cart_checkout"
+                >
                   <div class="cart_input_container">
                     <input
                       type="email"
@@ -72,17 +77,41 @@
                     class="cart_checkout_btn"
                     type="submit"
                     aria-label="Checkout cart"
+                    id="checkoutBtn"
                   >
                     Checkout
                   </button>
                 </form>
               </div>
-              <!-- <form id="checkoutForm">
+              <!--<form id="checkoutForm">
+              <div class="cart_total_order">
+                <p class="total-form-title">Your Order</p>
+
+                <div id="total-price">
+                  <p class="cart_total_input">Total</p>
+                  <p class="cart_total_sum">
+                    Sum:<span class="total_price" id="cart_total">$0</span>
+                  </p>
+                </div>
+
+                <div class="input-container-main">
+                  <form card="cart_checkout" id="checkoutForm">
+                    <div class="cart_input_container">
+                      <input type="email" name="cart-client-email" class="cart-basket-input"
+                        placeholder="Enter your email" />
+                      <span class="placeholder-text">Mail:</span>
+                    </div>
+                    <button class="cart_checkout_btn" type="submit" aria-label="Checkout cart">
+                      Checkout
+                    </button>
+                  </form>
+                </div>
+                <form id="checkoutForm">
                         <label class="checkout-label" for="email">Mail:</label>
-                        <input class="checkout-input" type="email" id="email" name="email" 
+                        <input class="checkout-input" type="email" id="email" name="email"
                                    placeholder='Enter your email'>
-                               
-                            
+
+
                           <button class="button-checkout" type="submit">Checkout</button>
                                 </form> -->
             </div>

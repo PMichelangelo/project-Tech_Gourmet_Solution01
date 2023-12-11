@@ -1,3 +1,5 @@
+import icons from '../img/icons.svg'
+
 export function cartOrder(arr) {
   return arr
     .map(
@@ -19,7 +21,7 @@ export function cartOrder(arr) {
               <svg class="cart-remove-icon" width="18" height="18">
                 <use
                   class="cart-remove-svg"
-                  xlink:href="./img/icons.svg#icon-close-btn"
+                  xlink:href="${icons}#icon-close-btn"
                 ></use>
               </svg>
             </span>
@@ -33,7 +35,7 @@ export function cartOrder(arr) {
           ${size.replace('oz', 'g')}
         </p>
         <div class="cart-order-total-price">
-          
+
           <div class="cart-order-amount">
             <button class="cart-order-decr" type="button"><svg class="minus-icon" width="18" height="18">
                 <use

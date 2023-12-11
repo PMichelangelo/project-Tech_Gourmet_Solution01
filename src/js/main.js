@@ -12,7 +12,7 @@ import {
   appendPopularProductsMarkup,
   appendDiscountProductsMarkup,
 } from './createMarkupMoreProducts.js';
-
+import { openCardPageModal } from './modal';
 // Count of carts
 import { getCountCarts } from './header.js';
 //getCountCarts();

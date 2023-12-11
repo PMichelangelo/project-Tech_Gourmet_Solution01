@@ -1,12 +1,17 @@
 function updateCartCounterOnLoad() {
-  // Получаем текущую длину массива из localStorage и обновляем счетчик в хедере
-  const storage = JSON.parse(localStorage.getItem('cartData')) || [];
-  const counterElement = document.querySelectorAll('.header-counter');
-  counterElement[0].textContent = storage.length.toString();
-  counterElement[1].textContent = storage.length.toString();
+  const storage = JSON.parse(localStorage.getItem("cartData")) || [];
+  const counterElements = document.querySelectorAll('.header-counter, .cart-counter');
+
+
+  counterElements.forEach((element) => {
+    if (element) {
+      element.textContent = storage.length.toString();
+    } else {
+      console.error("Element with class 'header-counter' not found.");
+    }
+  })
 }
 
-// Вызывайте эту функцию при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
 });
