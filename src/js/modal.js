@@ -68,21 +68,21 @@ async function openModal(productId) {
     instance.show();
     addoOverflow();
 
-    
+
 function outsideClickListener(event) {
       const modalContainer = document.querySelector('.modal-container');
       if (!modalContainer.contains(event.target)) {
         closeModal();
       }
     }
-    
+
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
       closeBtn.removeEventListener('click', closeModal);
     }
-    
+
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
@@ -131,7 +131,6 @@ function outsideClickListener(event) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
-    modalInstance = instance;
   } catch (error) {
     console.log('Error fetching product:', error);
   }
@@ -181,13 +180,13 @@ function openSubcribeModal() {
         document.removeEventListener('keydown', closeModalEsp);
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
-      
+
       closeBtn.removeEventListener('click', closeModal);
 }
 
@@ -224,7 +223,7 @@ function openErrorModal() {
         document.removeEventListener('keydown', closeModalEsp);
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
@@ -269,7 +268,7 @@ function openCardPageModal() {
         removeOverflow();
       }
     }
-    
+
 
     function closeModal() {
       instance.close();
