@@ -1,70 +1,84 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+    <link rel="icon" type="image/png" href="public/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodBoutique 🥦🍓</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
-  <link rel="icon" type="image/png" href="public/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FoodBoutique 🥦🍓</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
-
-<body>
-  <!--Dmitro-->
-  <load src="partials/header.html" />
-  <main>
-    <section class="cart-list">
-      <div class="container">
-        <div class="cart-ware-count">
-          <span class="cart-svg-span">
-            <svg class="cart-count-icon" width="18" height="18">
-              <use class="cart_logo_svg" href="./img/icons.svg#icon-cart"></use>
-            </svg>
-          </span>
-          <span class="cart-count">
-            CART (<span class="header-counter">0</span>)
-          </span>
-        </div>
-        <!--розмітка сторінки яка має приходити коли пустий кошик-->
-        <div class="cart-empty"></div>
-
-        <div class="cart-list-total">
-          <div class="cart-filled-list">
-            <button class="cart-clear-btn" type="button">
-              Delete all
-              <span class="cart-clear-span">
-                <svg class="cart-clear-icon" width="14" height="14">
-                  <use class="cart-clear-svg" xlink:href="./img/icons.svg#icon-close-btn"></use>
-                </svg>
-              </span>
-            </button>
-
-            <ul class="cart-order-list"></ul>
+  <body>
+    <!--Dmitro-->
+    <load src="partials/header.html" />
+    <main>
+      <section class="cart-list">
+        <div class="container">
+          <div class="cart-ware-count">
+            <span class="cart-svg-span">
+              <svg class="cart-count-icon" width="18" height="18">
+                <use
+                  class="cart_logo_svg"
+                  href="./img/icons.svg#icon-cart"
+                ></use>
+              </svg>
+            </span>
+            <span class="cart-count">
+              CART (<span class="header-counter">0</span>)
+            </span>
           </div>
+          <!--розмітка сторінки яка має приходити коли пустий кошик-->
+          <div class="cart-empty"></div>
 
-          <div class="cart_total_order">
-            <p class="total-form-title">Your Order</p>
+          <div class="cart-list-total">
+            <div class="cart-filled-list">
+              <button class="cart-clear-btn" type="button">
+                Delete all
+                <span class="cart-clear-span">
+                  <svg class="cart-clear-icon" width="14" height="14">
+                    <use
+                      class="cart-clear-svg"
+                      xlink:href="./img/icons.svg#icon-close-btn"
+                    ></use>
+                  </svg>
+                </span>
+              </button>
 
-            <div id="total-price">
-              <p class="cart_total_input">Total</p>
-              <p class="cart_total_sum">
-                Sum:<span class="total_price" id="cart_total">$0</span>
-              </p>
+              <ul class="cart-order-list"></ul>
             </div>
 
-            <div class="input-container-main">
-              <form card="cart_checkout" id="checkoutForm">
-                <div class="cart_input_container">
-                  <input type="email" name="cart-client-email" class="cart-basket-input"
-                    placeholder="Enter your email" />
-                  <span class="placeholder-text">Mail:</span>
-                </div>
-                <button class="cart_checkout_btn" type="submit" aria-label="Checkout cart">
-                  Checkout
-                </button>
-              </form>
-            </div>
-            <!--<form id="checkoutForm">
+            <div class="cart_total_order">
+              <p class="total-form-title">Your Order</p>
+
+              <div id="total-price">
+                <p class="cart_total_input">Total</p>
+                <p class="cart_total_sum">
+                  Sum:<span class="total_price" id="cart_total">$0</span>
+                </p>
+              </div>
+
+              <div class="input-container-main">
+                <form card="cart_checkout" id="checkoutForm">
+                  <div class="cart_input_container">
+                    <input
+                      type="email"
+                      name="cart-client-email"
+                      class="cart-basket-input"
+                      placeholder="Enter your email"
+                    />
+                    <span class="placeholder-text">Mail:</span>
+                  </div>
+                  <button
+                    class="cart_checkout_btn"
+                    type="submit"
+                    aria-label="Checkout cart"
+                    id="checkoutBtn"
+                  >
+                    Checkout
+                  </button>
+                </form>
+              </div>
+              <!--<form id="checkoutForm">
               <div class="cart_total_order">
                 <p class="total-form-title">Your Order</p>
 
@@ -95,15 +109,14 @@
 
                           <button class="button-checkout" type="submit">Checkout</button>
                                 </form> -->
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <!--Vitaliy-->
-  <load src="partials/footer.html" />
-  <script type="module" src="js/cartPage.js"></script>
-</body>
-
+    <!--Vitaliy-->
+    <load src="partials/footer.html" />
+    <script type="module" src="js/cartPage.js"></script>
+  </body>
 </html>

@@ -12,12 +12,6 @@ import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 
 export { openModal, openSubcribeModal, openErrorModal };
 
-function checkIfProductInCart(productId) {
-  const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
-  return cartData.includes(productId);
-};
-
-
 async function openModal(productId) {
   try {
     const productData = await getServerProductsById(productId);
@@ -28,14 +22,23 @@ async function openModal(productId) {
     `<div class="modal-container" data-id="${productData._id}">
     <div class="modal-img-info-container">
         <div class="modal-img-container">
-            <img class="modal-img" src="${productData.img}" alt="${productData.name}" loading="lazy" />
+            <img class="modal-img" src="${productData.img}" alt="${
+      productData.name
+    }" loading="lazy" />
         </div>
         <div class="modal-name-container">
             <h3 class="modal-name">${productData.name}</h3>
             <div class="modal-info-container">
-                <p class="modal-info">Category: <span class="modal-span-info">${productData.category.replace('_', ' ').replace('_', ' ')}</span></p>
-                <p class="modal-info">Size: <span class="modal-span-info">${productData.size.replace('oz', 'g')}</span></p>
-                <p class="modal-info">Popularity: <span class="modal-span-info">${productData.popularity}</span></p>
+                <p class="modal-info">Category: <span class="modal-span-info">${productData.category
+                  .replace('_', ' ')
+                  .replace('_', ' ')}</span></p>
+                <p class="modal-info">Size: <span class="modal-span-info">${productData.size.replace(
+                  'oz',
+                  'g'
+                )}</span></p>
+                <p class="modal-info">Popularity: <span class="modal-span-info">${
+                  productData.popularity
+                }</span></p>
             </div>
             <p class="modal-desc">${productData.desc}</p>
         </div>
@@ -57,7 +60,7 @@ async function openModal(productId) {
     const instance = basicLightbox.create(modalContent);
 
     instance.show();
-    addoOverflow()
+    addoOverflow();
 
     function closeModal() {
       instance.close();
@@ -65,32 +68,29 @@ async function openModal(productId) {
     }
 
 
-
     document.addEventListener('keydown', closeModal);
     const closeBtn = document.querySelector('.close-modal-icon');
     closeBtn.addEventListener('click', closeModal);
 
-
-
-    const addToCartBtn = document.querySelector(".modal-button");
-    addToCartBtn.addEventListener('click', (event) => {
+    const addToCartBtn = document.querySelector('.modal-button');
+    addToCartBtn.addEventListener('click', event => {
       const card = event.target.closest('.modal-container');
       const btn = event.target.closest('.modal-button');
 
       if (card && btn) {
         const productId = card.getAttribute('data-id');
-        console.log("Product clicked:", productId);
+        console.log('Product clicked:', productId);
 
         const buttonTextSpan = btn.querySelector('.modal-button-text');
         const isProductInCart = checkIfProductInCart(productData._id);
         if (isProductInCart) {
           buttonTextSpan.textContent = 'Remove from';
         }
-        if (buttonTextSpan.textContent === "Add to") {
+        if (buttonTextSpan.textContent === 'Add to') {
           addToCart(productId);
           buttonTextSpan.textContent = 'Remove from';
           btn.classList.add('added-to-cart');
-        } else if (buttonTextSpan.textContent === "Remove from") {
+        } else if (buttonTextSpan.textContent === 'Remove from') {
           removeFromCart(productId);
           buttonTextSpan.textContent = 'Add to';
           btn.classList.remove('added-to-cart');
@@ -111,8 +111,6 @@ async function openModal(productId) {
     console.log('Error fetching product:', error);
   }
 }
-
-
 
 function openSubcribeModal() {
   try {
@@ -198,6 +196,39 @@ function openErrorModal() {
     console.error(error);
   }
 }
+function openCardPageModal() {
+  console.log(1);
+  try {
+    const instance = basicLightbox.create(`<div class="card-page-modal">
+       <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18">
+          <use href="${icons}#icon-close-btn"></use>
+        </svg></button>
+        <div class='card-page-modal-content'>
+        <img src="./img/cardPageModalImg.png" alt="Order success" class='img'/>
+        <h3 class='card-page-modal-title'>Order success</h3>
+        <p class='card-page-modal-text'>Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
+    </div>`);
+    instance.show();
+    addoOverflow();
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        revomeOverflow();
+      }
+    }
+    function closeModal() {
+      instance.close();
+      revomeOverflow();
+    }
+
+    document.addEventListener('keydown', closeModalEsp);
+    const closeBtn = document.querySelector('.close-footer-modal');
+    closeBtn.addEventListener('click', closeModal);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
