@@ -1,14 +1,30 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
-import { updateCartCounterOnLoad } from "./updateCartCounter";
+import { updateCartCounterOnLoad } from './updateCartCounter';
+
 document.addEventListener('DOMContentLoaded', () => {
- updateCartCounterOnLoad();
+  updateCartCounterOnLoad();
+  initCartStorage();
+
+  const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
+  getCardProducts(cartProductsList);
+
+  const clearAllBtn = document.querySelector('.cart-clear-btn');
+
+  clearAllBtn.addEventListener('click', () => {
+    document.querySelector('.cart-order-list').innerHTML = '';
+
+    localStorage.removeItem('cartData');
+
+    updateCartCounterOnLoad();
+
+    const cards = document.querySelectorAll('.cart-order-item');
+    cards.forEach(card => {
+      card.style.opacity = 0;
+      card.style.transition = 'opacity 0.5s';
+    });
+  });
 });
-initCartStorage();
-
-const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
-getCardProducts(cartProductsList);
-
 
 ///////////sendForm/////////////////
 const form = document.querySelector('.cart_checkout_btn')

@@ -47,26 +47,6 @@ body {
   box-sizing: border-box;
 }
 
-.icon-cart {
-  opacity: 1;
-}
-
-.icon-mark {
-  opacity: 0;
-}
-
-.btn-item.added .icon-cart {
-  opacity: 0;
-}
-
-.btn-item.added .icon-mark {
-  opacity: 1;
-}
-
-.product-button-icon {
-  transition: opacity 300ms ease-in;
-}
-
 @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
