@@ -12,7 +12,7 @@ import { createMarkup } from "./createMarkup.js";
 
 import { save, load } from "./storage.js";
 
-import { getServerProducts } from "./fetchProducts.js";
+import { getLimit, getServerProducts } from "./fetchProducts.js";
 
 function createMarkupEllipsisOnce(amountOfPages) {
     return `<li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">1</button></li>
@@ -38,7 +38,8 @@ function one(paginationPages, e) {
             currentPage = Number(btn.textContent);
         }
     })
-    let {keyword, category, limit} = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
@@ -73,7 +74,8 @@ function two(e) {
             currentPage = Number(btn.textContent);
         }
     })
-    let {keyword, category, limit} = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts((currentPage - 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
@@ -106,7 +108,8 @@ function three(paginationPages, e) {
     }
     e.target.disabled = true;
     const btnNumber = Number(e.target.textContent);
-    let {keyword, category, limit} = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts(btnNumber, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
@@ -143,7 +146,8 @@ function four(paginationPages, e) {
             currentPage = Number(btn.textContent);
         }
     })
-    let { keyword, category, limit } = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
@@ -186,7 +190,8 @@ function five(paginationPages, e) {
             currentPage = Number(btn.textContent);
         }
     })
-    let {keyword, category, limit} = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts((currentPage - 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
@@ -227,7 +232,8 @@ function six(paginationPages, e) {
     }
     e.target.disabled = true;
     const btnNumber = Number(e.target.textContent);
-    let {keyword, category, limit} = load("filtersOfProducts");
+    let { keyword, category } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts(btnNumber, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
