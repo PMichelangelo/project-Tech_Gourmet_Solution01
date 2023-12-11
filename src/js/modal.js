@@ -192,6 +192,8 @@ function openErrorModal() {
     console.error(error);
   }
 }
+<<<<<<< Updated upstream
+=======
 
 function openCardPageModal() {
   console.log(1);
@@ -226,6 +228,7 @@ function openCardPageModal() {
   }
 }
 
+>>>>>>> Stashed changes
 function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
