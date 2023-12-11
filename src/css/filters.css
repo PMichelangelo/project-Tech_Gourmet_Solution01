@@ -101,13 +101,13 @@
     border: none;
     width: calc(100%);
     padding: 0;
-        box-sizing: border-box;
-        cursor: pointer;
-        font-size: 14px;
-        line-height: 1.29;
-        border-radius: 15px;
-        background: #FFF;
-        box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.29;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
 }
 
 .filters-option {
@@ -122,10 +122,6 @@
 .filters-option:first-child {
     color: var(--black-txt);
     padding-top: 14px;
-}
-
-.filters-visually-hidden {
-    display: none;
 }
 
 .filters-selected-option {
@@ -181,6 +177,72 @@ section.section-filters {
     justify-content: center;
 }
 
+.products-pagination {
+    box-sizing: border-box;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.pag-btn-common {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.pagination-btn-decrement {
+    padding-top: 5px;
+    background-color: #FAFAFA;
+    stroke: var(--black-txt);
+    fill: var(--white-txt);
+    transform: rotate(90deg);
+}
+
+.pagination-btn-increment {
+    padding-top: 5px;
+    background-color: #FAFAFA;
+    stroke: var(--black-txt);
+    fill: var(--white-txt);
+    transform: rotate(270deg);
+}
+
+.pagination-btn-list {
+    display: flex;
+    gap: 4px;
+}
+
+.pagination-btn-item {}
+
+.pagination-btn {
+    display: block;
+    background-color: inherit;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ellipsis {
+    box-sizing: border-box;
+    padding-top: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.pagination-btn-active {
+    background-color: var(--green-bg);
+    color: var(--white-txt);
+}
+
+.filters-visually-hidden {
+    display: none;
+}
 
 @media screen and (min-width: 375px) {
     .filters-input {
@@ -208,7 +270,7 @@ section.section-filters {
         font-size: 18px;
         line-height: 1.33;
     }
-    
+
     .filters-input {
         width: 269px;
         font-size: 18px;
@@ -239,13 +301,13 @@ section.section-filters {
         padding-top: 130px;
         padding-bottom: 200px;
     }
-    
+
     .products-heading {
         max-width: 367px;
         font-size: 20px;
         line-height: 24px;
     }
-    
+
     .products-text {
         max-width: 371px;
         font-size: 18px;
