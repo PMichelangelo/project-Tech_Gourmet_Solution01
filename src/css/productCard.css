@@ -16,12 +16,8 @@
     display: inline-block;
     background-color: #fafafa;
     border-radius: 20px;
-<<<<<<< Updated upstream
-    max-width: 335px;
-=======
     width: 335px;
     max-height: 363px;
->>>>>>> Stashed changes
   }
   .container-img {
     display: flex;

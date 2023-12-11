@@ -47,17 +47,17 @@ async function sendData() {
 // const emailInput = event.target.........
 //const email = emailInput.value;
 
-const form = document.querySelector('.cart_checkout_btn')
+form = document.querySelector('.cart_checkout_btn')
 import { getServerProductsById } from './fetchProducts'
 form.addEventListener('submit', onForm)
 async function onForm(event){
   event.preventDefault();
   if (!cartProductsList.length){form.disabled = false }
-  else {form.disabled = true} 
+  else {form.disabled = true}
   emailInput = document.querySelector('.cart-basket-input');
   const email = emailInput.value.trim() ;if(email.length===0){
     return alert('Please enter the correct email!');
-  }  
+  }
   try {
     const  getArray=await getArray(cartProductsList)
     const foodItems = await Promise.all(
@@ -72,7 +72,7 @@ async function onForm(event){
   }
   catch (error) {
     console.log(error);
-  }  
+  }
 }
 
 

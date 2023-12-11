@@ -10,7 +10,7 @@ import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
 import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 
-export { openModal, openSubcribeModal, openErrorModal };
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal };
 
 async function openModal(productId) {
   try {
@@ -213,12 +213,12 @@ function openCardPageModal() {
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
-        revomeOverflow();
+        removeOverflow();
       }
     }
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
