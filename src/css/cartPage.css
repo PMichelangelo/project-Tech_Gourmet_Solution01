@@ -72,7 +72,6 @@
 }
 .card-page-modal-title {
   color: #010101;
-  text-align: center;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.2;
@@ -80,6 +79,7 @@
   margin-bottom: 20px;
   text-transform: uppercase;
 }
+
 
 .card-page-modal-text {
   text-align: center;

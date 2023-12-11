@@ -5,12 +5,9 @@ import { updateTotalPrice } from './cartProducts';
 import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
-<<<<<<< Updated upstream
-=======
 import { getServerProductsById } from './fetchProducts';
 import { onSubmit } from './subscribeEmail';
 import axios from 'axios';
->>>>>>> Stashed changes
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
@@ -81,14 +78,51 @@ document.addEventListener('DOMContentLoaded', () => {
 const form = document.querySelector('.cart_checkout');
 const button = document.querySelector('.cart_checkout_btn');
 
-<<<<<<< Updated upstream
-form.addEventListener('submit', event => {
-  event.preventDefault();
+form.addEventListener('submit', senndForm)
 
-  console.log('Form submitted!');
-  openCardPageModal();
-});
-=======
+async function senndForm(event) {
+  event.preventDefault();
+  let findproduct=JSON.parse(localStorage.getItem('cartData'));
+  const emailInput = document.querySelector('.cart-basket-input');  
+  let emailOut=emailInput.value.trim()
+  if (emailOut.length === 0) {
+    return alert('Please enter the correct email!')           }
+
+    const foodItems = await Promise.all(
+      findproduct.map(productId => getServerProductsById(productId))
+      );
+     const transformedData = foodItems.map(item => {
+     return {
+      productId: item._id,
+      amount: item.price
+      };});
+      let order ={
+        email: emailOut,
+        products:transformedData}
+        openCardPageModal()    
+        console.log('Form submitted!');
+        console.log(order);
+        form.reset(); 
+        //sendFormData(order)
+};
+// function sendFormData(order) {
+//   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
+//   console.log(order);
+//   axios
+//     .post(serverUrl, order)
+//     .then(response => {
+//       openCardPageModal();
+//     })
+//     .catch(error => {
+//       if (error.message.includes('409')) {
+//         openErrorModal();
+//       }
+//     })
+    
+// }
+
+
+
 form.addEventListener('submit', senndForm);
 
 async function senndForm(event) {
@@ -134,7 +168,6 @@ async function senndForm(event) {
 //     })
 
 // }
->>>>>>> Stashed changes
 
 // Note: If you want to handle a click event on the button as well, you can use the following code:
 // button.addEventListener('click', () => {

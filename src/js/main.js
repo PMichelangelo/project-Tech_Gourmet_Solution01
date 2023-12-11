@@ -31,4 +31,3 @@ filterProducts();
 import { onSubmit } from './subscribeEmail';
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
-openCardPageModal();

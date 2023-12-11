@@ -19,7 +19,7 @@ import { createMarkup } from "./createMarkup.js";
 
 import { save, load } from "./storage.js";
 
-import {createPaginationMarkup} from "./pagination.js"
+import { createPagination } from "./pagination.js"
 
 async function filterCategories () {
     await getServerProductsCategories().then(data => {
@@ -59,7 +59,7 @@ function filterProducts() {
     getServerProducts(page, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
-        createPaginationMarkup(totalPages, page, perPage, limit, keyword, category);
+        createPagination(totalPages, page, perPage);
     })
 
     refs.form.addEventListener("submit", onSubmit);
@@ -90,7 +90,7 @@ function onSubmit (event) {
         save("filtersOfProducts", { keyword, category, page, limit });
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
-        createPaginationMarkup(totalPages, page, perPage, limit, keyword, category);
+        createPagination(totalPages, page, perPage);
         refs.form.reset();
         refs.submitBtn.disabled = false;
     })
