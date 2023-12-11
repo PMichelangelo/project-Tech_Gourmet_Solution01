@@ -79,7 +79,7 @@
 
 .cart-filled-list {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   flex-direction: column;
   padding-top: 22px;
@@ -149,6 +149,16 @@
   margin-left: auto;
   border: none;
   background-color: inherit;
+}
+
+.cart-remove-span {
+  display: block;
+  padding: 2px;
+  transition: background-color 0.3s ease 0s;
+}
+
+.cart-remove-span:hover {
+  background-color: #cacaca;
 }
 
 .cart-gap {
