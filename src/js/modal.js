@@ -9,7 +9,8 @@ import imageModalEmailTab from '../img/modal-email-tab.png';
 import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
 import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
-import cardPageModalImg from '../img/cardPageModalImg.png'
+import cardPageModalImg from '../img/cardPageModalImg.png';
+
 
 export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart };
 

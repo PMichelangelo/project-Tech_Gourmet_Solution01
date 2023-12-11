@@ -31,3 +31,5 @@ filterProducts();
 import { onSubmit } from './subscribeEmail';
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
+
+import { btnToUp } from '../js/scroll-up-btn.js';
