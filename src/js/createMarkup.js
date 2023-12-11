@@ -11,8 +11,8 @@ export async function createProductsMarkup() {
   console.log("Creating products markup");
 
   try {
-    const data = await getServerProducts(1, null, null);
-    productCard.innerHTML = createMarkup(data.results);
+    // const data = await getServerProducts(1, null, null);
+    // productCard.innerHTML = createMarkup(data.results);
 
     const productCards = document.querySelectorAll('.js-card');
     console.log("Number of product cards:", productCards.length);

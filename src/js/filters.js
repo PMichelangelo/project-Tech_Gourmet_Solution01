@@ -5,14 +5,14 @@ const refs = {
     selectBtn: document.querySelector(".filters-select"),
     selectDropdown: document.querySelector(".filters-options"),
     selectedCategory: document.querySelector(".filters-select-input"),
-    selectOptions: document.querySelectorAll(".filters-option"),
     productCard: document.querySelector(".product-list"),
     selectList: document.querySelector(".filters-options-list"),
 }
 
 import {
     getServerProductsCategories,
-    getServerProducts
+    getServerProducts,
+    getLimit
 } from "./fetchProducts.js";
 
 import { createMarkup } from "./createMarkup.js";
@@ -54,12 +54,19 @@ function filterProducts() {
     if (load("filtersOfProducts") === undefined) {
         save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6 });
     }
-    let {keyword, category, page, limit} = load("filtersOfProducts");
-    limit = getLimit();
+    let { keyword, category, page } = load("filtersOfProducts");
+    let limit = getLimit();
     getServerProducts(page, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
-        const markup = createMarkup(results);
-        refs.productCard.innerHTML = markup;
-        createPagination(totalPages, page, perPage);
+        const maxPage = Math.ceil(totalPages / perPage);
+        if (maxPage < page) {
+            getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
+                refs.productCard.innerHTML = createMarkup(results);
+                createPagination(totalPages, page, perPage);
+            })
+        } else {
+            refs.productCard.innerHTML = createMarkup(results);
+            createPagination(totalPages, page, perPage);
+        }
     })
 
     refs.form.addEventListener("submit", onSubmit);
@@ -72,6 +79,7 @@ function onSubmit (event) {
     const limit = getLimit();
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
+    save("filtersOfProducts", { keyword, category, page: 1, limit });
     getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         if (totalPages === 0) {
             const str =
@@ -87,25 +95,11 @@ function onSubmit (event) {
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-        save("filtersOfProducts", { keyword, category, page, limit });
-        const markup = createMarkup(results);
-        refs.productCard.innerHTML = markup;
+        refs.productCard.innerHTML = createMarkup(results);
         createPagination(totalPages, page, perPage);
         refs.form.reset();
         refs.submitBtn.disabled = false;
     })
-}
-
-function getLimit() {
-        let limit;
-    if (window.innerWidth >= 1440) {
-        limit = 9;
-    } else if (window.innerWidth >= 768) {
-        limit = 8;
-    } else {
-        limit = 6;
-    }
-    return limit;
 }
 
 export {
