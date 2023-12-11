@@ -91,6 +91,7 @@ body {
     padding: 0 100px;
   }
 
+<<<<<<< Updated upstream
   .container-products {
     max-width: 925px;
     padding-left: 0;
@@ -106,5 +107,11 @@ body {
     max-width: 1440px;
     padding: 0 100px;
     margin: 0 auto;
+=======
+  .products-container {
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+>>>>>>> Stashed changes
   }
 }
