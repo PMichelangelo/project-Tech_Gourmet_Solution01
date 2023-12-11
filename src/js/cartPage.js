@@ -1,9 +1,9 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
+import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ///////////sendForm/////////////////
+
+// const form = document.querySelector('.cart_checkout_btn');
+const form = document.getElementById('checkoutBtn');
+console.log(form);
+form.addEventListener('submit', sendData);
+async function sendData() {
+  console.log(1);
+}
+
+// const emailInput = event.target.........
+//const email = emailInput.value;
+
 const form = document.querySelector('.cart_checkout_btn')
 import { getServerProductsById } from './fetchProducts'
 form.addEventListener('submit', onForm)
@@ -62,6 +74,7 @@ async function onForm(event){
 }
 
 
+
 // console.log(email);
 
 
@@ -72,12 +85,12 @@ async function onForm(event){
 //       amount: product.price,
 //     };
 //   });
-
 //
 
 // Рахуємо загальну суму покупки
 const total = document.getElementById('cart_total');
 calculateTotalPrice().then(data => (total.textContent = `$${data}`));
 calculateTotalPrice();
+
 
 
