@@ -13,6 +13,11 @@ import cardPageModalImg from '../img/cardPageModalImg.png'
 
 export { openModal, openSubcribeModal, openErrorModal, openCardPageModal };
 
+function checkIfProductInCart(productId) {
+  const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  return cartData.includes(productId);
+};
+
 async function openModal(productId) {
   try {
     const productData = await getServerProductsById(productId);
