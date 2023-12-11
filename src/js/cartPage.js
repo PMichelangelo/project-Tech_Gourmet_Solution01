@@ -12,11 +12,6 @@ initCartStorage();
 const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
 getCardProducts(cartProductsList);
 
-// Рахуємо загальну суму покупки
-const total = document.getElementById('cart_total');
-calculateTotalPrice().then(data => (total.textContent = `$${data}`));
-calculateTotalPrice();
-
 ///////////sendForm/////////////////
 const form = document.querySelector('.cart_checkout_btn');
 form.addEventListener('submit', onForm);
@@ -38,3 +33,8 @@ function onForm(event) {
 //   });
 
 //
+
+// Рахуємо загальну суму покупки
+const total = document.getElementById('cart_total');
+calculateTotalPrice().then(data => (total.textContent = `$${data}`));
+calculateTotalPrice();
