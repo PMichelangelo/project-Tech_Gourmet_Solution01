@@ -81,7 +81,7 @@ body {
   .container-popular {
     margin: 0 auto;
     max-width: 768px;
-    padding: 0 32px;
+    padding: 0;
   }
 }
 
@@ -92,6 +92,9 @@ body {
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   .container-products {
     max-width: 925px;
     padding-left: 0;
@@ -107,11 +110,20 @@ body {
     max-width: 1440px;
     padding: 0 100px;
     margin: 0 auto;
+<<<<<<< Updated upstream
 =======
+=======
+  }
+
+>>>>>>> Stashed changes
   .products-container {
     display: flex;
     max-width: 1440px;
     width: 100%;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+    padding: 0;
 >>>>>>> Stashed changes
   }
 }
