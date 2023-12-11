@@ -11,7 +11,7 @@ import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 import cardPageModalImg from '../img/cardPageModalImg.png'
 
-export { openModal, openSubcribeModal, openErrorModal, openCardPageModal };
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal,checkIfProductInCart };
 
 function checkIfProductInCart(productId) {
   const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
