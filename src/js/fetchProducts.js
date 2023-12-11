@@ -46,7 +46,6 @@ async function getServerProductsById(id) {
 
   try {
     const result = await axios.get(`${URL}/${endPoint}/${id}`);
-    console.log(result.data);
     return result.data;
   } catch (error) {
     console.log(error.message);
@@ -74,8 +73,6 @@ async function getServerProducts(page, key, category) {
     });
     try {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
-      console.log(1);
-      console.log(result.data);
       return result.data;
     } catch (error) {
       console.log(error.message);
@@ -89,8 +86,6 @@ async function getServerProducts(page, key, category) {
     });
     try {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
-      console.log(2);
-      console.log(result.data);
       return result.data;
     } catch (error) {
       console.log(error.message);
@@ -103,8 +98,6 @@ async function getServerProducts(page, key, category) {
         category: category,
       });
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
-      console.log(3);
-      console.log(result.data);
       return result.data;
     } catch (error) {
       console.log(error.message);
@@ -116,8 +109,6 @@ async function getServerProducts(page, key, category) {
         limit: limit,
       });
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
-      console.log(4);
-      console.log(result.data);
       return result.data;
     } catch (error) {
       console.log(error.message);
