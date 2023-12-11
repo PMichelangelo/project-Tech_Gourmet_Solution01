@@ -93,39 +93,32 @@ async function senndForm(event) {
      const transformedData = foodItems.map(item => {
      return {
       productId: item._id,
-      price: item.price
+      amount: item.price
       };});
-      let order ={products: transformedData,}
-      console.log(emailOut);
-      console.log(order);
-  console.log('Form submitted!');
-  form.reset(); 
-  sendFormData(orderArr)
-  ;
+      let order ={
+        email: emailOut,
+        products:transformedData}
+        openCardPageModal()    
+        console.log('Form submitted!');
+        console.log(order);
+        form.reset(); 
+        //sendFormData(order)
 };
-function sendFormData(orderArr) {
-  const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
-  const formData = 
-  {
-    email: emailOut,
-    products: [
-      
-        order
-      
-    ]
-  }
-  axios
-    .post(serverUrl, formData)
-    .then(response => {
-      openCardPageModal();
-    })
-    .catch(error => {
-      if (error.message.includes('409')) {
-        openErrorModal();
-      }
-    })
+// function sendFormData(order) {
+//   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
+//   console.log(order);
+//   axios
+//     .post(serverUrl, order)
+//     .then(response => {
+//       openCardPageModal();
+//     })
+//     .catch(error => {
+//       if (error.message.includes('409')) {
+//         openErrorModal();
+//       }
+//     })
     
-}
+// }
 
 
 
