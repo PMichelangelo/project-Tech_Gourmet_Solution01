@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearAllBtn.addEventListener('click', () => {
     document.querySelector('.cart-order-list').innerHTML = '';
 
-    localStorage.removeItem('cartData');
+    localStorage.setItemItem('cartData',JSON.stringify([]));
 
     updateCartCounterOnLoad();
 
@@ -78,33 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
 const form = document.querySelector('.cart_checkout');
 const button = document.querySelector('.cart_checkout_btn');
 
-form.addEventListener('submit', senndForm)
+//form.addEventListener('submit', senndForm)
 
-async function senndForm(event) {
-  event.preventDefault();
-  let findproduct=JSON.parse(localStorage.getItem('cartData'));
-  const emailInput = document.querySelector('.cart-basket-input');  
-  let emailOut=emailInput.value.trim()
-  if (emailOut.length === 0) {
-    return alert('Please enter the correct email!')           }
+// async function senndForm(event) {
+//   event.preventDefault();
+//   let findproduct=JSON.parse(localStorage.getItem('cartData'));
+//   const emailInput = document.querySelector('.cart-basket-input');
+//   let emailOut=emailInput.value.trim()
+//   if (emailOut.length === 0) {
+//     return alert('Please enter the correct email!')           }
 
-    const foodItems = await Promise.all(
-      findproduct.map(productId => getServerProductsById(productId))
-      );
-     const transformedData = foodItems.map(item => {
-     return {
-      productId: item._id,
-      amount: item.price
-      };});
-      let order ={
-        email: emailOut,
-        products:transformedData}
-        openCardPageModal()    
-        console.log('Form submitted!');
-        console.log(order);
-        form.reset(); 
-        //sendFormData(order)
-};
+//     const foodItems = await Promise.all(
+//       findproduct.map(productId => getServerProductsById(productId))
+//       );
+//      const transformedData = foodItems.map(item => {
+//      return {
+//       productId: item._id,
+//       amount: item.price
+//       };});
+//       let order ={
+//         email: emailOut,
+//         products:transformedData}
+//         openCardPageModal()
+//         console.log('Form submitted!');
+//         console.log(order);
+//         form.reset();
+//         //sendFormData(order)
+// };
 // function sendFormData(order) {
 //   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
 //   console.log(order);
@@ -118,7 +118,7 @@ async function senndForm(event) {
 //         openErrorModal();
 //       }
 //     })
-    
+
 // }
 
 
