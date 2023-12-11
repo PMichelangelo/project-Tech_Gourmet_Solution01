@@ -1,16 +1,22 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
-import icons from '../img/icons.svg'
+import icons from '../img/icons.svg';
 import { addToCart } from './cartStorage';
-import {removeFromCart} from './cartStorage'
+import { removeFromCart } from './cartStorage';
+import imageModalEmailMob from '../img/modal-email-mob.png';
+import imageModalEmailMob2x from '../img/modal-email-mob-2x.png';
+import imageModalEmailTab from '../img/modal-email-tab.png';
+import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
+import imageModalEmailDesk from '../img/modal-email-desk.png';
+import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
+import cardPageModalImg from '../img/cardPageModalImg.png'
 
-export { openModal, openSubcribeModal, openErrorModal };
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal,checkIfProductInCart };
 
 function checkIfProductInCart(productId) {
   const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   return cartData.includes(productId);
 };
-
 
 async function openModal(productId) {
   try {
@@ -18,18 +24,27 @@ async function openModal(productId) {
 
     const modalContent = document.createElement('div');
 
-    modalContent.innerHTML = 
+    modalContent.innerHTML =
     `<div class="modal-container" data-id="${productData._id}">
     <div class="modal-img-info-container">
         <div class="modal-img-container">
-            <img class="modal-img" src="${productData.img}" alt="${productData.name}" loading="lazy" />
+            <img class="modal-img" src="${productData.img}" alt="${
+      productData.name
+    }" loading="lazy" />
         </div>
         <div class="modal-name-container">
             <h3 class="modal-name">${productData.name}</h3>
             <div class="modal-info-container">
-                <p class="modal-info">Category: <span class="modal-span-info">${productData.category.replace('_', ' ').replace('_', ' ')}</span></p>
-                <p class="modal-info">Size: <span class="modal-span-info">${productData.size.replace('oz', 'g')}</span></p>
-                <p class="modal-info">Popularity: <span class="modal-span-info">${productData.popularity}</span></p>
+                <p class="modal-info">Category: <span class="modal-span-info">${productData.category
+                  .replace('_', ' ')
+                  .replace('_', ' ')}</span></p>
+                <p class="modal-info">Size: <span class="modal-span-info">${productData.size.replace(
+                  'oz',
+                  'g'
+                )}</span></p>
+                <p class="modal-info">Popularity: <span class="modal-span-info">${
+                  productData.popularity
+                }</span></p>
             </div>
             <p class="modal-desc">${productData.desc}</p>
         </div>
@@ -49,42 +64,39 @@ async function openModal(productId) {
 </div>`;
 
     const instance = basicLightbox.create(modalContent);
-   
+
     instance.show();
-    addoOverflow()
+    addoOverflow();
 
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
-    
-   
+
 
     document.addEventListener('keydown', closeModal);
     const closeBtn = document.querySelector('.close-modal-icon');
     closeBtn.addEventListener('click', closeModal);
 
-
-
-    const addToCartBtn = document.querySelector(".modal-button");
-    addToCartBtn.addEventListener('click', (event) => {
+    const addToCartBtn = document.querySelector('.modal-button');
+    addToCartBtn.addEventListener('click', event => {
       const card = event.target.closest('.modal-container');
       const btn = event.target.closest('.modal-button');
 
       if (card && btn) {
         const productId = card.getAttribute('data-id');
-        console.log("Product clicked:", productId);
+        console.log('Product clicked:', productId);
 
         const buttonTextSpan = btn.querySelector('.modal-button-text');
         const isProductInCart = checkIfProductInCart(productData._id);
         if (isProductInCart) {
           buttonTextSpan.textContent = 'Remove from';
         }
-        if (buttonTextSpan.textContent === "Add to") {
+        if (buttonTextSpan.textContent === 'Add to') {
           addToCart(productId);
           buttonTextSpan.textContent = 'Remove from';
           btn.classList.add('added-to-cart');
-        } else if (buttonTextSpan.textContent === "Remove from") {
+        } else if (buttonTextSpan.textContent === 'Remove from') {
           removeFromCart(productId);
           buttonTextSpan.textContent = 'Add to';
           btn.classList.remove('added-to-cart');
@@ -106,8 +118,6 @@ async function openModal(productId) {
   }
 }
 
-
-
 function openSubcribeModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal">
@@ -119,22 +129,22 @@ function openSubcribeModal() {
         <picture class='footer-modal-img'>
       <source
         srcset="
-          ./img/modal-email-mob.png     1x,
-          ./img/modal-email-mob-2x.png  2x
+          ${imageModalEmailMob}     1x,
+          ${imageModalEmailMob2x}  2x
         "
         media="(min-width: 375px) and (max-width: 767px)"
       />
       <source
         srcset="
-          ./img/modal-email-tab.png     1x,
-          ./img/modal-email-tab-2x.png  2x
+          ${imageModalEmailTab}     1x,
+          ${imageModalEmailTab2x}  2x
         "
         media="(min-width: 768px) and (max-width: 1439px)"
       />
       <source
         srcset="
-          ./img/modal-email-desk.png     1x,
-          ./img/modal-email-desk-2x.png  2x
+          ${imageModalEmailDesk}    1x,
+          ${imageModalEmailDesk2x}  2x
         "
         media="(min-width: 1440px)"
       />
@@ -148,12 +158,12 @@ function openSubcribeModal() {
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
-        revomeOverflow();
+        removeOverflow();
       }
     }
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -177,12 +187,12 @@ function openErrorModal() {
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
-        revomeOverflow();
+        removeOverflow();
       }
     }
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -192,9 +202,6 @@ function openErrorModal() {
     console.error(error);
   }
 }
-<<<<<<< Updated upstream
-=======
-
 function openCardPageModal() {
   console.log(1);
   try {
@@ -228,11 +235,10 @@ function openCardPageModal() {
   }
 }
 
->>>>>>> Stashed changes
 function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
 
-function revomeOverflow() {
+function removeOverflow() {
   document.body.style.overflow = '';
 }

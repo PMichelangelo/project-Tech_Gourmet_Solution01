@@ -12,7 +12,7 @@ import {
   appendPopularProductsMarkup,
   appendDiscountProductsMarkup,
 } from './createMarkupMoreProducts.js';
-
+import { openCardPageModal } from './modal';
 // Count of carts
 import { getCountCarts } from './header.js';
 //getCountCarts();
@@ -31,3 +31,6 @@ filterProducts();
 import { onSubmit } from './subscribeEmail';
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
+openCardPageModal();
+
+

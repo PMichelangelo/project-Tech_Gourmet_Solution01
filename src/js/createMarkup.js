@@ -2,6 +2,7 @@ import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
+import { checkIfProductInCart } from "./modal";
 import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
@@ -39,7 +40,8 @@ export async function createProductsMarkup() {
   }
 }
 
-function disabledBtn(btn){
+function disabledBtn(btn) {
+  checkIfProductInCart()
   btn.classList.add('added')
   btn.setAttribute("disabled", "disabled")
 }

@@ -52,8 +52,6 @@ body {
     max-width: 375px;
     padding: 0 16px;
   }
-<<<<<<< Updated upstream
-=======
 
   .container-products {
     margin: 0 auto;
@@ -64,8 +62,8 @@ body {
   .container-popular {
     margin: 0 auto;
     max-width: 375px;
+    padding: 0 16px;
   }
->>>>>>> Stashed changes
 }
 
 @media screen and (min-width: 768px) {
@@ -73,8 +71,6 @@ body {
     max-width: 768px;
     padding: 0 32px;
   }
-<<<<<<< Updated upstream
-=======
 
   .container-products {
     margin: 0 auto;
@@ -85,17 +81,39 @@ body {
   .container-popular {
     margin: 0 auto;
     max-width: 768px;
+    padding: 0 32px;
   }
->>>>>>> Stashed changes
 }
 
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-    padding: 0 60px;
+    padding: 0 100px;
   }
 
+
   .container-products {
+    max-width: 925px;
+    padding-left: 0;
+    padding-right: 40px;
+  }
+
+  .container-popular {
+    padding: 0;
+  }
+
+
+  .container-products-style {
     display: flex;
+    max-width: 1440px;
+    padding: 0 100px;
+    margin: 0 auto;
+  }
+  
+  .products-container {
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+
   }
 }

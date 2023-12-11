@@ -184,23 +184,18 @@
   transform: scale(1.5);
   animation: pulse 2s ease-in-out infinite;
 }
-<<<<<<< Updated upstream
-.footer-modal-title {
+.card-page-modal-title {
   color: #010101;
   text-align: center;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.2;
   text-align: center;
-  margin-bottom: 14px;
-  padding-left: 45.5px;
-  padding-right: 45.5px;
-  padding-top: 100px;
 }
 .footer-modal-title .span {
   color: #6d8434;
 }
-.footer-modal-text {
+.card-page-modal-text {
   text-align: center;
   color: rgba(1, 1, 1, 0.7);
   font-size: 14px;
@@ -210,12 +205,6 @@
   padding-right: 43px;
   padding-bottom: 22px;
 }
-=======
-
-.footer-modal-title .span {
-  color: #6d8434;
-}
->>>>>>> Stashed changes
 
 .footer-modal-img {
   max-width: 335px;

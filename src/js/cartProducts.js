@@ -1,5 +1,6 @@
 import { getServerProductsById } from './fetchProducts';
 import { cartOrder } from './createCartMarkup';
+import shoppingBasket from '../img/shopping-basket.png'
 const galleryEl = document.querySelector('.js-carTgallery');
 
 const emptyCart = document.querySelector('.cart-empty'),
@@ -29,13 +30,13 @@ const emptyCart = document.querySelector('.cart-empty'),
 //    cartList.classList.add('visually-hidden');
 //  }
 //}
-async function getCardProducts(productsList) {
-  if (!productsList.length) {
-    emptyCart.insertAdjacentHTML(
-      'beforeend',
-      `<div class="cart-empty-desc">
+
+export function nullCart() {
+  emptyCart.insertAdjacentHTML(
+    'beforeend',
+    `<div class="cart-empty-desc">
             <img
-              src="../img/shopping-basket.png"
+              src="${shoppingBasket}"
               srcset=""
               alt="Shopping Basket"
             />
@@ -46,8 +47,12 @@ async function getCardProducts(productsList) {
             </p>
           </div>
         `
-    );
-    cartListTotal.classList.add('visually-hidden');
+  );
+  cartListTotal.classList.add('visually-hidden');
+}
+async function getCardProducts(productsList) {
+  if (!productsList.length) {
+    nullCart();
   }
 
   try {
@@ -80,7 +85,18 @@ async function calculateTotalPrice() {
       );
     }
   }
+  // return totalPrice;
   return totalPrice;
 }
 
-export { getCardProducts, calculateTotalPrice };
+async function updateTotalPrice() {
+  const totalPrice = await calculateTotalPrice();
+  const totalPriceSpan = document.getElementById('cart_total');
+  totalPriceSpan.textContent = `$${totalPrice}`;
+}
+
+export {
+  getCardProducts,
+  calculateTotalPrice,
+  updateTotalPrice
+};
