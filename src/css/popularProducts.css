@@ -2,10 +2,6 @@
   padding: 80px 0;
 }
 
-.aside {
-  display: inline-block;
-}
-
 .container-aside-cards {
   display: flex;
   flex-direction: column;
@@ -336,6 +332,9 @@
       max-width: 1440px;
       padding: 0 100px;
     } */
+  .aside {
+    margin-left: 40px;
+  }
 
   .popular {
     padding-top: none;

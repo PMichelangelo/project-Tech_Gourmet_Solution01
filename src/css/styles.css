@@ -52,6 +52,20 @@ body {
     max-width: 375px;
     padding: 0 16px;
   }
+<<<<<<< Updated upstream
+=======
+
+  .container-products {
+    margin: 0 auto;
+    max-width: 375px;
+    padding: 0 16px;
+  }
+
+  .container-popular {
+    margin: 0 auto;
+    max-width: 375px;
+  }
+>>>>>>> Stashed changes
 }
 
 @media screen and (min-width: 768px) {
@@ -59,6 +73,20 @@ body {
     max-width: 768px;
     padding: 0 32px;
   }
+<<<<<<< Updated upstream
+=======
+
+  .container-products {
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .container-popular {
+    margin: 0 auto;
+    max-width: 768px;
+  }
+>>>>>>> Stashed changes
 }
 
 @media screen and (min-width: 1440px) {

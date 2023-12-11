@@ -184,6 +184,7 @@
   transform: scale(1.5);
   animation: pulse 2s ease-in-out infinite;
 }
+<<<<<<< Updated upstream
 .footer-modal-title {
   color: #010101;
   text-align: center;
@@ -209,6 +210,12 @@
   padding-right: 43px;
   padding-bottom: 22px;
 }
+=======
+
+.footer-modal-title .span {
+  color: #6d8434;
+}
+>>>>>>> Stashed changes
 
 .footer-modal-img {
   max-width: 335px;

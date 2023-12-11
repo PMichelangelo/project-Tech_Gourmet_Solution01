@@ -192,6 +192,43 @@ function openErrorModal() {
     console.error(error);
   }
 }
+<<<<<<< Updated upstream
+=======
+
+function openCardPageModal() {
+  console.log(1);
+  try {
+    const instance = basicLightbox.create(`<div class="card-page-modal">
+       <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18">
+          <use href="${icons}#icon-close-btn"></use>
+        </svg></button>
+        <div class='card-page-modal-content'>
+        <img src="${cardPageModalImg}" alt="Order success" class='img'/>
+        <h3 class='card-page-modal-title'>Order success</h3>
+        <p class='card-page-modal-text'>Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
+    </div>`);
+    instance.show();
+    addoOverflow();
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        removeOverflow();
+      }
+    }
+    function closeModal() {
+      instance.close();
+      removeOverflow();
+    }
+
+    document.addEventListener('keydown', closeModalEsp);
+    const closeBtn = document.querySelector('.close-footer-modal');
+    closeBtn.addEventListener('click', closeModal);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+>>>>>>> Stashed changes
 function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }

@@ -10,6 +10,7 @@
   }
   .container-card {
     padding: 20px;
+  
   }
 
   .product-item {
@@ -20,15 +21,19 @@
   }
   .container-img {
     display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 295px;
+    height: 212px;
+    background-color: var(--white-txt);
+    border-radius: 10px;
+  }
+  
+  .item-img {
+    margin: auto;
     justify-content: center;
     align-items: center;
-    width: 100%;
-  }
-  .item-img {
-    background-color: #e8e8e2;
-    padding: 19px 58px 19px 58px;
-    border-radius: 10px;
-    width: 100%;
+    width: 140px;
     height: 140px;
   }
 
@@ -143,6 +148,7 @@
   }
   .container-img {
     width: 255px;
+    height: 178px;
   }
   .container-info {
     flex-wrap: wrap;
