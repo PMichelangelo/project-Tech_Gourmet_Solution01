@@ -5,6 +5,8 @@ import { updateTotalPrice } from './cartProducts';
 import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
+import { getServerProductsById  } from './fetchProducts';
+import axios from 'axios';
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
@@ -75,12 +77,59 @@ document.addEventListener('DOMContentLoaded', () => {
 const form = document.querySelector('.cart_checkout');
 const button = document.querySelector('.cart_checkout_btn');
 
-form.addEventListener('submit', event => {
-  event.preventDefault();
+form.addEventListener('submit', senndForm)
 
+async function senndForm(event) {
+  event.preventDefault();
+  let findproduct=JSON.parse(localStorage.getItem('cartData'));
+  const emailInput = document.querySelector('.cart-basket-input');  
+  let emailOut=emailInput.value.trim()
+  if (emailOut.length === 0) {
+    return alert('Please enter the correct email!')           }
+
+    const foodItems = await Promise.all(
+      findproduct.map(productId => getServerProductsById(productId))
+      );
+     const transformedData = foodItems.map(item => {
+     return {
+      productId: item._id,
+      price: item.price
+      };});
+      let order ={products: transformedData,}
+      console.log(emailOut);
+      console.log(order);
   console.log('Form submitted!');
-  openCardPageModal();
-});
+  form.reset(); 
+  sendFormData(orderArr)
+  ;
+};
+function sendFormData(orderArr) {
+  const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
+  const formData = 
+  {
+    email: emailOut,
+    products: [
+      
+        order
+      
+    ]
+  }
+  axios
+    .post(serverUrl, formData)
+    .then(response => {
+      openCardPageModal();
+    })
+    .catch(error => {
+      if (error.message.includes('409')) {
+        openErrorModal();
+      }
+    })
+    
+}
+
+
+
+
 
 // Note: If you want to handle a click event on the button as well, you can use the following code:
 // button.addEventListener('click', () => {
