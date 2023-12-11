@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearAllBtn.addEventListener('click', () => {
     document.querySelector('.cart-order-list').innerHTML = '';
 
-    localStorage.setItemItem('cartData',JSON.stringify([]));
+    localStorage.setItem('cartData',JSON.stringify([]));
 
     updateCartCounterOnLoad();
 
