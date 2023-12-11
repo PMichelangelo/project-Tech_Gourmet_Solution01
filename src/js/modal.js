@@ -16,9 +16,8 @@ async function openModal(productId) {
 
     const modalContent = document.createElement('div');
 
-    modalContent.innerHTML = `<div class="modal-container" data-id="${
-      productData._id
-    }">
+    modalContent.innerHTML =
+    `<div class="modal-container" data-id="${productData._id}">
     <div class="modal-img-info-container">
         <div class="modal-img-container">
             <img class="modal-img" src="${productData.img}" alt="${
@@ -63,8 +62,9 @@ async function openModal(productId) {
 
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
+
 
     document.addEventListener('keydown', closeModal);
     const closeBtn = document.querySelector('.close-modal-icon');
@@ -150,12 +150,12 @@ function openSubcribeModal() {
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
-        revomeOverflow();
+        removeOverflow();
       }
     }
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -179,12 +179,12 @@ function openErrorModal() {
     function closeModalEsp(event) {
       if (event.key === 'Escape') {
         instance.close();
-        revomeOverflow();
+        removeOverflow();
       }
     }
     function closeModal() {
       instance.close();
-      revomeOverflow();
+      removeOverflow();
     }
 
     document.addEventListener('keydown', closeModalEsp);
@@ -231,6 +231,6 @@ function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
 
-function revomeOverflow() {
+function removeOverflow() {
   document.body.style.overflow = '';
 }
