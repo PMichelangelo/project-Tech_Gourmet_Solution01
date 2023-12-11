@@ -1,7 +1,7 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
-
+import { openCardPageModal } from './modal';
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
   initCartStorage();
@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ///////////sendForm/////////////////
-const form = document.querySelector('.cart_checkout_btn');
-form.addEventListener('submit', onForm);
-function onForm(event) {
-  event.preventDefault();
-  console.dir(event);
+// const form = document.querySelector('.cart_checkout_btn');
+const form = document.getElementById('checkoutBtn');
+console.log(form);
+form.addEventListener('submit', sendData);
+async function sendData() {
+  console.log(1);
 }
+
 // const emailInput = event.target.........
 //const email = emailInput.value;
 

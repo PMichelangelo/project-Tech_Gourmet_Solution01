@@ -1,14 +1,14 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
-import icons from '../img/icons.svg'
-import modalEmailMob from '../img/modal-email-mob.png'
-import modalEmailMob2x from '../img/modal-email-mob-2x.png'
-import modalEmailTab from '../img/modal-email-tab.png'
-import modalEmailTab2X from '../img/modal-email-tab.png'
-import modalEmailDesk from '../img/modal-email-desk.png'
-import modalEmailDesk2X from '../img/modal-email-desk-2x.png'
+import icons from '../img/icons.svg';
+import modalEmailMob from '../img/modal-email-mob.png';
+import modalEmailMob2x from '../img/modal-email-mob-2x.png';
+import modalEmailTab from '../img/modal-email-tab.png';
+import modalEmailTab2X from '../img/modal-email-tab.png';
+import modalEmailDesk from '../img/modal-email-desk.png';
+import modalEmailDesk2X from '../img/modal-email-desk-2x.png';
 
-export { openModal, openSubcribeModal, openErrorModal };
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal };
 
 async function openModal(productId) {
   try {
@@ -31,7 +31,7 @@ async function openModal(productId) {
     const instance = basicLightbox.create(modalContent);
 
     instance.show();
-    addoOverflow()
+    addoOverflow();
 
     function closeModal() {
       instance.close();
@@ -128,6 +128,39 @@ function openErrorModal() {
     console.error(error);
   }
 }
+function openCardPageModal() {
+  console.log(1);
+  try {
+    const instance = basicLightbox.create(`<div class="card-page-modal">
+       <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18">
+          <use href="${icons}#icon-close-btn"></use>
+        </svg></button>
+        <div class='card-page-modal-content'>
+        <img src="./img/cardPageModalImg.png" alt="Order success" class='img'/>
+        <h3 class='card-page-modal-title'>Order success</h3>
+        <p class='card-page-modal-text'>Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
+    </div>`);
+    instance.show();
+    addoOverflow();
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        revomeOverflow();
+      }
+    }
+    function closeModal() {
+      instance.close();
+      revomeOverflow();
+    }
+
+    document.addEventListener('keydown', closeModalEsp);
+    const closeBtn = document.querySelector('.close-footer-modal');
+    closeBtn.addEventListener('click', closeModal);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function addoOverflow() {
   document.body.style.overflow = 'hidden';
 }
