@@ -9,6 +9,7 @@ import imageModalEmailTab from '../img/modal-email-tab.png';
 import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
 import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
+import cardPageModalImg from '../img/cardPageModalImg.png'
 
 export { openModal, openSubcribeModal, openErrorModal, openCardPageModal };
 
@@ -204,7 +205,7 @@ function openCardPageModal() {
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='card-page-modal-content'>
-        <img src="./img/cardPageModalImg.png" alt="Order success" class='img'/>
+        <img src="${cardPageModalImg}" alt="Order success" class='img'/>
         <h3 class='card-page-modal-title'>Order success</h3>
         <p class='card-page-modal-text'>Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
     </div>`);
