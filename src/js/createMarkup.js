@@ -17,8 +17,8 @@ async function createProductsMarkup() {
     //if (data.results) {
     //  checkIsItemInCart()
     //}
-    const productCards = document.querySelectorAll('.js-card');
-    console.log("Number of product cards:", productCards.length);
+    //const productCards = document.querySelectorAll('.js-card');
+    //console.log("Number of product cards:", productCards.length);
 
     productCard.addEventListener('click', (event) => {
       const card = event.target.closest('.js-card');
