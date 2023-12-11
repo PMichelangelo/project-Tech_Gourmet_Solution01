@@ -5,9 +5,49 @@ import { updateTotalPrice } from './cartProducts';
 import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
+import { removeFromCart } from './cartStorage';
 import { getServerProductsById } from './fetchProducts';
 import { onSubmit } from './subscribeEmail';
 import axios from 'axios';
+
+// Рахуємо загальну суму покупки
+const total = document.getElementById('cart_total');
+calculateTotalPrice().then(data => (total.textContent = `$${data}`));
+
+const cartList = document.querySelector('.cart-order-list');
+
+cartList.addEventListener('click', removeProduct);
+
+function removeProduct(event) {
+  const cartEl = event.target.closest('.cart-order-item');
+
+  const removeBtn = event.target.closest('.cart-remove-span');
+
+  if (cartEl) {
+    const productId = cartEl.getAttribute('data-id');
+    console.log('Product clicked:', productId);
+
+    if (removeBtn) {
+      removeFromCart(productId);
+      updateCartCounterOnLoad();
+
+      cartEl.style.display = 'none';
+
+      calculateTotalPrice().then(data => (total.textContent = `$${data}`));
+
+      const storage = JSON.parse(localStorage.getItem('cartData'));
+      if (!storage.length) {
+        nullCart();
+      }
+
+      // disabledBtn(btn);
+    }
+    // else {
+    //   openModal(productId);
+    // }
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
@@ -184,10 +224,6 @@ async function senndForm(event) {
 //     };
 //   });
 //
-
-// Рахуємо загальну суму покупки
-const total = document.getElementById('cart_total');
-calculateTotalPrice().then(data => (total.textContent = `$${data}`));
-calculateTotalPrice();
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
+

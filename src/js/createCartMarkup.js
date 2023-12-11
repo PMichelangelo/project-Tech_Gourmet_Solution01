@@ -3,8 +3,8 @@ import icons from '../img/icons.svg'
 export function cartOrder(arr) {
   return arr
     .map(
-      ({ img, name, price, category, size}) => `
-  <li class="cart-order-item">
+      ({ _id, img, name, price, category, size }) => `
+  <li class="cart-order-item" data-id="${_id}">
     <div class="cart-item-content">
       <div class="cart-order-img-cont">
         <img
@@ -28,7 +28,9 @@ export function cartOrder(arr) {
           </button>
         </div>
         <p class="cart-order-text">
-          <span class="cart-order-span">Category:</span>${category.replace('_', ' ').replace('_', ' ')}
+          <span class="cart-order-span">Category:</span>${category
+            .replace('_', ' ')
+            .replace('_', ' ')}
           <span class="cart-order-span cart-gap">Size:</span>
           ${size.replace('oz', 'g')}
         </p>
