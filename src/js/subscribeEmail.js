@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { openSubcribeModal, openErrorModal } from './modal.js';
 export { onSubmit };
+
+
 let emailInput;
 function onSubmit(event) {
   event.preventDefault();
