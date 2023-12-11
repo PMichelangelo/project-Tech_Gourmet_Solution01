@@ -80,6 +80,7 @@ async function calculateTotalPrice() {
       );
     }
   }
+  // return totalPrice;
   return totalPrice;
 }
 
