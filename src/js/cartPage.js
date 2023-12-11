@@ -35,59 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ///////////sendForm/////////////////
-
-//const form = document.querySelector('.cart_checkout_btn');
-//const form = document.getElementById('checkoutBtn');
-//console.log(form);
-//form.addEventListener('submit', sendData);
-//async function sendData() {
-//  console.log(1);
-//}
-
-// const emailInput = event.target.........
-//const email = emailInput.value;
-
-const form = document.querySelector('.cart_checkout_btn')
+const form = document.querySelector("#checkoutForm")
 import { getServerProductsById } from './fetchProducts'
 form.addEventListener('submit', onForm)
 async function onForm(event){
   event.preventDefault();
-  if (!cartProductsList.length){form.disabled = false }
-  else {form.disabled = true}
-  emailInput = document.querySelector('.cart-basket-input');
-  const email = emailInput.value.trim() ;if(email.length===0){
-    return alert('Please enter the correct email!');
-  }
-  try {
-    const  getArray=await getArray(cartProductsList)
-    const foodItems = await Promise.all(
-      cartProductsList.map(productId => getServerProductsById(productId))
-    );
-    const transformedData = foodItems.map(item => {
-      return {
-        productId: item._id,
-        price: item.price
-      };});
-      console.log(transformedData);
+  let findproduct=JSON.parse(localStorage.getItem('cartData'));
+  const emailInput = document.querySelector('.cart-basket-input');  
+  let emailOut=emailInput.value.trim()
+  if (emailOut.length === 0) {
+    return alert('Please enter the correct email!')           }
+    
+   try {    
+   const foodItems = await Promise.all(
+   findproduct.map(productId => getServerProductsById(productId))
+   );
+  const transformedData = foodItems.map(item => {
+  return {
+   productId: item._id,
+   price: item.price
+   };});
+   let order ={email: emailOut,
+    products: transformedData,}
+    POS
   }
   catch (error) {
-    console.log(error);
+  console.log(error);
+   }  
+
   }
-}
-
-
-
-// console.log(email);
-
-
-//
-//   const orderProducts = cartProductsList.map(product => {
-//     return {
-//       productId: product._id,
-//       amount: product.price,
-//     };
-//   });
-//
 
 // Рахуємо загальну суму покупки
 const total = document.getElementById('cart_total');
