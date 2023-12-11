@@ -36,18 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ///////////sendForm/////////////////
 
-// const form = document.querySelector('.cart_checkout_btn');
-const form = document.getElementById('checkoutBtn');
-console.log(form);
-form.addEventListener('submit', sendData);
-async function sendData() {
-  console.log(1);
-}
+//const form = document.querySelector('.cart_checkout_btn');
+//const form = document.getElementById('checkoutBtn');
+//console.log(form);
+//form.addEventListener('submit', sendData);
+//async function sendData() {
+//  console.log(1);
+//}
 
 // const emailInput = event.target.........
 //const email = emailInput.value;
 
-form = document.querySelector('.cart_checkout_btn')
+const form = document.querySelector('.cart_checkout_btn')
 import { getServerProductsById } from './fetchProducts'
 form.addEventListener('submit', onForm)
 async function onForm(event){
