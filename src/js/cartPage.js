@@ -1,6 +1,7 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
+import { updateTotalPrice } from './cartProducts'
 import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
@@ -8,6 +9,7 @@ import { nullCart } from './cartProducts';
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
+  updateTotalPrice();
   initCartStorage();
 
   const cartProductsList = JSON.parse(localStorage.getItem('cartData'));

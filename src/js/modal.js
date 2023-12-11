@@ -1,12 +1,14 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
 import icons from '../img/icons.svg';
-import modalEmailMob from '../img/modal-email-mob.png';
-import modalEmailMob2x from '../img/modal-email-mob-2x.png';
-import modalEmailTab from '../img/modal-email-tab.png';
-import modalEmailTab2X from '../img/modal-email-tab.png';
-import modalEmailDesk from '../img/modal-email-desk.png';
-import modalEmailDesk2X from '../img/modal-email-desk-2x.png';
+import { addToCart } from './cartStorage';
+import { removeFromCart } from './cartStorage';
+import imageModalEmailMob from '../img/modal-email-mob.png';
+import imageModalEmailMob2x from '../img/modal-email-mob-2x.png';
+import imageModalEmailTab from '../img/modal-email-tab.png';
+import imageModalEmailTab2x from '../img/modal-email-tab-2x.png';
+import imageModalEmailDesk from '../img/modal-email-desk.png';
+import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 
 export { openModal, openSubcribeModal, openErrorModal };
 
@@ -121,22 +123,22 @@ function openSubcribeModal() {
         <picture class='footer-modal-img'>
       <source
         srcset="
-          ./img/modal-email-mob.png     1x,
-          ./img/modal-email-mob-2x.png  2x
+          ${imageModalEmailMob}     1x,
+          ${imageModalEmailMob2x}  2x
         "
         media="(min-width: 375px) and (max-width: 767px)"
       />
       <source
         srcset="
-          ./img/modal-email-tab.png     1x,
-          ./img/modal-email-tab-2x.png  2x
+          ${imageModalEmailTab}     1x,
+          ${imageModalEmailTab2x}  2x
         "
         media="(min-width: 768px) and (max-width: 1439px)"
       />
       <source
         srcset="
-          ./img/modal-email-desk.png     1x,
-          ./img/modal-email-desk-2x.png  2x
+          ${imageModalEmailDesk}    1x,
+          ${imageModalEmailDesk2x}  2x
         "
         media="(min-width: 1440px)"
       />
