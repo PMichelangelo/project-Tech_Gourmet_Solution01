@@ -11,7 +11,7 @@ import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 import cardPageModalImg from '../img/cardPageModalImg.png'
 
-export { openModal, openSubcribeModal, openErrorModal, openCardPageModal,checkIfProductInCart };
+export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart };
 
 function checkIfProductInCart(productId) {
   const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
@@ -68,13 +68,31 @@ async function openModal(productId) {
     instance.show();
     addoOverflow();
 
+    
+function outsideClickListener(event) {
+      const modalContainer = document.querySelector('.modal-container');
+      if (!modalContainer.contains(event.target)) {
+        closeModal();
+      }
+    }
+    
     function closeModal() {
       instance.close();
       removeOverflow();
+      document.removeEventListener('click', outsideClickListener);
+      closeBtn.removeEventListener('click', closeModal);
+    }
+    
+    function closeModalEsp(event) {
+      if (event.key === 'Escape') {
+        instance.close();
+        removeOverflow();
+        document.removeEventListener('keydown', closeModalEsp);
+      }
     }
 
-
-    document.addEventListener('keydown', closeModal);
+    document.addEventListener('click', outsideClickListener);
+    document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-modal-icon');
     closeBtn.addEventListener('click', closeModal);
 
@@ -113,6 +131,7 @@ async function openModal(productId) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
+    modalInstance = instance;
   } catch (error) {
     console.log('Error fetching product:', error);
   }
@@ -159,16 +178,30 @@ function openSubcribeModal() {
       if (event.key === 'Escape') {
         instance.close();
         removeOverflow();
+        document.removeEventListener('keydown', closeModalEsp);
       }
     }
+    
+
     function closeModal() {
       instance.close();
       removeOverflow();
+      document.removeEventListener('click', outsideClickListener);
+      
+      closeBtn.removeEventListener('click', closeModal);
+}
+
+    function outsideClickListener(event) {
+    const footerModal = document.querySelector('.footer-modal');
+    if (!footerModal.contains(event.target)) {
+      closeModal();
     }
+  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
     closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('click', outsideClickListener);
   } catch (error) {
     console.error(error);
   }
@@ -188,16 +221,30 @@ function openErrorModal() {
       if (event.key === 'Escape') {
         instance.close();
         removeOverflow();
+        document.removeEventListener('keydown', closeModalEsp);
       }
     }
+    
+
     function closeModal() {
       instance.close();
       removeOverflow();
+      document.removeEventListener('click', outsideClickListener);
+      closeBtn.removeEventListener('click', closeModal);
+}
+
+
+    function outsideClickListener(event) {
+    const footerModal = document.querySelector('.footer-modal-err');
+    if (!footerModal.contains(event.target)) {
+      closeModal();
     }
+  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
     closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('click', outsideClickListener);
   } catch (error) {
     console.error(error);
   }
@@ -222,14 +269,26 @@ function openCardPageModal() {
         removeOverflow();
       }
     }
+    
+
     function closeModal() {
       instance.close();
       removeOverflow();
+      document.removeEventListener('click', outsideClickListener);
+      closeBtn.removeEventListener('click', closeModal);
+}
+
+    function outsideClickListener(event) {
+    const footerModal = document.querySelector('.card-page-modal');
+    if (!footerModal.contains(event.target)) {
+      closeModal();
     }
+  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
     closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('click', outsideClickListener);
   } catch (error) {
     console.error(error);
   }
