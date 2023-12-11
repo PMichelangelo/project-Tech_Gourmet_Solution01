@@ -1,5 +1,6 @@
 import { getServerProductsById } from './fetchProducts';
 import { cartOrder } from './createCartMarkup';
+import shoppingBasket from '../img/shopping-basket.png'
 const galleryEl = document.querySelector('.js-carTgallery');
 
 const emptyCart = document.querySelector('.cart-empty'),
@@ -35,7 +36,7 @@ async function getCardProducts(productsList) {
       'beforeend',
       `<div class="cart-empty-desc">
             <img
-              src="../img/shopping-basket.png"
+              src="${shoppingBasket}"
               srcset=""
               alt="Shopping Basket"
             />
@@ -83,4 +84,14 @@ async function calculateTotalPrice() {
   return totalPrice;
 }
 
-export { getCardProducts, calculateTotalPrice };
+async function updateTotalPrice() {
+  const totalPrice = await calculateTotalPrice();
+  const totalPriceSpan = document.getElementById('cart_total');
+  totalPriceSpan.textContent = `$${totalPrice}`;
+}
+
+export {
+  getCardProducts,
+  calculateTotalPrice,
+  updateTotalPrice
+};

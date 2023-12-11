@@ -1,9 +1,11 @@
 import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
+import { updateTotalPrice } from './cartProducts'
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
+  updateTotalPrice();
   initCartStorage();
 
   const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
