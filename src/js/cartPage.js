@@ -33,14 +33,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 ///////////sendForm/////////////////
-const form = document.querySelector('.cart_checkout_btn');
-form.addEventListener('submit', onForm);
-function onForm(event) {
+const form = document.querySelector('.cart_checkout_btn')
+import { getServerProductsById } from './fetchProducts'
+form.addEventListener('submit', onForm)
+async function onForm(event){
   event.preventDefault();
-  console.dir(event);
+  if (!cartProductsList.length){form.disabled = false }
+  else {form.disabled = true} 
+  emailInput = document.querySelector('.cart-basket-input');
+  const email = emailInput.value.trim() ;if(email.length===0){
+    return alert('Please enter the correct email!');
+  }  
+  try {
+    const  getArray=await getArray(cartProductsList)
+    const foodItems = await Promise.all(
+      cartProductsList.map(productId => getServerProductsById(productId))
+    );
+    const transformedData = foodItems.map(item => {
+      return {
+        productId: item._id,
+        price: item.price
+      };});
+      console.log(transformedData);
+  }
+  catch (error) {
+    console.log(error);
+  }  
 }
-// const emailInput = event.target.........
-//const email = emailInput.value;
 
 
 // console.log(email);
@@ -60,4 +79,5 @@ function onForm(event) {
 const total = document.getElementById('cart_total');
 calculateTotalPrice().then(data => (total.textContent = `$${data}`));
 calculateTotalPrice();
+
 
