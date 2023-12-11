@@ -12,22 +12,31 @@ getCardProducts(cartProductsList);
 
 ///////////sendForm/////////////////
 const form = document.querySelector('.cart_checkout_btn')
+import { getServerProductsById } from './fetchProducts'
+getArray(cartProductsList)
+async function getArray(cartProductsList){
+  if (!cartProductsList.length){form.disabled = false }
+  else {form.disabled = true} 
+  try {
+    const foodItems = await Promise.all(
+      cartProductsList.map(productId => getServerProductsById(productId))
+    );
+    const transformedData = foodItems.map(item => {
+      return {
+        productId: item._id,
+        price: item.price
+      };});
+      console.log(transformedData);
+  }
+  catch (error) {
+    console.log(error);
+  }  
+}
+
 form.addEventListener('submit', onForm)
 function onForm(event) {
   event.preventDefault();
-  console.dir(event);
+  emailInput = document.querySelector('.cart-basket-input');
+  const email = emailInput.value;
+
 }
- // const emailInput = event.target.........
-  //const email = emailInput.value;
-  
-  // console.log(email);
-
-//  
-//   const orderProducts = cartProductsList.map(product => {
-//     return {
-//       productId: product._id,
-//       amount: product.price,
-//     };
-//   });
-
-//  
