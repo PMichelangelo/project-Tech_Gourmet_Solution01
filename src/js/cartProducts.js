@@ -29,11 +29,11 @@ const emptyCart = document.querySelector('.cart-empty'),
 //    cartList.classList.add('visually-hidden');
 //  }
 //}
-async function getCardProducts(productsList) {
-  if (!productsList.length) {
-    emptyCart.insertAdjacentHTML(
-      'beforeend',
-      `<div class="cart-empty-desc">
+
+export function nullCart() {
+  emptyCart.insertAdjacentHTML(
+    'beforeend',
+    `<div class="cart-empty-desc">
             <img
               src="../img/shopping-basket.png"
               srcset=""
@@ -46,8 +46,12 @@ async function getCardProducts(productsList) {
             </p>
           </div>
         `
-    );
-    cartListTotal.classList.add('visually-hidden');
+  );
+  cartListTotal.classList.add('visually-hidden');
+}
+async function getCardProducts(productsList) {
+  if (!productsList.length) {
+    nullCart();
   }
 
   try {

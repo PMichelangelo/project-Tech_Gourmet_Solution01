@@ -2,15 +2,32 @@ import { getCardProducts } from './cartProducts';
 import { initCartStorage } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
 import { calculateTotalPrice } from './cartProducts';
+import { nullCart } from './cartProducts';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Оновлюємо лічильник кількості продуктів в корзині
   updateCartCounterOnLoad();
-});
-initCartStorage();
+  initCartStorage();
 
-const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
-getCardProducts(cartProductsList);
+  const cartProductsList = JSON.parse(localStorage.getItem('cartData'));
+  getCardProducts(cartProductsList);
+
+  const clearAllBtn = document.querySelector('.cart-clear-btn');
+
+  clearAllBtn.addEventListener('click', () => {
+    document.querySelector('.cart-order-list').innerHTML = '';
+
+    localStorage.removeItem('cartData');
+
+    updateCartCounterOnLoad();
+
+    // const cards = document.querySelectorAll('.cart-order-item');
+    // cards.forEach(card => {
+    //   card.style.opacity = 0;
+    //   card.style.transition = 'opacity 0.5s';
+    // });
+    nullCart();
+  });
+});
 
 ///////////sendForm/////////////////
 const form = document.querySelector('.cart_checkout_btn');
