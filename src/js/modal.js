@@ -167,7 +167,7 @@ function openSubcribeModal() {
         "
         media="(min-width: 1440px)"
       />
-      <img src="./img/modal-email-mob.png" alt="vegetables" />
+      <img src="${imageModalEmailMob}" alt="vegetables" />
     </picture>
     </div>`);
 
