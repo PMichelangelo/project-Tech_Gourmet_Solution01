@@ -2,12 +2,12 @@ import {
   getServerProductsPopular,
   getServerProductsDiscount,
 } from './fetchProducts';
-import icons from '../img/icons.svg'
+import icons from '../img/icons.svg';
 import { openModal } from './modal';
-import { addToCart, updateCardState } from "./cartStorage";
-import { updateCartCounterOnLoad } from "./updateCartCounter";
-import { checkIfProductInCart } from "./modal";
-import { checkIsItemInCart,disabledBtn } from './createMarkup';
+import { addToCart, updateCardState } from './cartStorage';
+import { updateCartCounterOnLoad } from './updateCartCounter';
+import { checkIfProductInCart } from './modal';
+import { checkIsItemInCart, disabledBtn } from './createMarkup';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -23,21 +23,21 @@ export async function appendPopularProductsMarkup() {
       'beforeend',
       createPopularMarkup(data.results)
     );
-    checkIsItemInCart()
+    checkIsItemInCart();
 
-    refs.popularProductCards.addEventListener('click', (event) => {
+    refs.popularProductCards.addEventListener('click', event => {
       const card = event.target.closest('.aside-product-card');
       const btn = event.target.closest('.products-card-btn');
       if (card) {
         const productId = card.getAttribute('id');
-        console.log("Product clicked:", productId);
+        console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log("Button clicked within the product card");
-          addToCart(productId)
-          updateCartCounterOnLoad()
-          disabledBtn(btn)
-          updateCardState(productId)
+          console.log('Button clicked within the product card');
+          addToCart(productId);
+          updateCartCounterOnLoad();
+          disabledBtn(btn);
+          updateCardState(productId);
         } else {
           openModal(productId);
         }
@@ -46,9 +46,7 @@ export async function appendPopularProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-};
-
-
+}
 
 function createPopularMarkup(results) {
   const limitedResults = results.slice(0, 5);
@@ -111,19 +109,19 @@ export async function appendDiscountProductsMarkup() {
       'beforeend',
       createDiscountMarkup(data)
     );
-    refs.discountProductCards.addEventListener('click', (event) => {
+    refs.discountProductCards.addEventListener('click', event => {
       const card = event.target.closest('.discount-product-card');
       const btn = event.target.closest('.discount-product-card-btn');
       if (card) {
         const productId = card.getAttribute('id');
-        console.log("Product clicked:", productId);
+        console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log("Button clicked within the product card");
-          addToCart(productId)
-          updateCartCounterOnLoad()
-          disabledBtn(btn)
-          updateCardState()
+          console.log('Button clicked within the product card');
+          addToCart(productId);
+          updateCartCounterOnLoad();
+          disabledBtn(btn);
+          updateCardState();
         } else {
           openModal(productId);
         }
@@ -132,7 +130,7 @@ export async function appendDiscountProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 function createDiscountMarkup(results) {
   const limitedResults = results.slice(0, 2);
@@ -155,7 +153,7 @@ function createDiscountMarkup(results) {
                   <h3 class="discount-product-card-name">${name}</h3>
                  <div class="discount-price-icon-container">
                       <p class="product-card-price">$${price}</p>
-                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}" data-id="${_id}>
+                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}">
                           <svg width="18" height="18" class="product-button-icon icon-cart">
                               <use class="discount-button-icon" href="${icons}#icon-cart"></use>
                           </svg>
