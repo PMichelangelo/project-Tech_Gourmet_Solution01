@@ -22,6 +22,8 @@ appendDiscountProductsMarkup();
 
 import { initCartStorage, addToCart, removeFromCart } from './cartStorage';
 
+import { createProductsMarkup } from './createMarkup.js';
+createProductsMarkup(1, null, null);
 
 import { filterCategories, filterProducts } from './filters.js';
 filterCategories();
