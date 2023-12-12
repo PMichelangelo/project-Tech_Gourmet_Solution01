@@ -80,7 +80,7 @@ body {
   .container-popular {
     margin: 0 auto;
     max-width: 768px;
-    padding: 0 32px;
+    padding: 0;
   }
 }
 
@@ -89,7 +89,6 @@ body {
     max-width: 1440px;
     padding: 0 100px;
   }
-
 
   .container-products {
     max-width: 925px;
@@ -101,21 +100,19 @@ body {
     padding: 0;
   }
 
-
   .container-products-style {
     display: flex;
     max-width: 1440px;
     padding: 0 100px;
     margin: 0 auto;
   }
-  
+
   .products-container {
     display: flex;
     max-width: 1440px;
     width: 100%;
-
+    padding: 0;
   }
-  
 }
 
 .btn-up {
@@ -123,8 +120,8 @@ body {
   height: 40px;
   z-index: 100;
   cursor: pointer;
-  background-color:  #6d8434;
-  color:  #e8e8e2;
+  background-color: #6d8434;
+  color: #e8e8e2;
   font-size: 35px;
   background-size: cover;
   border: none;
@@ -144,7 +141,7 @@ body {
 
 .btn-up:hover {
   opacity: 1;
-  background-color:  #586f1f;
+  background-color: #586f1f;
   box-shadow: none;
   transform: scale(1.1);
 }
@@ -152,14 +149,14 @@ body {
 .arrow-up-icon {
   transition: all 300ms ease-in-out;
   stroke: #e8e8e2;
-  fill:  #6d8434;
+  fill: #6d8434;
 }
 .arrow-up {
   transform: rotate(90deg);
 }
 
 .btn-up:hover .arrow-up-icon {
-  fill:  #586f1f;
+  fill: #586f1f;
 }
 
 .visually-hidden {
