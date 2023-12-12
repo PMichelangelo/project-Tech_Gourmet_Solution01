@@ -48,7 +48,6 @@ function removeProduct(event) {
   }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
   updateTotalPrice();
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearAllBtn.addEventListener('click', () => {
     document.querySelector('.cart-order-list').innerHTML = '';
 
-    localStorage.setItem('cartData',JSON.stringify([]));
+    localStorage.setItem('cartData', JSON.stringify([]));
 
     updateCartCounterOnLoad();
 
@@ -161,16 +160,16 @@ const button = document.querySelector('.cart_checkout_btn');
 
 // }
 
-
-
 form.addEventListener('submit', senndForm);
-
+let emailOut;
+let order;
 async function senndForm(event) {
   event.preventDefault();
   let findproduct = JSON.parse(localStorage.getItem('cartData'));
   const emailInput = document.querySelector('.cart-basket-input');
-  let emailOut = emailInput.value.trim();
-  if (emailOut.length === 0) {
+  emailOut = emailInput.value.trim();
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!pattern.test(emailOut)) {
     return alert('Please enter the correct email!');
   }
 
@@ -183,31 +182,37 @@ async function senndForm(event) {
       amount: item.price,
     };
   });
-  let order = {
-    email: emailOut,
-    products: transformedData,
-  };
-  openCardPageModal();
-  console.log('Form submitted!');
-  console.log(order);
-  form.reset();
-  //sendFormData(order)
-}
-// function sendFormData(order) {
-//   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
-//   console.log(order);
-//   axios
-//     .post(serverUrl, order)
-//     .then(response => {
-//       openCardPageModal();
-//     })
-//     .catch(error => {
-//       if (error.message.includes('409')) {
-//         openErrorModal();
-//       }
-//     })
+  order = transformedData;
 
-// }
+  form.reset();
+  sendFormData(order);
+}
+
+function sendFormData(order) {
+  const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
+
+  const formData = {
+    email: emailOut,
+    products: order,
+  };
+
+  axios
+    .post(serverUrl, formData)
+    .then(response => {
+      openCardPageModal();
+      nullCart();
+      document.querySelector('.cart-order-list').innerHTML = '';
+
+      localStorage.setItem('cartData', JSON.stringify([]));
+
+      updateCartCounterOnLoad();
+    })
+    .catch(error => {
+      alert(
+        'An error occurred while attempting the requested operation. Please check the entered data and try again. If the issue persists, contact customer support.'
+      );
+    });
+}
 
 // Note: If you want to handle a click event on the button as well, you can use the following code:
 // button.addEventListener('click', () => {
@@ -226,4 +231,3 @@ async function senndForm(event) {
 //
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
-
