@@ -47,7 +47,7 @@ function disabledBtn(btn) {
   checkIfProductInCart()
   btn.classList.add('added')
   btn.setAttribute("disabled", "disabled")
-}
+};
 
 async function checkIsItemInCart() {
   const cartItems = JSON.parse(localStorage.getItem("cartData"))
