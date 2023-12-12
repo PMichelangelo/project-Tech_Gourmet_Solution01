@@ -5,8 +5,48 @@ import { updateTotalPrice } from './cartProducts';
 import { openCardPageModal } from './modal';
 import { calculateTotalPrice } from './cartProducts';
 import { nullCart } from './cartProducts';
-import { getServerProductsById  } from './fetchProducts';
+import { removeFromCart } from './cartStorage';
+import { getServerProductsById } from './fetchProducts';
+import { onSubmit } from './subscribeEmail';
 import axios from 'axios';
+
+// Рахуємо загальну суму покупки
+const total = document.getElementById('cart_total');
+calculateTotalPrice().then(data => (total.textContent = `$${data}`));
+
+const cartList = document.querySelector('.cart-order-list');
+
+cartList.addEventListener('click', removeProduct);
+
+function removeProduct(event) {
+  const cartEl = event.target.closest('.cart-order-item');
+
+  const removeBtn = event.target.closest('.cart-remove-span');
+
+  if (cartEl) {
+    const productId = cartEl.getAttribute('data-id');
+    console.log('Product clicked:', productId);
+
+    if (removeBtn) {
+      removeFromCart(productId);
+      updateCartCounterOnLoad();
+
+      cartEl.style.display = 'none';
+
+      calculateTotalPrice().then(data => (total.textContent = `$${data}`));
+
+      const storage = JSON.parse(localStorage.getItem('cartData'));
+      if (!storage.length) {
+        nullCart();
+      }
+
+      // disabledBtn(btn);
+    }
+    // else {
+    //   openModal(productId);
+    // }
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounterOnLoad();
@@ -21,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearAllBtn.addEventListener('click', () => {
     document.querySelector('.cart-order-list').innerHTML = '';
 
-    localStorage.removeItem('cartData');
+    localStorage.setItem('cartData', JSON.stringify([]));
 
     updateCartCounterOnLoad();
 
@@ -77,33 +117,33 @@ document.addEventListener('DOMContentLoaded', () => {
 const form = document.querySelector('.cart_checkout');
 const button = document.querySelector('.cart_checkout_btn');
 
-form.addEventListener('submit', senndForm)
+//form.addEventListener('submit', senndForm)
 
-async function senndForm(event) {
-  event.preventDefault();
-  let findproduct=JSON.parse(localStorage.getItem('cartData'));
-  const emailInput = document.querySelector('.cart-basket-input');  
-  let emailOut=emailInput.value.trim()
-  if (emailOut.length === 0) {
-    return alert('Please enter the correct email!')           }
+// async function senndForm(event) {
+//   event.preventDefault();
+//   let findproduct=JSON.parse(localStorage.getItem('cartData'));
+//   const emailInput = document.querySelector('.cart-basket-input');
+//   let emailOut=emailInput.value.trim()
+//   if (emailOut.length === 0) {
+//     return alert('Please enter the correct email!')           }
 
-    const foodItems = await Promise.all(
-      findproduct.map(productId => getServerProductsById(productId))
-      );
-     const transformedData = foodItems.map(item => {
-     return {
-      productId: item._id,
-      amount: item.price
-      };});
-      let order ={
-        email: emailOut,
-        products:transformedData}
-        openCardPageModal()    
-        console.log('Form submitted!');
-        console.log(order);
-        form.reset(); 
-        //sendFormData(order)
-};
+//     const foodItems = await Promise.all(
+//       findproduct.map(productId => getServerProductsById(productId))
+//       );
+//      const transformedData = foodItems.map(item => {
+//      return {
+//       productId: item._id,
+//       amount: item.price
+//       };});
+//       let order ={
+//         email: emailOut,
+//         products:transformedData}
+//         openCardPageModal()
+//         console.log('Form submitted!');
+//         console.log(order);
+//         form.reset();
+//         //sendFormData(order)
+// };
 // function sendFormData(order) {
 //   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
 //   console.log(order);
@@ -117,12 +157,62 @@ async function senndForm(event) {
 //         openErrorModal();
 //       }
 //     })
-    
+
 // }
 
+form.addEventListener('submit', senndForm);
+let emailOut;
+let order;
+async function senndForm(event) {
+  event.preventDefault();
+  let findproduct = JSON.parse(localStorage.getItem('cartData'));
+  const emailInput = document.querySelector('.cart-basket-input');
+  emailOut = emailInput.value.trim();
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!pattern.test(emailOut)) {
+    return alert('Please enter the correct email!');
+  }
 
+  const foodItems = await Promise.all(
+    findproduct.map(productId => getServerProductsById(productId))
+  );
+  const transformedData = foodItems.map(item => {
+    return {
+      productId: item._id,
+      amount: item.price,
+    };
+  });
+  order = transformedData;
 
+  form.reset();
+  sendFormData(order);
+}
 
+function sendFormData(order) {
+  const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
+
+  const formData = {
+    email: emailOut,
+    products: order,
+  };
+
+  axios
+    .post(serverUrl, formData)
+    .then(response => {
+      openCardPageModal();
+      nullCart();
+      document.querySelector('.cart-order-list').innerHTML = '';
+
+      localStorage.setItem('cartData', JSON.stringify([]));
+
+      updateCartCounterOnLoad();
+    })
+    .catch(error => {
+      alert(
+        'An error occurred while attempting the requested operation. Please check the entered data and try again. If the issue persists, contact customer support.'
+      );
+    });
+}
 
 // Note: If you want to handle a click event on the button as well, you can use the following code:
 // button.addEventListener('click', () => {
@@ -139,8 +229,5 @@ async function senndForm(event) {
 //     };
 //   });
 //
-
-// Рахуємо загальну суму покупки
-const total = document.getElementById('cart_total');
-calculateTotalPrice().then(data => (total.textContent = `$${data}`));
-calculateTotalPrice();
+const emailFInput = document.querySelector('.footer-submit-btn');
+emailFInput.addEventListener('click', onSubmit);

@@ -6,7 +6,9 @@ export {
   getServerProductsPopular,
   getServerProductsById,
   getServerProducts,
+  getLimit
 };
+
 async function getServerProductsCategories() {
   const URL = 'https://food-boutique.b.goit.study/api';
   const endPoint = 'products/categories';
@@ -51,25 +53,18 @@ async function getServerProductsById(id) {
     console.log(error.message);
   }
 }
-async function getServerProducts(page, key, category) {
+
+async function getServerProducts(page, key, category, limit) {
   const array = await getServerProductsCategories();
   const URL = 'https://food-boutique.b.goit.study/api';
   const endPoint = 'products';
-  let limit;
 
-  if (window.innerWidth >= 1440) {
-    limit = 9;
-  } else if (window.innerWidth >= 768) {
-    limit = 8;
-  } else {
-    limit = 6;
-  }
   if (key !== undefined && key !== null && array.includes(category)) {
     const params = new URLSearchParams({
-      page: page,
-      limit: limit,
+      page,
+      limit,
       keyword: key,
-      category: category,
+      category,
     });
     try {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
@@ -80,8 +75,8 @@ async function getServerProducts(page, key, category) {
   }
   if (key !== undefined && key !== null) {
     const params = new URLSearchParams({
-      page: page,
-      limit: limit,
+      page,
+      limit,
       keyword: key,
     });
     try {
@@ -93,9 +88,9 @@ async function getServerProducts(page, key, category) {
   } else if (array.includes(category)) {
     try {
       const params = new URLSearchParams({
-        page: page,
-        limit: limit,
-        category: category,
+        page,
+        limit,
+        category,
       });
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
@@ -105,8 +100,8 @@ async function getServerProducts(page, key, category) {
   } else {
     try {
       const params = new URLSearchParams({
-        page: page,
-        limit: limit,
+        page,
+        limit,
       });
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
@@ -114,4 +109,16 @@ async function getServerProducts(page, key, category) {
       console.log(error.message);
     }
   }
+}
+
+function getLimit() {
+  let limit;
+  if (window.innerWidth >= 1440) {
+    limit = 9;
+  } else if (window.innerWidth >= 768) {
+    limit = 8;
+  } else {
+    limit = 6;
+  }
+  return limit;
 }

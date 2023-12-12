@@ -7,15 +7,18 @@ import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
 
-export async function createProductsMarkup() {
+async function createProductsMarkup() {
   console.log("Creating products markup");
 
   try {
-    const data = await getServerProducts(1, null, null);
-    productCard.innerHTML = createMarkup(data.results);
-
-    const productCards = document.querySelectorAll('.js-card');
-    console.log("Number of product cards:", productCards.length);
+    // const data = await getServerProducts(1, null, null);
+    // checkIsItemInCart();
+    // productCard.innerHTML = createMarkup(data.results);
+    //if (data.results) {
+    //  checkIsItemInCart()
+    //}
+    //const productCards = document.querySelectorAll('.js-card');
+    //console.log("Number of product cards:", productCards.length);
 
     productCard.addEventListener('click', (event) => {
       const card = event.target.closest('.js-card');
@@ -46,8 +49,28 @@ function disabledBtn(btn) {
   btn.setAttribute("disabled", "disabled")
 };
 
+async function checkIsItemInCart() {
+  const cartItems = JSON.parse(localStorage.getItem("cartData"))
+  const itemsOnPage = document.querySelectorAll('.js-card')
+  const itemsArr = Array.from(itemsOnPage)
 
-export function createMarkup(arr) {
+  itemsArr.forEach(item => {
+    const itemId = item.dataset.id
+    cartItems.forEach(id => {
+      console.log(id === itemId)
+      if (itemId === id) {
+        const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`)
+        console.log(matchedItem)
+        matchedItem.classList.add('added')
+        matchedItem.setAttribute("disabled", "disabled")
+      }
+    })
+  })
+}
+
+
+function createMarkup(arr) {
+
   return arr
     .map(
       ({ img, _id, name, price, size, category, popularity }) => `
@@ -64,7 +87,7 @@ export function createMarkup(arr) {
             </div>
             <div class="container-price">
               <p class="item-price">$${price}</p>
-              <button type="button" class="btn-item js-btn">
+              <button type="button" class="btn-item js-btn" data-id="${_id}">
                 <svg class="product-button-icon icon-cart" width="18" height="18">
                   <use href="${icons}#icon-shoping-cart"></use>
                 </svg>
@@ -78,3 +101,5 @@ export function createMarkup(arr) {
     )
     .join('');
 }
+
+export{createProductsMarkup, createMarkup, checkIsItemInCart}
