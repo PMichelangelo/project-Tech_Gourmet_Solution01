@@ -27,17 +27,9 @@ export async function createProductsMarkup() {
 
         if (btn) {
           console.log("Button clicked within the product card");
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
-          updateCartCounterOnLoad();
+          addToCart(productId)
+          updateCartCounterOnLoad()
+          disabledBtn(btn)
         } else {
           openModal(productId);
         }
@@ -46,6 +38,12 @@ export async function createProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
+}
+
+function disabledBtn(btn) {
+  checkIfProductInCart()
+  btn.classList.add('added')
+  btn.setAttribute("disabled", "disabled")
 };
 
 

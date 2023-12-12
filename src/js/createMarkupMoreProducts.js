@@ -31,17 +31,9 @@ export async function appendPopularProductsMarkup() {
 
         if (btn) {
           console.log("Button clicked within the product card");
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
-          updateCartCounterOnLoad();
+          addToCart(productId)
+          updateCartCounterOnLoad()
+          disabledBtn(btn)
         } else {
           openModal(productId);
         }
@@ -50,7 +42,12 @@ export async function appendPopularProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-}
+
+  function disabledBtn(btn) {
+    checkIfProductInCart()
+    btn.classList.add('added')
+    btn.setAttribute("disabled", "disabled")
+  }};
 
 
 
@@ -112,7 +109,6 @@ export async function appendDiscountProductsMarkup() {
       'beforeend',
       createDiscountMarkup(data)
     );
-
     refs.discountProductCards.addEventListener('click', (event) => {
       const card = event.target.closest('.discount-product-card');
       const btn = event.target.closest('.discount-product-card-btn');
@@ -122,17 +118,9 @@ export async function appendDiscountProductsMarkup() {
 
         if (btn) {
           console.log("Button clicked within the product card");
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
-          updateCartCounterOnLoad();
+          addToCart(productId)
+          updateCartCounterOnLoad()
+          disabledBtn(btn)
         } else {
           openModal(productId);
         }
@@ -141,7 +129,12 @@ export async function appendDiscountProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-};
+}
+  function disabledBtn(btn) {
+    checkIfProductInCart()
+    btn.classList.add('added')
+    btn.setAttribute("disabled", "disabled")
+  };
 
 function createDiscountMarkup(results) {
   const limitedResults = results.slice(0, 2);
