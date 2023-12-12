@@ -22,15 +22,19 @@ function removeFromCart(productId) {
 
 function updateCardState(productId) {
   const cardElement = document.querySelector(`.js-card[data-id='${productId}']`);
-  const btnElement = document.querySelector(`.js-btn[data-id='${productId}']`);
+  const btnElement = document.querySelectorAll(`.js-btn[data-id='${productId}']`);
 
-  if (checkIfProductInCart(productId)) {
-    btnElement.classList.add('added');
-    btnElement.setAttribute('disabled', 'disabled');
+  const btnElementArr = Array.from(btnElement)
+  console.log(productId)
+  btnElementArr.forEach((btn) => {
+    if (checkIfProductInCart(productId)) {
+    btn.classList.add('added');
+    btn.setAttribute('disabled', 'disabled');
   } else {
-    btnElement.classList.remove('added');
-    btnElement.removeAttribute('disabled');
+    btn.classList.remove('added');
+    btn.removeAttribute('disabled');
   }
+  })
 }
 
 export {

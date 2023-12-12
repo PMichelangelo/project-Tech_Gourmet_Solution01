@@ -14,6 +14,9 @@ import { save, load } from "./storage.js";
 
 import { getLimit, getServerProducts } from "./fetchProducts.js";
 
+import { checkIsItemInCart } from "./createMarkup.js";
+
+
 function createMarkupEllipsisOnce(amountOfPages) {
     return `<li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">1</button></li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">2</button></li>
@@ -34,7 +37,7 @@ function one(paginationPages, e) {
     e.currentTarget.disabled = true;
     let currentPage;
     document.querySelectorAll(".pagination-btn").forEach((btn) => {
-        if (btn.classList.contains("pagination-btn-active")) { 
+        if (btn.classList.contains("pagination-btn-active")) {
             currentPage = Number(btn.textContent);
         }
     })
@@ -42,7 +45,8 @@ function one(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-        refs.productCard.innerHTML = markup;
+      refs.productCard.innerHTML = markup;
+
         refs.pagination.classList.remove("filters-visually-hidden");
         console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
@@ -70,7 +74,7 @@ function two(e) {
     e.currentTarget.disabled = true;
     let currentPage;
     document.querySelectorAll(".pagination-btn").forEach((btn) => {
-        if (btn.classList.contains("pagination-btn-active")) { 
+        if (btn.classList.contains("pagination-btn-active")) {
             currentPage = Number(btn.textContent);
         }
     })
@@ -142,7 +146,7 @@ function four(paginationPages, e) {
     e.currentTarget.disabled = true;
     let currentPage;
     document.querySelectorAll(".pagination-btn").forEach((btn) => {
-        if (btn.classList.contains("pagination-btn-active")) { 
+        if (btn.classList.contains("pagination-btn-active")) {
             currentPage = Number(btn.textContent);
         }
     })
@@ -150,7 +154,8 @@ function four(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-        refs.productCard.innerHTML = markup;
+      refs.productCard.innerHTML = markup;
+      checkIsItemInCart()
         refs.pagination.classList.remove("filters-visually-hidden");
         console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
@@ -160,7 +165,7 @@ function four(paginationPages, e) {
             refs.paginationBtnList.innerHTML = createMarkupEllipsisOnce(paginationPages);
         } else if (((page - 1) < (paginationPages - 1)) && document.querySelector(".pag-middle-btn")) {
             document.querySelector(".pag-middle-btn").textContent = Number(document.querySelector(".pag-middle-btn").textContent) + 1;
-        } 
+        }
         document.querySelectorAll(".pagination-btn").forEach((btn) => {
             if (btn.classList.contains("pagination-btn-active")) {
                 btn.classList.remove("pagination-btn-active");
@@ -186,7 +191,7 @@ function five(paginationPages, e) {
     e.currentTarget.disabled = true;
     let currentPage;
     document.querySelectorAll(".pagination-btn").forEach((btn) => {
-        if (btn.classList.contains("pagination-btn-active")) { 
+        if (btn.classList.contains("pagination-btn-active")) {
             currentPage = Number(btn.textContent);
         }
     })
@@ -194,7 +199,8 @@ function five(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage - 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-        refs.productCard.innerHTML = markup;
+      refs.productCard.innerHTML = markup;
+      checkIsItemInCart()
         refs.pagination.classList.remove("filters-visually-hidden");
         console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
@@ -204,7 +210,7 @@ function five(paginationPages, e) {
             refs.paginationBtnList.innerHTML = createMarkupEllipsisOnce(paginationPages);
         } else if (page > 2 && document.querySelector(".pag-middle-btn")) {
             document.querySelector(".pag-middle-btn").textContent = Number(document.querySelector(".pag-middle-btn").textContent) - 1;
-        } 
+        }
         document.querySelectorAll(".pagination-btn").forEach((btn) => {
             if (btn.classList.contains("pagination-btn-active")) {
                 btn.classList.remove("pagination-btn-active");

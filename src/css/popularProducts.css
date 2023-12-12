@@ -256,6 +256,11 @@
   fill: #6d8434;
   /* stroke: currentColor;
   fill: currentColor; */
+  opacity: 1;
+}
+
+.products-card-btn.added .popular-button-icon {
+  opacity: 0;
 }
 
 .products-card-btn:hover,

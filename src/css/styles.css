@@ -47,6 +47,11 @@ body {
   box-sizing: border-box;
 }
 
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
@@ -112,6 +117,7 @@ body {
     max-width: 1440px;
     width: 100%;
     padding: 0;
+    transition: opacity 300ms ease-in;
   }
 }
 

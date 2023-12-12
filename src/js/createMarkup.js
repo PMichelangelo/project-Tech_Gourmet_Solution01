@@ -1,6 +1,6 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
-import { addToCart } from "./cartStorage";
+import { addToCart,updateCardState  } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import { checkIfProductInCart } from "./modal";
 import icons from '../img/icons.svg'
@@ -33,15 +33,20 @@ async function createProductsMarkup() {
           addToCart(productId)
           updateCartCounterOnLoad()
           disabledBtn(btn)
+          updateCardState(productId)
         } else {
           openModal(productId);
         }
       }
     });
+    //document.querySelector('.js-products-container').classList.remove('hidden')
   } catch (error) {
     console.error(error);
   }
+
 }
+
+
 
 function disabledBtn(btn) {
   checkIfProductInCart()
@@ -102,4 +107,4 @@ function createMarkup(arr) {
     .join('');
 }
 
-export{createProductsMarkup, createMarkup, checkIsItemInCart}
+export{createProductsMarkup, createMarkup, checkIsItemInCart,disabledBtn}

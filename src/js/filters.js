@@ -63,11 +63,13 @@ function filterProducts() {
               refs.productCard.innerHTML = createMarkup(results);
               createPagination(totalPages, page, perPage);
               checkIsItemInCart()
+              showContent()
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
           createPagination(totalPages, page, perPage);
           checkIsItemInCart()
+          showContent()
         }
     })
 
@@ -97,11 +99,16 @@ function onSubmit (event) {
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-        refs.productCard.innerHTML = createMarkup(results);
+      refs.productCard.innerHTML = createMarkup(results);
+      showContent()
         createPagination(totalPages, page, perPage);
         refs.form.reset();
         refs.submitBtn.disabled = false;
     })
+}
+
+function showContent() {
+  document.querySelector('.js-products-container').classList.remove('hidden')
 }
 
 export {

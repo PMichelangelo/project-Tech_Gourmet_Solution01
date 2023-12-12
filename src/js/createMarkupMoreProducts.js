@@ -4,9 +4,10 @@ import {
 } from './fetchProducts';
 import icons from '../img/icons.svg'
 import { openModal } from './modal';
-import { addToCart } from "./cartStorage";
+import { addToCart, updateCardState } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import { checkIfProductInCart } from "./modal";
+import { checkIsItemInCart,disabledBtn } from './createMarkup';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -22,6 +23,8 @@ export async function appendPopularProductsMarkup() {
       'beforeend',
       createPopularMarkup(data.results)
     );
+    checkIsItemInCart()
+
     refs.popularProductCards.addEventListener('click', (event) => {
       const card = event.target.closest('.aside-product-card');
       const btn = event.target.closest('.products-card-btn');
@@ -34,6 +37,7 @@ export async function appendPopularProductsMarkup() {
           addToCart(productId)
           updateCartCounterOnLoad()
           disabledBtn(btn)
+          updateCardState(productId)
         } else {
           openModal(productId);
         }
@@ -42,12 +46,7 @@ export async function appendPopularProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-
-  function disabledBtn(btn) {
-    checkIfProductInCart()
-    btn.classList.add('added')
-    btn.setAttribute("disabled", "disabled")
-  }};
+};
 
 
 
@@ -57,7 +56,7 @@ function createPopularMarkup(results) {
   return limitedResults
     .map(
       ({ _id, img, name, category, size, popularity }) =>
-        `<div class="container-for-popular-items" id="${_id}">
+        `<div class="container-for-popular-items js-card" id="${_id}">
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
@@ -88,9 +87,12 @@ function createPopularMarkup(results) {
                   </div>
                   </div>
                   <div class="product-card-prices-btn">
-                      <button type="button" class="products-card-btn" id="${_id}">
-                          <svg width="16" height="16">
+                      <button type="button" class="products-card-btn js-btn" id="${_id}" data-id="${_id}">
+                          <svg width="16" height="16" class="product-button-icon icon-cart">
                               <use class="popular-button-icon" href="${icons}#icon-shop"></use>
+                          </svg>
+                          <svg class="product-button-icon icon-mark" width="18" height="18">
+                              <use href="${icons}#icon-check"></use>
                           </svg>
                       </button>
                   </div>
@@ -121,6 +123,7 @@ export async function appendDiscountProductsMarkup() {
           addToCart(productId)
           updateCartCounterOnLoad()
           disabledBtn(btn)
+          updateCardState()
         } else {
           openModal(productId);
         }
@@ -129,12 +132,7 @@ export async function appendDiscountProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-}
-  function disabledBtn(btn) {
-    checkIfProductInCart()
-    btn.classList.add('added')
-    btn.setAttribute("disabled", "disabled")
-  };
+};
 
 function createDiscountMarkup(results) {
   const limitedResults = results.slice(0, 2);
@@ -155,12 +153,14 @@ function createDiscountMarkup(results) {
                   </div>
                   <div class="product-card-prices-btn">
                   <h3 class="discount-product-card-name">${name}</h3>
-
                  <div class="discount-price-icon-container">
                       <p class="product-card-price">$${price}</p>
-                      <button type="button" class="discount-product-card-btn" id="${_id}">
-                          <svg width="18" height="18">
+                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}" data-id="${_id}>
+                          <svg width="18" height="18" class="product-button-icon icon-cart">
                               <use class="discount-button-icon" href="${icons}#icon-cart"></use>
+                          </svg>
+                          <svg class="product-button-icon icon-mark" width="18" height="18">
+                              <use href="${icons}#icon-check"></use>
                           </svg>
                       </button>
                   </div>
