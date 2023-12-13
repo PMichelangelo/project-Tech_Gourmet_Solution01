@@ -25,16 +25,22 @@ function updateCardState(productId) {
   const btnElement = document.querySelectorAll(`.js-btn[data-id='${productId}']`);
 
 
-  if (checkIfProductInCart(productId)) {
-    btnElement.classList.add('added');
-  } else {
-    btnElement.classList.remove('added');
-  }
-}
+  const btnElementArr = Array.from(btnElement)
+  console.log(productId)
+  btnElementArr.forEach((btn) => {
+    if (checkIfProductInCart(productId)) {
+      btn.classList.add('added');
+      //btn.setAttribute('disabled', 'disabled');
+    } else {
+      btn.classList.remove('added');
+      //btn.removeAttribute('disabled');
+    }
+  })
+};
 
 export {
   initCartStorage,
   addToCart,
   removeFromCart,
   updateCardState
-};
+}

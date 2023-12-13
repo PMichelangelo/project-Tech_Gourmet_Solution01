@@ -4,11 +4,9 @@ import {
 } from './fetchProducts';
 import icons from '../img/icons.svg';
 import { openModal } from './modal';
-
-import { addToCart } from "./cartStorage";
-import { updateCartCounterOnLoad } from "./updateCartCounter";
-import { checkIfProductInCart } from "./modal";
-import { removeFromCart } from './cartStorage';
+import { addToCart, updateCardState } from './cartStorage';
+import { updateCartCounterOnLoad } from './updateCartCounter';
+import { checkIsItemInCart, toggleBtn} from './createMarkup';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -24,7 +22,7 @@ export async function appendPopularProductsMarkup() {
       'beforeend',
       createPopularMarkup(data.results)
     );
-    checkIsItemInCart();
+    //checkIsItemInCart();
 
     refs.popularProductCards.addEventListener('click', event => {
       const card = event.target.closest('.aside-product-card');
@@ -34,19 +32,12 @@ export async function appendPopularProductsMarkup() {
         console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log("Button clicked within the product card");
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
+          console.log('Button clicked within the product card');
+          toggleBtn(productId)
+          updateCardState(productId);
           updateCartCounterOnLoad();
-          
+          checkIsItemInCart()
+
         } else {
           openModal(productId);
         }
@@ -128,18 +119,11 @@ export async function appendDiscountProductsMarkup() {
         console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log("Button clicked within the product card");
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
+          console.log('Button clicked within the product card');
+          toggleBtn(productId)
+          updateCardState(productId);
           updateCartCounterOnLoad();
+          checkIsItemInCart()
         } else {
           openModal(productId);
         }

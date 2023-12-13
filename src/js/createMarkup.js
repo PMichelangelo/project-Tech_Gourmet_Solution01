@@ -1,9 +1,8 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
-import { addToCart,updateCardState  } from "./cartStorage";
+import { addToCart,updateCardState, removeFromCart  } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import { checkIfProductInCart } from "./modal";
-import { removeFromCart } from './cartStorage';
 import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
@@ -30,19 +29,12 @@ async function createProductsMarkup() {
         console.log("Product clicked:", productId);
 
         if (btn) {
-          console.log("Button clicked within the product card");
-
-          const isProductInCart = checkIfProductInCart(productId);
-
-          if (isProductInCart) {
-            removeFromCart(productId);
-            btn.classList.remove('added');
-          } else {
-            addToCart(productId);
-            btn.classList.add('added');
-          }
-
+          toggleBtn(productId)
+          updateCardState(productId);
           updateCartCounterOnLoad();
+          //disabledBtn(btn);
+          checkIsItemInCart()
+
         } else {
           openModal(productId);
         }
@@ -53,6 +45,25 @@ async function createProductsMarkup() {
     console.error(error);
   }
 };
+
+// function disabledBtn(btn) {
+//  {
+//     btn.classList.remove('added')
+//   } else {
+//     btn.classList.add('added')
+//   }
+
+  function toggleBtn(productId) {
+    const storage = JSON.parse(localStorage.getItem("cartData"));
+    const cardStorage = Array.from(storage)
+
+    if (cardStorage.includes(productId)) {
+      removeFromCart(productId)
+    } else {
+      addToCart(productId)
+    }
+  }
+
 
 async function checkIsItemInCart() {
   const cartItems = JSON.parse(localStorage.getItem("cartData"))
@@ -67,7 +78,7 @@ async function checkIsItemInCart() {
         const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`)
         console.log(matchedItem)
         matchedItem.classList.add('added')
-        matchedItem.setAttribute("disabled", "disabled")
+        //matchedItem.setAttribute("disabled", "disabled")
       }
     })
   })
@@ -107,4 +118,4 @@ function createMarkup(arr) {
     .join('');
 }
 
-export{createProductsMarkup, createMarkup, checkIsItemInCart,disabledBtn}
+export{createProductsMarkup, createMarkup, checkIsItemInCart, toggleBtn}
