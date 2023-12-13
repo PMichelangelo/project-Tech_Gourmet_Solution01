@@ -85,11 +85,11 @@ function createPopularMarkup(results) {
                   </div>
                   </div>
                   <div class="product-card-prices-btn">
-                      <button type="button" class="products-card-btn js-btn" id="${_id}" data-id="${_id}">
+                      <button type="button" class="products-card-btn js-btn" data-id="${_id}" id="${_id}" >
                           <svg width="16" height="16" class="product-button-icon icon-cart">
                               <use class="popular-button-icon" href="${icons}#icon-shop"></use>
                           </svg>
-                          <svg class="product-button-icon icon-mark" width="18" height="18">
+                          <svg class="product-button-icon icon-mark" width="12" height="12">
                               <use href="${icons}#icon-check"></use>
                           </svg>
                       </button>
@@ -155,7 +155,7 @@ function createDiscountMarkup(results) {
                   <h3 class="discount-product-card-name">${name}</h3>
                  <div class="discount-price-icon-container">
                       <p class="product-card-price">$${price}</p>
-                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}" data-id="${_id}>
+                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}" data-id="${_id}">
                           <svg width="18" height="18" class="product-button-icon icon-cart">
                               <use class="discount-button-icon" href="${icons}#icon-cart"></use>
                           </svg>
