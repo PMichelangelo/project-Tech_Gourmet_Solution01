@@ -74,11 +74,6 @@
   width: calc(100%);
 }
 
-.filters-sorting {
-  background-color: #FAFAFA;
-  border: 0;
-}
-
 /* .filters-options {
       position: absolute;
       top: calc(100% + 8px);
@@ -329,7 +324,7 @@ section.section-filters {
     justify-content: center;
     gap: 80px;
     margin-top: 50px;
-    margin-bottom: 0;
+    margin-bottom: 145px;
   }
 
   .pagination-btn-list {

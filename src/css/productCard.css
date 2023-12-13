@@ -246,6 +246,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .products-section {
+    padding-bottom: 100px;
+  }
   .product-list {
     flex-wrap: wrap;
     gap: 32px 32px;
@@ -262,10 +265,6 @@
   .products-container {
     padding-bottom: 100px;
   }
-
-  .products-pagination-content {
-    padding-bottom: 100px;
-  }
 }
 @media screen and (min-width: 1440px) {
   .product-item {
@@ -275,12 +274,6 @@
   }
   .product-list {
     gap: 40px 20px;
-  }
-
-  .products-pagination-content {
-    height: 1310px;
-    width: 925px;
-    padding-bottom: 0;
   }
 
   .products-container {

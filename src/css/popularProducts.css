@@ -320,7 +320,7 @@
   }
 
   .discount-products-title {
-    margin-top: 64px;
+    padding-top: 19px;
     font-size: 28px;
     line-height: 1.14;
   }
@@ -382,7 +382,7 @@
   }
 
   .discount-products-title {
-    margin-top: 40px;
+    padding-top: 40px;
   }
 
   .container-discount-product-cards {
