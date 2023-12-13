@@ -89,7 +89,8 @@
 }
 
 .aside-product-card {
-  width: 311px;
+  width: 335px;
+  height: 98px;
   border-radius: 10px;
   background: #fafafa;
   padding: 12px;
@@ -98,7 +99,8 @@
 }
 
 .discount-product-card {
-  width: 303px;
+  width: 335px;
+  height: 232px;
   border-radius: 15px;
   background: #fafafa;
   padding: 16px;
@@ -312,11 +314,13 @@
   }
 
   .aside-product-card {
-    width: 251px;
+    width: 275px;
+    height: 98px;
   }
 
   .discount-product-card {
-    width: 304px;
+    width: 336px;
+    height: 232px;
   }
 
   .discount-products-title {
@@ -365,6 +369,7 @@
     column-gap: 20px;
     flex-direction: column;
     width: 100%;
+    /* max-width: 275px; */
   }
 
   .container-for-discount-items {
@@ -407,6 +412,7 @@
   }
 
   .aside-product-card {
+    width: 275px;
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -417,6 +423,8 @@
   }
 
   .discount-product-card {
+    width: 275px;
+    height: 232px;
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 

@@ -6,7 +6,7 @@ import icons from '../img/icons.svg';
 import { openModal } from './modal';
 import { addToCart, updateCardState } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
-import { checkIsItemInCart, toggleBtn} from './createMarkup';
+import { checkIsItemInCart, toggleBtn } from './createMarkup';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -33,11 +33,10 @@ export async function appendPopularProductsMarkup() {
 
         if (btn) {
           console.log('Button clicked within the product card');
-          toggleBtn(productId)
+          toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
-          checkIsItemInCart()
-
+          checkIsItemInCart();
         } else {
           openModal(productId);
         }
@@ -45,8 +44,8 @@ export async function appendPopularProductsMarkup() {
     });
   } catch (error) {
     console.error(error);
-  }};
-
+  }
+}
 
 function createPopularMarkup(results) {
   const limitedResults = results.slice(0, 5);
@@ -70,7 +69,9 @@ function createPopularMarkup(results) {
                   <div class="products-card-description">
                       <div class="aside-card-description">
                           <p class="descr-p">Category:</p>
-                          <p class="card-descr-value">${category}</p>
+                          <p class="card-descr-value">${category
+                            .replace('_', ' ')
+                            .replace('_', ' ')}</p>
                       </div>
                       <div class="size-popularity-container">
                       <div class="aside-card-description">
@@ -120,10 +121,10 @@ export async function appendDiscountProductsMarkup() {
 
         if (btn) {
           console.log('Button clicked within the product card');
-          toggleBtn(productId)
+          toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
-          checkIsItemInCart()
+          checkIsItemInCart();
         } else {
           openModal(productId);
         }
@@ -132,7 +133,7 @@ export async function appendDiscountProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 function createDiscountMarkup(results) {
   const limitedResults = results.slice(0, 2);
