@@ -22,7 +22,7 @@ export async function appendPopularProductsMarkup() {
       'beforeend',
       createPopularMarkup(data.results)
     );
-    //checkIsItemInCart();
+    checkIsItemInCart();
 
     refs.popularProductCards.addEventListener('click', event => {
       const card = event.target.closest('.aside-product-card');
@@ -54,7 +54,7 @@ function createPopularMarkup(results) {
   return limitedResults
     .map(
       ({ _id, img, name, category, size, popularity }) =>
-        `<div class="container-for-popular-items js-card" id="${_id}">
+        `<div class="container-for-popular-items js-card" data-id="${_id}" id="${_id}">
           <div class="aside-product-card" id="${_id}">
                   <div class="aside-card-img">
                       <img class="aside-img"
@@ -139,7 +139,7 @@ function createDiscountMarkup(results) {
   return limitedResults
     .map(
       ({ _id, name, img, price }) =>
-        `<div class="container-for-discount-items js-card" id="${_id}">
+        `<div class="container-for-discount-items js-card" data-id="${_id}" id="${_id}">
           <div class="discount-product-card" id="${_id}">
                   <div class="discount-product-card-img">
                       <img class="discount-card-img"

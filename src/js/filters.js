@@ -96,7 +96,8 @@ function onSubmit (event) {
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-        refs.productCard.innerHTML = createMarkup(results);
+      refs.productCard.innerHTML = createMarkup(results);
+      checkIsItemInCart();
         createPagination(totalPages, page, perPage);
         refs.submitBtn.disabled = false;
     })
