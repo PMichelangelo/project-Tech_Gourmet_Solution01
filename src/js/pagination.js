@@ -286,7 +286,6 @@ function createPagination(totalPages, page, perPage) {
     refs.paginationBtnList.removeEventListener("click", boundSix);
 
     paginationPages = Math.ceil(totalPages / perPage);
-    console.log("paginationPages:", paginationPages);
 
     boundOne = one.bind(null, paginationPages);
     boundTwo = two.bind(null);
