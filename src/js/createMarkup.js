@@ -3,6 +3,7 @@ import { openModal } from "./modal";
 import { addToCart } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import { checkIfProductInCart } from "./modal";
+import { removeFromCart } from './cartStorage';
 import icons from '../img/icons.svg'
 
 const productCard = document.querySelector('.product-list');
@@ -30,9 +31,17 @@ async function createProductsMarkup() {
 
         if (btn) {
           console.log("Button clicked within the product card");
-          addToCart(productId)
-          updateCartCounterOnLoad()
-          disabledBtn(btn)
+          const isProductInCart = checkIfProductInCart(productId);
+
+          if (isProductInCart) {
+            removeFromCart(productId);
+            btn.classList.remove('added');
+          } else {
+            addToCart(productId);
+            btn.classList.add('added');
+          }
+
+          updateCartCounterOnLoad();
         } else {
           openModal(productId);
         }
@@ -41,12 +50,6 @@ async function createProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-}
-
-function disabledBtn(btn) {
-  checkIfProductInCart()
-  btn.classList.add('added')
-  btn.setAttribute("disabled", "disabled")
 };
 
 async function checkIsItemInCart() {

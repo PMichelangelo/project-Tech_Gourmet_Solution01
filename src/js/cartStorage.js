@@ -26,10 +26,8 @@ function updateCardState(productId) {
 
   if (checkIfProductInCart(productId)) {
     btnElement.classList.add('added');
-    btnElement.setAttribute('disabled', 'disabled');
   } else {
     btnElement.classList.remove('added');
-    btnElement.removeAttribute('disabled');
   }
 }
 
