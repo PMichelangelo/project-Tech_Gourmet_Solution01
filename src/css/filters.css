@@ -74,7 +74,7 @@
   width: calc(100%);
 }
 
-/* .filters-options {
+.filters-options {
       position: absolute;
       top: calc(100% + 8px);
       z-index: 1;
@@ -86,9 +86,9 @@
       border-radius: 15px;
       background: #FFF;
       box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04), 0px 20px 69px 0px rgba(0, 0, 0, 0.07);
-  } */
+  }
 
-.filters-options-list {
+/* .filters-options-list {
   text-align: left;
 }
 
@@ -109,7 +109,7 @@
   background: #fff;
   box-shadow: 0px 4px 11.212px 0px rgba(0, 0, 0, 0.04),
     0px 20px 69px 0px rgba(0, 0, 0, 0.07);
-}
+} */
 
 .filters-option {
   color: rgba(1, 1, 1, 0.5);

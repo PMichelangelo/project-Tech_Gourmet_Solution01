@@ -16,7 +16,6 @@ const refs = {
     selectDropdown: document.querySelector(".filters-options"),
     selectedCategory: document.querySelector(".filters-select-input"),
     productCard: document.querySelector(".product-list"),
-    selectList: document.querySelector(".filters-options-list"),
     pagination: document.querySelector(".products-pagination"),
 }
 
@@ -32,14 +31,14 @@ async function filterCategories () {
             return `<li class="filters-option" data-value="${el}">${newEl}</li>`
         }).join("");
         const str = strCategories + `<li class="filters-option" data-value="null">Show all</li>`
-        refs.selectList.insertAdjacentHTML("beforeend", str);
+        refs.selectDropdown.insertAdjacentHTML("beforeend", str);
 
         refs.selectBtn.addEventListener("click", e => {
             e.stopPropagation();
             refs.selectDropdown.classList.toggle("filters-visually-hidden");
         })
 
-        refs.selectList.addEventListener("click", e => {
+        refs.selectDropdown.addEventListener("click", e => {
             const categoryForUser = e.target.textContent;
             const categoryForUs = e.target.dataset.value;
             refs.selectBtn.textContent = categoryForUser;
