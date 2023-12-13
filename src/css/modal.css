@@ -148,20 +148,22 @@
 
   .modal-button.added-to-cart {
     background: var(--white-txt);
-    .modal-button-text {
-      color: var(--green-bg);
-    }
+  }
+  .modal-button.added-to-cart .modal-button-text {
+    color: var(--green-bg);
   }
 
   .modal-button.added-to-cart:focus,
   .modal-button.added-to-cart:hover {
     stroke: var(--green-bg);
     background: var(--white-txt);
-    .modal-button-text {
-      color: var(--green-bg);
-      transition: background-color 0.3s ease, color 0.3s ease,
-        border-radius 0.3s ease;
-    }
+  }
+
+  .modal-button.added-to-cart .modal-button-text:focus,
+  .modal-button.added-to-cart .modal-button-text:hover {
+    color: var(--green-bg);
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-radius 0.3s ease;
   }
 
   .modal-button-text {
