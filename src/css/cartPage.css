@@ -80,6 +80,7 @@
   text-transform: uppercase;
 }
 
+
 .card-page-modal-text {
   text-align: center;
   color: rgba(1, 1, 1, 0.7);
@@ -157,7 +158,6 @@
 
   scrollbar-color: #888 #eee;
   scrollbar-width: thin;
-  transition: all 0.3s ease 0s;
 }
 
 ::-webkit-scrollbar {
@@ -174,10 +174,6 @@
   background-color: inherit;
 }
 
-.cart-list-total {
-  transition: all 0.3s ease 0s;
-}
-
 .cart-order-item {
   display: flex;
   justify-content: center;
@@ -185,8 +181,6 @@
   flex-direction: column;
 
   flex: 1 0 0;
-
-  transition: all 0.4s ease 0s;
 }
 
 .cart-remove-btn {

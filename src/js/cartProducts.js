@@ -1,6 +1,7 @@
 import { getServerProductsById } from './fetchProducts';
 import { cartOrder } from './createCartMarkup';
-import shoppingBasket from '../img/shopping-basket.png';
+import shoppingBasket from '../img/shopping-basket.png'
+
 
 const emptyCart = document.querySelector('.cart-empty'),
   cartListTotal = document.querySelector('.cart-list-total'),
@@ -70,4 +71,8 @@ async function updateTotalPrice() {
   totalPriceSpan.textContent = `$${totalPrice}`;
 }
 
-export { getCardProducts, calculateTotalPrice, updateTotalPrice };
+export {
+  getCardProducts,
+  calculateTotalPrice,
+  updateTotalPrice
+};
