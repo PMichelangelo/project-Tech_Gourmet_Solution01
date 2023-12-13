@@ -31,7 +31,13 @@ function removeProduct(event) {
       removeFromCart(productId);
       updateCartCounterOnLoad();
 
-      cartEl.style.display = 'none';
+      cartEl.style.opacity = '0';
+      function none() {
+        cartEl.style.display = 'none';
+      }
+
+      setTimeout(none, 500);
+      // cartEl.style.display = 'none';
 
       calculateTotalPrice().then(data => (total.textContent = `$${data}`));
 
@@ -70,7 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //   card.style.opacity = 0;
     //   card.style.transition = 'opacity 0.5s';
     // });
-    nullCart();
+    const cartsTotal = document.querySelector('.cart-list-total');
+    cartsTotal.style.opacity = '0';
+    setTimeout(nullCart, 350);
+    // nullCart();
   });
 });
 

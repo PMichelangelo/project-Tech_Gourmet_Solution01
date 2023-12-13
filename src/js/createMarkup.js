@@ -1,6 +1,6 @@
 import { getServerProducts } from "./fetchProducts";
 import { openModal } from "./modal";
-import { addToCart } from "./cartStorage";
+import { addToCart,updateCardState  } from "./cartStorage";
 import { updateCartCounterOnLoad } from "./updateCartCounter";
 import { checkIfProductInCart } from "./modal";
 import { removeFromCart } from './cartStorage';
@@ -31,6 +31,7 @@ async function createProductsMarkup() {
 
         if (btn) {
           console.log("Button clicked within the product card");
+
           const isProductInCart = checkIfProductInCart(productId);
 
           if (isProductInCart) {
@@ -47,6 +48,7 @@ async function createProductsMarkup() {
         }
       }
     });
+    //document.querySelector('.js-products-container').classList.remove('hidden')
   } catch (error) {
     console.error(error);
   }
@@ -105,4 +107,4 @@ function createMarkup(arr) {
     .join('');
 }
 
-export{createProductsMarkup, createMarkup, checkIsItemInCart}
+export{createProductsMarkup, createMarkup, checkIsItemInCart,disabledBtn}

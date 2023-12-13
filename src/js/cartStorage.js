@@ -22,7 +22,8 @@ function removeFromCart(productId) {
 
 function updateCardState(productId) {
   const cardElement = document.querySelector(`.js-card[data-id='${productId}']`);
-  const btnElement = document.querySelector(`.js-btn[data-id='${productId}']`);
+  const btnElement = document.querySelectorAll(`.js-btn[data-id='${productId}']`);
+
 
   if (checkIfProductInCart(productId)) {
     btnElement.classList.add('added');
