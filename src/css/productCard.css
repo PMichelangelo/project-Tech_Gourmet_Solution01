@@ -265,6 +265,10 @@
   .products-container {
     padding-bottom: 100px;
   }
+
+  .products-pagination-content {
+    margin-bottom: 100px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .product-item {
@@ -274,6 +278,12 @@
   }
   .product-list {
     gap: 40px 20px;
+  }
+
+  .products-pagination-content {
+    width: 925px;
+    height: 1310px;
+    margin-bottom: 0;
   }
 
   .products-container {

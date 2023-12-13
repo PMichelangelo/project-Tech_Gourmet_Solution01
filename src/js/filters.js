@@ -60,16 +60,14 @@ function filterProducts() {
         const maxPage = Math.ceil(totalPages / perPage);
         if (maxPage < page) {
             getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
-              refs.productCard.innerHTML = createMarkup(results);
-              createPagination(totalPages, page, perPage);
-              checkIsItemInCart()
-              showContent()
+                refs.productCard.innerHTML = createMarkup(results);
+                createPagination(totalPages, page, perPage);
+                checkIsItemInCart();
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
-          createPagination(totalPages, page, perPage);
-          checkIsItemInCart()
-          showContent()
+            createPagination(totalPages, page, perPage);
+            checkIsItemInCart();
         }
     })
 
@@ -93,22 +91,15 @@ function onSubmit (event) {
             </li>`;
             refs.productCard.innerHTML = str;
             refs.productCard.classList.add("product-list-not-found");
-            refs.form.reset();
-            refs.selectBtn.textContent = "Categories";
+            // refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-      refs.productCard.innerHTML = createMarkup(results);
-      showContent()
+        refs.productCard.innerHTML = createMarkup(results);
         createPagination(totalPages, page, perPage);
-        refs.form.reset();
         refs.submitBtn.disabled = false;
     })
-}
-
-function showContent() {
-  document.querySelector('.js-products-container').classList.remove('hidden')
 }
 
 export {
