@@ -61,13 +61,12 @@
   white-space: nowrap;
   display: flex;
   gap: 8px;
-  padding-bottom: 40px;
+  margin-bottom: 40px;
   width: 100%;
 }
 
 .item-name {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
   color: var(--black-txt);
   font-size: 18px;
   font-weight: 500;
@@ -88,6 +87,7 @@
 }
 
 .container-img {
+  margin-bottom: 20px;
   background-color: #e8e8e2;
   border-radius: 10px;
   display: flex;
@@ -145,6 +145,7 @@
     height: 356px;
   }
   .container-img {
+    margin-bottom: 20px;
     background-color: var(--white-txt);
     border-radius: 10px;
     display: flex;
@@ -166,11 +167,10 @@
     white-space: nowrap;
     display: flex;
     gap: 8px;
-    padding-bottom: 40px;
+    margin-bottom: 40px;
   }
   .item-name {
-    padding-top: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
     color: var(--black-txt);
     font-size: 18px;
     font-weight: 500;
