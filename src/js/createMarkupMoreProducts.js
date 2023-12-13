@@ -109,6 +109,8 @@ export async function appendDiscountProductsMarkup() {
       'beforeend',
       createDiscountMarkup(data)
     );
+    checkIsItemInCart();
+
     refs.discountProductCards.addEventListener('click', event => {
       const card = event.target.closest('.discount-product-card');
       const btn = event.target.closest('.discount-product-card-btn');
@@ -121,7 +123,8 @@ export async function appendDiscountProductsMarkup() {
           addToCart(productId);
           updateCartCounterOnLoad();
           disabledBtn(btn);
-          updateCardState();
+          updateCardState(productId);
+          console.log("iamtut")
         } else {
           openModal(productId);
         }
@@ -137,7 +140,7 @@ function createDiscountMarkup(results) {
   return limitedResults
     .map(
       ({ _id, name, img, price }) =>
-        `<div class="container-for-discount-items" id="${_id}">
+        `<div class="container-for-discount-items js-card" id="${_id}">
           <div class="discount-product-card" id="${_id}">
                   <div class="discount-product-card-img">
                       <img class="discount-card-img"
@@ -153,7 +156,7 @@ function createDiscountMarkup(results) {
                   <h3 class="discount-product-card-name">${name}</h3>
                  <div class="discount-price-icon-container">
                       <p class="product-card-price">$${price}</p>
-                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}">
+                      <button type="button" class="discount-product-card-btn js-btn" id="${_id}" data-id="${_id}>
                           <svg width="18" height="18" class="product-button-icon icon-cart">
                               <use class="discount-button-icon" href="${icons}#icon-cart"></use>
                           </svg>
