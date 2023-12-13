@@ -70,18 +70,18 @@ async function checkIsItemInCart() {
   const itemsOnPage = document.querySelectorAll('.js-card')
   const itemsArr = Array.from(itemsOnPage)
 
-  // itemsArr.forEach(item => {
-  //   const itemId = item.dataset.id
-  //   cartItems.forEach(id => {
-  //     console.log(id === itemId)
-  //     if (itemId === id) {
-  //       const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`)
-  //       console.log(matchedItem)
-  //       matchedItem.classList.add('added')
-  //       //matchedItem.setAttribute("disabled", "disabled")
-  //     }
-  //   })
-  // })
+  itemsArr.forEach(item => {
+    const itemId = item.dataset.id
+    cartItems.forEach(id => {
+      console.log(id === itemId)
+      if (itemId === id) {
+        const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`)
+        console.log(matchedItem)
+        matchedItem.classList.add('added')
+        //matchedItem.setAttribute("disabled", "disabled")
+      }
+    })
+  })
 }
 
 
