@@ -121,8 +121,7 @@ function outsideClickListener(event) {
         updateCardState(productId);
 
       }
-    });
-    const isProductInCart = checkIfProductInCart(productData._id);
+      const isProductInCart = checkIfProductInCart(productData._id);
     const buttonTextSpan = addToCartBtn.querySelector('.modal-button-text');
 
     if (isProductInCart) {
@@ -132,6 +131,7 @@ function outsideClickListener(event) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
+    });
   } catch (error) {
     console.log('Error fetching product:', error);
   }
