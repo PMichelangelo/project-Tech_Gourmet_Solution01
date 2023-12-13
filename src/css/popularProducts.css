@@ -239,21 +239,30 @@
   background-color: #586f1f;
 }
 
+.discount-product-card-btn.added .icon-cart {
+  opacity: 0;
+}
+
+.discount-product-card-btn.added .icon-mark {
+  opacity: 1;
+}
+
 .popular-button-icon {
   fill: #6d8434;
   /* stroke: currentColor;
   fill: currentColor; */
   opacity: 1;
 }
+.products-card-btn.added {
+  background-color: var(--green-bg);
+}
 
-.products-card-btn.added .popular-button-icon {
+.products-card-btn.added .icon-cart {
   opacity: 0;
 }
 
-.products-card-btn:hover,
-.products-card-btn:hover {
-  stroke: #e8e8e2;
-  background: #6d8434;
+.products-card-btn.added .icon-mark {
+  opacity: 1;
 }
 
 .discount-button-icon {
@@ -311,7 +320,7 @@
   }
 
   .discount-products-title {
-    padding-top: 19px;
+    margin-top: 64px;
     font-size: 28px;
     line-height: 1.14;
   }
@@ -373,7 +382,7 @@
   }
 
   .discount-products-title {
-    padding-top: 40px;
+    margin-top: 40px;
   }
 
   .container-discount-product-cards {

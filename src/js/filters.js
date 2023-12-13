@@ -17,6 +17,10 @@ const refs = {
     selectedCategory: document.querySelector(".filters-select-input"),
     productCard: document.querySelector(".product-list"),
     selectList: document.querySelector(".filters-options-list"),
+    pagination: document.querySelector(".products-pagination"),
+    sortingBtn: document.querySelector(".filters-sorting"),
+    sortingDropdown: document.querySelector(".sorting-options-list"),
+    selectedSorting: document.querySelector(".filters-sorting-input"),
 }
 
 
@@ -24,10 +28,7 @@ const refs = {
 async function filterCategories () {
     await getServerProductsCategories().then(data => {
         const strCategories = data.map(el => {
-            let newEl = el.replace(/_/g, " ");
-            if (newEl === "Breads & Bakery") {
-                newEl = newEl.replace(/&/g, "/")
-            }
+            const newEl = makeCategory(el);
             return `<li class="filters-option" data-value="${el}">${newEl}</li>`
         }).join("");
         const str = strCategories + `<li class="filters-option" data-value="null">Show all</li>`
@@ -38,6 +39,11 @@ async function filterCategories () {
             refs.selectDropdown.classList.toggle("filters-visually-hidden");
         })
 
+        refs.sortingBtn.addEventListener("click", () => {
+            e.stopPropagation();
+            refs.sortingDropdown.classList.toggle("filters-visually-hidden");
+        })
+
         refs.selectList.addEventListener("click", e => {
             const categoryForUser = e.target.textContent;
             const categoryForUs = e.target.dataset.value;
@@ -45,7 +51,17 @@ async function filterCategories () {
             refs.selectedCategory.value = categoryForUs;
         })
 
-        document.addEventListener("click", e => refs.selectDropdown.classList.add("filters-visually-hidden"))
+        refs.selectList.addEventListener("click", e => {
+            const sorting = e.target.textContent;
+            // const categoryForUs = e.target.dataset.value;
+            refs.sortingBtn.textContent = sorting;
+            // refs.selectedSorting.value = categoryForUs;
+        })
+
+        document.addEventListener("click", e => {
+            refs.selectDropdown.classList.add("filters-visually-hidden");
+            refs.sortingDropdown.classList.add("filters-visually-hidden");
+        })
     })
 }
 
@@ -56,20 +72,23 @@ function filterProducts() {
     }
     let { keyword, category, page } = load("filtersOfProducts");
     let limit = getLimit();
+    if (category !== "null") {
+        refs.selectBtn.textContent = makeCategory(category)
+    }
+    refs.input.value = keyword;
+    refs.selectedCategory.value = category;
     getServerProducts(page, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const maxPage = Math.ceil(totalPages / perPage);
         if (maxPage < page) {
             getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
-              refs.productCard.innerHTML = createMarkup(results);
-              createPagination(totalPages, page, perPage);
-              checkIsItemInCart()
-              showContent()
+                refs.productCard.innerHTML = createMarkup(results);
+                createPagination(totalPages, page, perPage);
+                checkIsItemInCart();
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
-          createPagination(totalPages, page, perPage);
-          checkIsItemInCart()
-          showContent()
+            createPagination(totalPages, page, perPage);
+            checkIsItemInCart();
         }
     })
 
@@ -83,7 +102,6 @@ function onSubmit (event) {
     const limit = getLimit();
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
-    save("filtersOfProducts", { keyword, category, page: 1, limit });
     getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         if (totalPages === 0) {
             const str =
@@ -92,23 +110,26 @@ function onSubmit (event) {
                 <p class="products-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.</p>
             </li>`;
             refs.productCard.innerHTML = str;
+            refs.pagination.classList.add("filters-visually-hidden");
             refs.productCard.classList.add("product-list-not-found");
-            refs.form.reset();
             refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-      refs.productCard.innerHTML = createMarkup(results);
-      showContent()
+        refs.productCard.innerHTML = createMarkup(results);
+        save("filtersOfProducts", { keyword, category, page: 1, limit });
         createPagination(totalPages, page, perPage);
-        refs.form.reset();
         refs.submitBtn.disabled = false;
     })
 }
 
-function showContent() {
-  document.querySelector('.js-products-container').classList.remove('hidden')
+function makeCategory(categoryFromServer) {
+    let categoryforUser = categoryFromServer.replace(/_/g, " ");
+    if (categoryforUser === "Breads & Bakery") {
+        categoryforUser = categoryforUser.replace(/&/g, "/")
+    }
+    return categoryforUser
 }
 
 export {

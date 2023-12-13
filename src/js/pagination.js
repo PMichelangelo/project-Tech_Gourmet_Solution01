@@ -45,10 +45,9 @@ function one(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-      refs.productCard.innerHTML = markup;
-
+        refs.productCard.innerHTML = markup;
+        checkIsItemInCart();
         refs.pagination.classList.remove("filters-visually-hidden");
-        console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
         document.querySelectorAll(".pagination-btn").forEach((btn) => {
             if (btn.classList.contains("pagination-btn-active")) {
@@ -83,8 +82,8 @@ function two(e) {
     getServerProducts((currentPage - 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
+        checkIsItemInCart();
         refs.pagination.classList.remove("filters-visually-hidden");
-        console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
         document.querySelectorAll(".pagination-btn").forEach((btn) => {
             if (btn.classList.contains("pagination-btn-active")) {
@@ -117,7 +116,7 @@ function three(paginationPages, e) {
     getServerProducts(btnNumber, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
-        console.log(results, totalPages, page, perPage);
+        checkIsItemInCart();
         save("filtersOfProducts", { keyword, category, page, limit });
         document.querySelectorAll(".pagination-btn").forEach((btn) => {
             if (btn.classList.contains("pagination-btn-active")) {
@@ -154,10 +153,9 @@ function four(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage + 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-      refs.productCard.innerHTML = markup;
-      checkIsItemInCart()
+        refs.productCard.innerHTML = markup;
+        checkIsItemInCart();
         refs.pagination.classList.remove("filters-visually-hidden");
-        console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
         if (page === 3) {
             refs.paginationBtnList.innerHTML = createMarkupEllipsisTwice(page, paginationPages);
@@ -199,10 +197,9 @@ function five(paginationPages, e) {
     let limit = getLimit();
     getServerProducts((currentPage - 1), keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
-      refs.productCard.innerHTML = markup;
-      checkIsItemInCart()
+        refs.productCard.innerHTML = markup;
+        checkIsItemInCart();
         refs.pagination.classList.remove("filters-visually-hidden");
-        console.log(results, totalPages, page, perPage);
         save("filtersOfProducts", { keyword, category, page, limit });
         if (page === (paginationPages - 2)) {
             refs.paginationBtnList.innerHTML = createMarkupEllipsisTwice(page, paginationPages);
@@ -243,7 +240,7 @@ function six(paginationPages, e) {
     getServerProducts(btnNumber, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const markup = createMarkup(results);
         refs.productCard.innerHTML = markup;
-        console.log(results, totalPages, page, perPage);
+        checkIsItemInCart();
         save("filtersOfProducts", { keyword, category, page, limit });
         if ((page === paginationPages || page === 1) && document.querySelector(".pag-middle-btn")) {
             refs.paginationBtnList.innerHTML = createMarkupEllipsisOnce(paginationPages);
@@ -291,7 +288,6 @@ function createPagination(totalPages, page, perPage) {
     refs.paginationBtnList.removeEventListener("click", boundSix);
 
     paginationPages = Math.ceil(totalPages / perPage);
-    console.log("paginationPages:", paginationPages);
 
     boundOne = one.bind(null, paginationPages);
     boundTwo = two.bind(null);
@@ -300,7 +296,6 @@ function createPagination(totalPages, page, perPage) {
     boundFour = four.bind(null, paginationPages);
     boundFive = five.bind(null, paginationPages);
     boundSix = six.bind(null, paginationPages);
-
 
     if (paginationPages === 1) {
         refs.pagination.classList.add("filters-visually-hidden");
