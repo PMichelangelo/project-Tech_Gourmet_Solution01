@@ -16,6 +16,8 @@ function checkIfProductInCart(productId) {
   return cartData.includes(productId);
 };
 
+let modalOpened = false;
+
 async function openModal(productId) {
   try {
     const productData = await getServerProductsById(productId);
@@ -62,10 +64,12 @@ async function openModal(productId) {
 </div>`;
 
     const instance = basicLightbox.create(modalContent);
-
-    instance.show();
-    addoOverflow();
-
+    if (!modalOpened) {
+      instance.show();
+      addoOverflow();
+      modalOpened = true;
+    }
+  
 
 function outsideClickListener(event) {
       const modalContainer = document.querySelector('.modal-container');
@@ -79,6 +83,7 @@ function outsideClickListener(event) {
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
       closeBtn.removeEventListener('click', closeModal);
+      modalOpened = false;
     }
 
     function closeModalEsp(event) {
@@ -102,7 +107,7 @@ function outsideClickListener(event) {
       if (card && btn) {
         const productId = card.getAttribute('data-id');
         console.log('Product clicked:', productId);
-
+        modalOpened = false;
         const buttonTextSpan = btn.querySelector('.modal-button-text');
         const isProductInCart = checkIfProductInCart(productData._id);
         if (isProductInCart) {
@@ -121,8 +126,7 @@ function outsideClickListener(event) {
         updateCardState(productId);
 
       }
-    });
-    const isProductInCart = checkIfProductInCart(productData._id);
+      const isProductInCart = checkIfProductInCart(productData._id);
     const buttonTextSpan = addToCartBtn.querySelector('.modal-button-text');
 
     if (isProductInCart) {
@@ -132,6 +136,7 @@ function outsideClickListener(event) {
       buttonTextSpan.textContent = 'Add to';
       btn.classList.remove('added-to-cart');
     }
+    });
   } catch (error) {
     console.log('Error fetching product:', error);
   }
