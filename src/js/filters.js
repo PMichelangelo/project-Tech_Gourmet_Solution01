@@ -17,6 +17,7 @@ const refs = {
     selectedCategory: document.querySelector(".filters-select-input"),
     productCard: document.querySelector(".product-list"),
     selectList: document.querySelector(".filters-options-list"),
+    pagination: document.querySelector(".products-pagination"),
 }
 
 
@@ -93,6 +94,7 @@ function onSubmit (event) {
             refs.productCard.classList.add("product-list-not-found");
             // refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
+            refs.pagination.classList.add("filters-visually-hidden");
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
