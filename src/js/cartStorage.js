@@ -24,17 +24,12 @@ function updateCardState(productId) {
   const cardElement = document.querySelector(`.js-card[data-id='${productId}']`);
   const btnElement = document.querySelectorAll(`.js-btn[data-id='${productId}']`);
 
-  const btnElementArr = Array.from(btnElement)
-  console.log(productId)
-  btnElementArr.forEach((btn) => {
-    if (checkIfProductInCart(productId)) {
-    btn.classList.add('added');
-    btn.setAttribute('disabled', 'disabled');
+
+  if (checkIfProductInCart(productId)) {
+    btnElement.classList.add('added');
   } else {
-    btn.classList.remove('added');
-    btn.removeAttribute('disabled');
+    btnElement.classList.remove('added');
   }
-  })
 }
 
 export {

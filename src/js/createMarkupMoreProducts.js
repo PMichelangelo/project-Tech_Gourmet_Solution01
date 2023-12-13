@@ -4,10 +4,11 @@ import {
 } from './fetchProducts';
 import icons from '../img/icons.svg';
 import { openModal } from './modal';
-import { addToCart, updateCardState } from './cartStorage';
-import { updateCartCounterOnLoad } from './updateCartCounter';
-import { checkIfProductInCart } from './modal';
-import { checkIsItemInCart, disabledBtn } from './createMarkup';
+
+import { addToCart } from "./cartStorage";
+import { updateCartCounterOnLoad } from "./updateCartCounter";
+import { checkIfProductInCart } from "./modal";
+import { removeFromCart } from './cartStorage';
 
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
@@ -33,11 +34,19 @@ export async function appendPopularProductsMarkup() {
         console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log('Button clicked within the product card');
-          addToCart(productId);
+          console.log("Button clicked within the product card");
+          const isProductInCart = checkIfProductInCart(productId);
+
+          if (isProductInCart) {
+            removeFromCart(productId);
+            btn.classList.remove('added');
+          } else {
+            addToCart(productId);
+            btn.classList.add('added');
+          }
+
           updateCartCounterOnLoad();
-          disabledBtn(btn);
-          updateCardState(productId);
+          
         } else {
           openModal(productId);
         }
@@ -45,8 +54,8 @@ export async function appendPopularProductsMarkup() {
     });
   } catch (error) {
     console.error(error);
-  }
-}
+  }};
+
 
 function createPopularMarkup(results) {
   const limitedResults = results.slice(0, 5);
@@ -119,12 +128,18 @@ export async function appendDiscountProductsMarkup() {
         console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log('Button clicked within the product card');
-          addToCart(productId);
+          console.log("Button clicked within the product card");
+          const isProductInCart = checkIfProductInCart(productId);
+
+          if (isProductInCart) {
+            removeFromCart(productId);
+            btn.classList.remove('added');
+          } else {
+            addToCart(productId);
+            btn.classList.add('added');
+          }
+
           updateCartCounterOnLoad();
-          disabledBtn(btn);
-          updateCardState(productId);
-          console.log("iamtut")
         } else {
           openModal(productId);
         }
@@ -133,7 +148,7 @@ export async function appendDiscountProductsMarkup() {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 function createDiscountMarkup(results) {
   const limitedResults = results.slice(0, 2);

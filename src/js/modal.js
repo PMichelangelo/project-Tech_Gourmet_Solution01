@@ -103,7 +103,7 @@ function outsideClickListener(event) {
     addToCartBtn.addEventListener('click', event => {
       const card = event.target.closest('.modal-container');
       const btn = event.target.closest('.modal-button');
-
+     
       if (card && btn) {
         const productId = card.getAttribute('data-id');
         console.log('Product clicked:', productId);
@@ -126,21 +126,18 @@ function outsideClickListener(event) {
         updateCardState(productId);
 
       }
-      const isProductInCart = checkIfProductInCart(productData._id);
+    });
+    const isProductInCart = checkIfProductInCart(productData._id);
     const buttonTextSpan = addToCartBtn.querySelector('.modal-button-text');
-
     if (isProductInCart) {
       buttonTextSpan.textContent = 'Remove from';
-      btn.classList.add('added-to-cart');
     } else {
       buttonTextSpan.textContent = 'Add to';
-      btn.classList.remove('added-to-cart');
     }
-    });
   } catch (error) {
     console.log('Error fetching product:', error);
   }
-}
+};
 
 function openSubcribeModal() {
   try {
