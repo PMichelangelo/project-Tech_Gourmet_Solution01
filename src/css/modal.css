@@ -204,6 +204,8 @@ margin-top: 20px;
   .modal-container {
     padding-left: 40px;
     padding-right: 40px;
+    margin: 0;
+    max-width: 600px;
   }
 
   .modal-img-info-container {
@@ -218,7 +220,7 @@ margin-top: 20px;
 }
 
 .modal-name-container {
-  width: 256px;
+  max-width: 256px;
   margin-top: 0;
 }
 
