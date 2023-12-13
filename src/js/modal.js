@@ -69,9 +69,8 @@ async function openModal(productId) {
       addoOverflow();
       modalOpened = true;
     }
-  
 
-function outsideClickListener(event) {
+    function outsideClickListener(event) {
       const modalContainer = document.querySelector('.modal-container');
       if (!modalContainer.contains(event.target)) {
         closeModal();
@@ -103,7 +102,6 @@ function outsideClickListener(event) {
     addToCartBtn.addEventListener('click', event => {
       const card = event.target.closest('.modal-container');
       const btn = event.target.closest('.modal-button');
-     
       if (card && btn) {
         const productId = card.getAttribute('data-id');
         console.log('Product clicked:', productId);

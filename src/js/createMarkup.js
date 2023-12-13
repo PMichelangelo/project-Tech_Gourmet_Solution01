@@ -40,7 +40,7 @@ async function createProductsMarkup() {
         }
       }
     });
-    //document.querySelector('.js-products-container').classList.remove('hidden')
+    document.querySelector('.js-products-container').classList.remove('hidden')
   } catch (error) {
     console.error(error);
   }
