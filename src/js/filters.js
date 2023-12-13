@@ -82,7 +82,6 @@ function onSubmit (event) {
     const limit = getLimit();
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
-    save("filtersOfProducts", { keyword, category, page: 1, limit });
     getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         if (totalPages === 0) {
             const str =
@@ -98,8 +97,9 @@ function onSubmit (event) {
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
-      refs.productCard.innerHTML = createMarkup(results);
-      checkIsItemInCart();
+        refs.productCard.innerHTML = createMarkup(results);
+        checkIsItemInCart();
+        save("filtersOfProducts", { keyword, category, page: 1, limit });
         createPagination(totalPages, page, perPage);
         refs.submitBtn.disabled = false;
     })
