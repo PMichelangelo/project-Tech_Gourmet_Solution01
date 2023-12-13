@@ -20,16 +20,16 @@
       </div>
       <div class="filters-select-wrap">
         <button type="button" class="filters-select filters-sorting">A to Z</button>
-        <ul class="sorting-options-list filters-visually-hidden">
-          <li class="filters-option">A to Z</li>
-          <li class="filters-option">Z to A</li>
-          <li class="filters-option" data-sort="byABC = true">Cheap</li>
-          <li class="filters-option">Expensive</li>
-          <li class="filters-option">Popular</li>
-          <li class="filters-option">Not popular</li>
-          <li class="filters-option">Show all</li>
+        <ul class="sorting-options-list filters-options filters-visually-hidden">
+          <li class="filters-option" data-sort="byABC1">A to Z</li>
+          <li class="filters-option" data-sort="byABC0">Z to A</li>
+          <li class="filters-option" data-sort="byPrice1">Cheap</li>
+          <li class="filters-option" data-sort="byPrice0">Expensive</li>
+          <li class="filters-option" data-sort="byPopularity0">Popular</li>
+          <li class="filters-option" data-sort="byPopularity1">Not popular</li>
+          <li class="filters-option" data-sort="null">Show all</li>
         </ul>
-        <input type="text" name="sorting" class="filters-sorting-input filters-visually-hidden">
+        <input type="text" name="sorting" class="filters-sorting-input filters-visually-hidden" value="byABC1">
         <svg class="icon-chevron-down" width="11" height="11">
           <use href="./img/icons.svg#icon-chevron-down"></use>
         </svg>
