@@ -39,7 +39,7 @@ async function filterCategories () {
             refs.selectDropdown.classList.toggle("filters-visually-hidden");
         })
 
-        refs.sortingBtn.addEventListener("click", e => {
+        refs.sortingBtn.addEventListener("click", () => {
             e.stopPropagation();
             refs.sortingDropdown.classList.toggle("filters-visually-hidden");
         })
@@ -51,11 +51,11 @@ async function filterCategories () {
             refs.selectedCategory.value = categoryForUs;
         })
 
-        refs.sortingDropdown.addEventListener("click", e => {
-            const sortingName = e.target.textContent;
-            const sortingForUs = e.target.dataset.sort;
-            refs.sortingBtn.textContent = sortingName;
-            refs.selectedSorting.value = sortingForUs;
+        refs.selectList.addEventListener("click", e => {
+            const sorting = e.target.textContent;
+            // const categoryForUs = e.target.dataset.value;
+            refs.sortingBtn.textContent = sorting;
+            // refs.selectedSorting.value = categoryForUs;
         })
 
         document.addEventListener("click", e => {
@@ -68,20 +68,19 @@ async function filterCategories () {
 function filterProducts() {
     refs.productCard.classList.remove("product-list-not-found");
     if (load("filtersOfProducts") === undefined) {
-        save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6, sorting: "byABC1"});
+        save("filtersOfProducts", { keyword: null, category: null, page: 1, limit: 6 });
     }
-    let { keyword, category, page, sorting } = load("filtersOfProducts");
+    let { keyword, category, page } = load("filtersOfProducts");
     let limit = getLimit();
     if (category !== "null") {
         refs.selectBtn.textContent = makeCategory(category)
     }
     refs.input.value = keyword;
     refs.selectedCategory.value = category;
-    refs.selectedSorting.value = sorting;
-    getServerProducts(page, keyword, category, limit, sorting).then(({ results, totalPages, page, perPage }) => {
+    getServerProducts(page, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         const maxPage = Math.ceil(totalPages / perPage);
         if (maxPage < page) {
-            getServerProducts(maxPage, keyword, category, limit, sorting).then(({ results, totalPages, page, perPage }) => {
+            getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
                 refs.productCard.innerHTML = createMarkup(results);
                 createPagination(totalPages, page, perPage);
                 checkIsItemInCart();
@@ -103,8 +102,7 @@ function onSubmit (event) {
     const limit = getLimit();
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
-    const sorting = refs.selectedSorting.value
-    getServerProducts(1, keyword, category, limit, sorting).then(({ results, totalPages, page, perPage }) => {
+    getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         if (totalPages === 0) {
             const str =
             `<li class="products-not-found">
@@ -114,13 +112,13 @@ function onSubmit (event) {
             refs.productCard.innerHTML = str;
             refs.pagination.classList.add("filters-visually-hidden");
             refs.productCard.classList.add("product-list-not-found");
-            // refs.selectBtn.textContent = "Categories";
+            refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
         refs.productCard.innerHTML = createMarkup(results);
-        save("filtersOfProducts", { keyword, category, page: 1, limit, sorting });
+        save("filtersOfProducts", { keyword, category, page: 1, limit });
         createPagination(totalPages, page, perPage);
         refs.submitBtn.disabled = false;
     })
