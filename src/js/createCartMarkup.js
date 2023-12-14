@@ -1,4 +1,4 @@
-import icons from '../img/icons.svg'
+import icons from '../img/icons.svg';
 
 export function cartOrder(arr) {
   return arr
@@ -16,7 +16,7 @@ export function cartOrder(arr) {
       <div class="cart-order-desc">
         <div class="cart-order-title-btn">
           <h3 class="cart-order-title">${name}</h3>
-          <button class="cart-remove-btn" type="button">
+          <button class="cart-remove-btn" type="button" height="18" title='close' aria-label="close">
             <span class="cart-remove-span">
               <svg class="cart-remove-icon" width="18" height="18">
                 <use
@@ -37,14 +37,14 @@ export function cartOrder(arr) {
         <div class="cart-order-total-price">
 
           <div class="cart-order-amount">
-            <button class="cart-order-decr" type="button"><svg class="minus-icon" width="18" height="18">
+            <button class="cart-order-decr" type="button"><svg class="minus-icon" width="18" height="18" title='back' aria-label="back">
                 <use
                   class="cart-remove-svg"
                   xlink:href=""
                 ></use>
               </svg></button>
             <span class="cart-order-quantity">$${price}</span>
-            <button class="cart-order-incr" type="button"><svg class="plus-icon" width="18" height="18">
+            <button class="cart-order-incr" type="button"><svg class="plus-icon" width="18" height="18" title='forward' aria-label="forward">
                 <use
                   class="cart-remove-svg"
                   xlink:href=""

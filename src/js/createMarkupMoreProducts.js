@@ -86,7 +86,7 @@ function createPopularMarkup(results) {
                   </div>
                   </div>
                   <div class="product-card-prices-btn">
-                      <button type="button" class="products-card-btn js-btn" data-id="${_id}" id="${_id}" >
+                      <button type="button" class="products-card-btn js-btn" data-id="${_id}" id="${_id}"  title='Add item' aria-label="Add item">
                           <svg width="16" height="16" class="product-button-icon icon-cart">
                               <use class="popular-button-icon" href="${icons}#icon-shop"></use>
                           </svg>

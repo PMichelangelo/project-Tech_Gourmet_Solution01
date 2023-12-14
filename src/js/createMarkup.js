@@ -1,14 +1,14 @@
-import { getServerProducts } from "./fetchProducts";
-import { openModal } from "./modal";
-import { addToCart,updateCardState, removeFromCart  } from "./cartStorage";
-import { updateCartCounterOnLoad } from "./updateCartCounter";
-import { checkIfProductInCart } from "./modal";
-import icons from '../img/icons.svg'
+import { getServerProducts } from './fetchProducts';
+import { openModal } from './modal';
+import { addToCart, updateCardState, removeFromCart } from './cartStorage';
+import { updateCartCounterOnLoad } from './updateCartCounter';
+import { checkIfProductInCart } from './modal';
+import icons from '../img/icons.svg';
 
 const productCard = document.querySelector('.product-list');
 
 async function createProductsMarkup() {
-  console.log("Creating products markup");
+  console.log('Creating products markup');
 
   try {
     // const data = await getServerProducts(1, null, null);
@@ -20,31 +20,30 @@ async function createProductsMarkup() {
     //const productCards = document.querySelectorAll('.js-card');
     //console.log("Number of product cards:", productCards.length);
 
-    productCard.addEventListener('click', (event) => {
+    productCard.addEventListener('click', event => {
       const card = event.target.closest('.js-card');
       const btn = event.target.closest('.js-btn');
 
       if (card) {
         const productId = card.getAttribute('data-id');
-        console.log("Product clicked:", productId);
+        console.log('Product clicked:', productId);
 
         if (btn) {
-          toggleBtn(productId)
+          toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
           //disabledBtn(btn);
-          checkIsItemInCart()
-
+          checkIsItemInCart();
         } else {
           openModal(productId);
         }
       }
     });
-    document.querySelector('.js-products-container').classList.remove('hidden')
+    document.querySelector('.js-products-container').classList.remove('hidden');
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 // function disabledBtn(btn) {
 //  {
@@ -53,40 +52,37 @@ async function createProductsMarkup() {
 //     btn.classList.add('added')
 //   }
 
-  function toggleBtn(productId) {
-    const storage = JSON.parse(localStorage.getItem("cartData"));
-    const cardStorage = Array.from(storage)
+function toggleBtn(productId) {
+  const storage = JSON.parse(localStorage.getItem('cartData'));
+  const cardStorage = Array.from(storage);
 
-    if (cardStorage.includes(productId)) {
-      removeFromCart(productId)
-    } else {
-      addToCart(productId)
-    }
+  if (cardStorage.includes(productId)) {
+    removeFromCart(productId);
+  } else {
+    addToCart(productId);
   }
-
-
-async function checkIsItemInCart() {
-  const cartItems = JSON.parse(localStorage.getItem("cartData"))
-  const itemsOnPage = document.querySelectorAll('.js-card')
-  const itemsArr = Array.from(itemsOnPage)
-
-  itemsArr.forEach(item => {
-    const itemId = item.dataset.id
-    cartItems.forEach(id => {
-      console.log(id === itemId)
-      if (itemId === id) {
-        const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`)
-        console.log(matchedItem)
-        matchedItem.classList.add('added')
-        //matchedItem.setAttribute("disabled", "disabled")
-      }
-    })
-  })
 }
 
+async function checkIsItemInCart() {
+  const cartItems = JSON.parse(localStorage.getItem('cartData'));
+  const itemsOnPage = document.querySelectorAll('.js-card');
+  const itemsArr = Array.from(itemsOnPage);
+
+  itemsArr.forEach(item => {
+    const itemId = item.dataset.id;
+    cartItems.forEach(id => {
+      console.log(id === itemId);
+      if (itemId === id) {
+        const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`);
+        console.log(matchedItem);
+        matchedItem.classList.add('added');
+        //matchedItem.setAttribute("disabled", "disabled")
+      }
+    });
+  });
+}
 
 function createMarkup(arr) {
-
   return arr
     .map(
       ({ img, _id, name, price, size, category, popularity }) => `
@@ -97,13 +93,18 @@ function createMarkup(arr) {
             </div>
             <h3 class="item-name">${name}</h3>
             <div class="container-info">
-              <p class="item-info">Category: <span class="span-info">${category.replace('_', ' ').replace('_', ' ')}</span></p>
-              <p class="item-info">Size: <span class="span-info">${size.replace('oz', 'g')}</span></p>
+              <p class="item-info">Category: <span class="span-info">${category
+                .replace('_', ' ')
+                .replace('_', ' ')}</span></p>
+              <p class="item-info">Size: <span class="span-info">${size.replace(
+                'oz',
+                'g'
+              )}</span></p>
               <p class="item-info popular-item-info ">Popularity: <span class="span-info">${popularity}</span></p>
             </div>
             <div class="container-price">
               <p class="item-price">$${price}</p>
-              <button type="button" class="btn-item js-btn" data-id="${_id}">
+              <button type="button" class="btn-item js-btn" data-id="${_id}" title='Add item' aria-label="Add item">
                 <svg class="product-button-icon icon-cart" width="18" height="18">
                   <use href="${icons}#icon-shoping-cart"></use>
                 </svg>
@@ -118,4 +119,4 @@ function createMarkup(arr) {
     .join('');
 }
 
-export{createProductsMarkup, createMarkup, checkIsItemInCart, toggleBtn}
+export { createProductsMarkup, createMarkup, checkIsItemInCart, toggleBtn };
