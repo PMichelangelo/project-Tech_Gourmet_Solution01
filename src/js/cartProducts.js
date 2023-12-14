@@ -15,6 +15,7 @@ export function nullCart() {
               src="${shoppingBasket}"
               srcset=""
               alt="Shopping Basket"
+              loading="lazy"
             />
             <h2>Your basket is <span class="cart-empty-cgreen">empty...</span></h2>
             <p class="cart-empty-text">
