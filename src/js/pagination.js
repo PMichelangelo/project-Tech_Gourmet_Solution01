@@ -20,16 +20,16 @@ import { checkIsItemInCart } from "./createMarkup.js";
 function createMarkupEllipsisOnce(amountOfPages) {
     return `<li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">1</button></li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">2</button></li>
-    <div class="ellipsis">...</div>
+    <li class="ellipsis">...</li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">${amountOfPages - 1}</button></li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">${amountOfPages}</button></li>`
 }
 
 function createMarkupEllipsisTwice(selectedPage, amountOfPages) {
     return `<li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">1</button></li>
-    <div class="ellipsis">...</div>
+    <li class="ellipsis">...</li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn pag-middle-btn">${selectedPage}</button></li>
-    <div class="ellipsis">...</div>
+    <li class="ellipsis">...</li>
     <li class="pagination-btn-item"><button type="button" class="pag-btn-common pagination-btn">${amountOfPages}</button></li>`
 }
 
