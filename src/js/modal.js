@@ -1,7 +1,7 @@
 import { getServerProductsById } from './fetchProducts.js';
 import * as basicLightbox from 'basiclightbox';
 import icons from '../img/icons.svg';
-import { addToCart,removeFromCart, updateCardState } from './cartStorage';
+import { addToCart, removeFromCart, updateCardState } from './cartStorage';
 import imageModalEmailMob from '../img/modal-email-mob.png';
 import imageModalEmailMob2x from '../img/modal-email-mob-2x.png';
 import imageModalEmailTab from '../img/modal-email-tab.png';
@@ -10,11 +10,10 @@ import imageModalEmailDesk from '../img/modal-email-desk.png';
 import imageModalEmailDesk2x from '../img/modal-email-desk-2x.png';
 import cardPageModalImg from '../img/cardPageModalImg.png';
 
-
 function checkIfProductInCart(productId) {
-  const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
   return cartData.includes(productId);
-};
+}
 
 let modalOpened = false;
 
@@ -24,8 +23,9 @@ async function openModal(productId) {
 
     const modalContent = document.createElement('div');
 
-    modalContent.innerHTML =
-    `<div class="modal-container" data-id="${productData._id}">
+    modalContent.innerHTML = `<div class="modal-container" data-id="${
+      productData._id
+    }">
     <div class="modal-img-info-container">
         <div class="modal-img-container">
             <img class="modal-img" src="${productData.img}" alt="${
@@ -51,7 +51,7 @@ async function openModal(productId) {
     </div>
     <div class="modal-price-container">
         <p class="modal-price">$${productData.price}</p>
-        <button type="button" class="modal-button js-btn">
+        <button type="button" class="modal-button js-btn" title='add item' aria-label="add item">
             <span class="modal-button-text">Add to</span>
             <svg class="modal-button-icon" width="18" height="18">
                 <use href="${icons}#icon-shop"></use>
@@ -122,7 +122,6 @@ async function openModal(productId) {
         }
 
         updateCardState(productId);
-
       }
     });
     const isProductInCart = checkIfProductInCart(productData._id);
@@ -135,12 +134,12 @@ async function openModal(productId) {
   } catch (error) {
     console.log('Error fetching product:', error);
   }
-};
+}
 
 function openSubcribeModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal">
-       <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
+       <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10" title='close' aria-label="close">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content'><h3 class='footer-modal-title'>Thanks for subscribing for <span class='span'>new</span> products</h3>
@@ -182,21 +181,20 @@ function openSubcribeModal() {
       }
     }
 
-
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
 
       closeBtn.removeEventListener('click', closeModal);
-}
+    }
 
     function outsideClickListener(event) {
-    const footerModal = document.querySelector('.footer-modal');
-    if (!footerModal.contains(event.target)) {
-      closeModal();
+      const footerModal = document.querySelector('.footer-modal');
+      if (!footerModal.contains(event.target)) {
+        closeModal();
+      }
     }
-  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
@@ -209,7 +207,7 @@ function openSubcribeModal() {
 function openErrorModal() {
   try {
     const instance = basicLightbox.create(`<div class="footer-modal-err">
-       <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10">
+       <button class='close-footer-modal'> <svg class="icon-close-footer" width="10" height="10" title='close' aria-label="close">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='footer-modal-content-err'><h3 class='footer-modal-err-title'>This <span>email address</span> has already been entered</h3>
@@ -225,21 +223,19 @@ function openErrorModal() {
       }
     }
 
-
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
       closeBtn.removeEventListener('click', closeModal);
-}
-
+    }
 
     function outsideClickListener(event) {
-    const footerModal = document.querySelector('.footer-modal-err');
-    if (!footerModal.contains(event.target)) {
-      closeModal();
+      const footerModal = document.querySelector('.footer-modal-err');
+      if (!footerModal.contains(event.target)) {
+        closeModal();
+      }
     }
-  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
@@ -253,7 +249,7 @@ function openCardPageModal() {
   console.log(1);
   try {
     const instance = basicLightbox.create(`<div class="card-page-modal">
-       <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18">
+       <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18 "  title='close' aria-label="close">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='card-page-modal-content'>
@@ -270,20 +266,19 @@ function openCardPageModal() {
       }
     }
 
-
     function closeModal() {
       instance.close();
       removeOverflow();
       document.removeEventListener('click', outsideClickListener);
       closeBtn.removeEventListener('click', closeModal);
-}
+    }
 
     function outsideClickListener(event) {
-    const footerModal = document.querySelector('.card-page-modal');
-    if (!footerModal.contains(event.target)) {
-      closeModal();
+      const footerModal = document.querySelector('.card-page-modal');
+      if (!footerModal.contains(event.target)) {
+        closeModal();
+      }
     }
-  }
 
     document.addEventListener('keydown', closeModalEsp);
     const closeBtn = document.querySelector('.close-footer-modal');
@@ -302,4 +297,10 @@ function removeOverflow() {
   document.body.style.overflow = '';
 }
 
-export { openModal, openSubcribeModal, openErrorModal, openCardPageModal, checkIfProductInCart }
+export {
+  openModal,
+  openSubcribeModal,
+  openErrorModal,
+  openCardPageModal,
+  checkIfProductInCart,
+};

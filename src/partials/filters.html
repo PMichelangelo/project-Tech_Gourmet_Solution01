@@ -3,17 +3,39 @@
     <label for="filters-input" class="filters-label">Filters:</label>
     <div class="filters-form-wrap">
       <div class="filters-input-wrap">
-        <input type="text" name="keyword" placeholder="Search for anything" class="filters-input" id="filters-input">
-        <button type="submit" class="filters-btn">
+        <input
+          type="text"
+          name="keyword"
+          placeholder="Search for anything"
+          class="filters-input"
+          id="filters-input"
+        />
+        <button
+          type="submit"
+          class="filters-btn"
+          title="search"
+          aria-label="search"
+        >
           <svg class="icon-magnifying-glass" width="15" height="15">
             <use href="./img/icons.svg#icon-search"></use>
           </svg>
         </button>
       </div>
       <div class="filters-select-wrap">
-        <button type="button" class="filters-select">Categories</button>
+        <button
+          type="button"
+          class="filters-select"
+          aria-label="Categories"
+          title="Categories"
+        >
+          Categories
+        </button>
         <ul class="filters-options filters-visually-hidden"></ul>
-        <input type="text" name="category" class="filters-select-input filters-visually-hidden">
+        <input
+          type="text"
+          name="category"
+          class="filters-select-input filters-visually-hidden"
+        />
         <svg class="icon-chevron-down" width="11" height="11">
           <use href="./img/icons.svg#icon-chevron-down"></use>
         </svg>
