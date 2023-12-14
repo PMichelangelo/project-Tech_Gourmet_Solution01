@@ -54,7 +54,7 @@ async function openModal(productId) {
         <button type="button" class="modal-button js-btn">
             <span class="modal-button-text">Add to</span>
             <svg class="modal-button-icon" width="18" height="18">
-                <use href="${icons}#icon-shop"></use>
+                <use href="${icons}#icon-shoping-cart"></use>
             </svg>
         </button>
         <button class='close-modal'> <svg class="close-modal-icon" width="10" height="10">
@@ -131,8 +131,10 @@ function outsideClickListener(event) {
     const buttonTextSpan = addToCartBtn.querySelector('.modal-button-text');
     if (isProductInCart) {
       buttonTextSpan.textContent = 'Remove from';
+      addToCartBtn.classList.add('added-to-cart');
     } else {
       buttonTextSpan.textContent = 'Add to';
+      addToCartBtn.classList.remove('added-to-cart');
     }
   } catch (error) {
     console.log('Error fetching product:', error);
