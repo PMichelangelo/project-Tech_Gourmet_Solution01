@@ -28,9 +28,9 @@ async function filterCategories () {
             if (newEl === "Breads & Bakery") {
                 newEl = newEl.replace(/&/g, "/")
             }
-            return `<li class="filters-option" data-value="${el}">${newEl}</li>`
+            return `<li class="filters-options-item"><button type="submit" class="filters-option" data-value="${el}">${newEl}</button></li>`
         }).join("");
-        const str = strCategories + `<li class="filters-option" data-value="null">Show all</li>`
+        const str = strCategories + `<li class="filters-options-item"><button type="submit" class="filters-option" data-value="null">Show all</button></li>`
         refs.selectDropdown.insertAdjacentHTML("beforeend", str);
 
         refs.selectBtn.addEventListener("click", e => {

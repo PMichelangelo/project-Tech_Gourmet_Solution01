@@ -80,7 +80,6 @@
       z-index: 1;
       width: calc(100%);
       box-sizing: border-box;
-      cursor: pointer;
       font-size: 14px;
       line-height: 1.29;
       border-radius: 15px;
@@ -114,13 +113,17 @@
 .filters-option {
   color: rgba(1, 1, 1, 0.5);
   padding: 4px 0 4px 20px;
+  border: none;
+  background-color: inherit;
+  text-align: left;
+  width: calc(100%);
 }
 
-.filters-option:last-child {
+.filters-options-item:last-child button {
   padding-bottom: 14px;
 }
 
-.filters-option:first-child {
+.filters-options-item:first-child button {
   color: var(--black-txt);
   padding-top: 14px;
 }
@@ -225,12 +228,10 @@ section.section-filters {
 }
 
 .ellipsis {
-  box-sizing: border-box;
   padding-top: 8px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  display: block;
   text-align: center;
   font-size: 14px;
   line-height: 20px;
