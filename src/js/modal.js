@@ -104,7 +104,6 @@ async function openModal(productId) {
       const btn = event.target.closest('.modal-button');
       if (card && btn) {
         const productId = card.getAttribute('data-id');
-        console.log('Product clicked:', productId);
         modalOpened = false;
         const buttonTextSpan = btn.querySelector('.modal-button-text');
         const isProductInCart = checkIfProductInCart(productData._id);
@@ -134,7 +133,7 @@ async function openModal(productId) {
       addToCartBtn.classList.remove('added-to-cart');
     }
   } catch (error) {
-    console.log('Error fetching product:', error);
+    console.error('Error fetching product:', error);
   }
 }
 
@@ -247,15 +246,15 @@ function openErrorModal() {
     console.error(error);
   }
 }
+
 function openCardPageModal() {
-  console.log(1);
   try {
     const instance = basicLightbox.create(`<div class="card-page-modal">
        <button class='close-footer-modal'> <svg class="icon-close-cardPage" width="18" height="18 "  title='close' aria-label="close">
           <use href="${icons}#icon-close-btn"></use>
         </svg></button>
         <div class='card-page-modal-content'>
-        <img src="${cardPageModalImg}" alt="Order success" class='img'/>
+        <img src="${cardPageModalImg}" alt="Order success" class='img img-order'/>
         <h3 class='card-page-modal-title'>Order success</h3>
         <p class='card-page-modal-text'>Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
     </div>`);

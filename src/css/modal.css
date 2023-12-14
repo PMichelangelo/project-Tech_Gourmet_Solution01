@@ -127,14 +127,6 @@
     line-height: 1.1;
   }
 
-  .modal-button-icon {
-    stroke: #e8e8e2;
-    color: white;
-  }
-
-.modal-button-icon {
-  color: white;
-}
   .modal-button {
     display: flex;
     border: none;
@@ -156,15 +148,27 @@
     color: var(--green-bg);
   }
 
-.modal-button.added-to-cart {
-  background: #586F1F;
-}
+  .modal-button.added-to-cart {
+    background: var(--white-txt);
+  }
 
-.modal-button.added-to-cart:focus,
-.modal-button.added-to-cart:hover {
-  background: #586F1F;
-}
+  .modal-button.added-to-cart .modal-button-text {
+    color: red;
+  }
 
+  .modal-button.added-to-cart .modal-button-icon {
+    stroke: red;
+    stroke-width: 2px;
+  }
+
+  .img-order {
+    filter: drop-shadow(4px 4px 5px #666);
+  }
+
+  /*.modal-button.added-to-cart:focus,
+  .modal-button.added-to-cart:hover {
+    background: #586f1f;
+  }*/
 
   .modal-button-text {
     color: var(--white-txt);

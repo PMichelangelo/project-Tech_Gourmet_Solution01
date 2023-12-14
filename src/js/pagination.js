@@ -6,14 +6,9 @@ const refs = {
     paginationBtnDecr: document.querySelector(".pagination-btn-decrement"),
 }
 
-export { createPagination };
-
 import { createMarkup } from "./createMarkup.js";
-
 import { save, load } from "./storage.js";
-
 import { getLimit, getServerProducts } from "./fetchProducts.js";
-
 import { checkIsItemInCart } from "./createMarkup.js";
 
 
@@ -363,3 +358,5 @@ function createPagination(totalPages, page, perPage) {
         refs.paginationBtnList.addEventListener("click", boundSix);
     }
 }
+
+export { createPagination };

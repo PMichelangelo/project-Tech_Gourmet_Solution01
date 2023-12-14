@@ -1,13 +1,5 @@
 import axios from 'axios';
 
-export {
-  getServerProductsCategories,
-  getServerProductsDiscount,
-  getServerProductsPopular,
-  getServerProductsById,
-  getServerProducts,
-  getLimit
-};
 
 async function getServerProductsCategories() {
   const URL = 'https://food-boutique.b.goit.study/api';
@@ -16,7 +8,7 @@ async function getServerProductsCategories() {
     const result = await axios.get(`${URL}/${endPoint}`);
     return result.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 async function getServerProductsDiscount() {
@@ -27,7 +19,7 @@ async function getServerProductsDiscount() {
     const result = await axios.get(`${URL}/${endPoint}`);
     return result.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 
@@ -39,7 +31,7 @@ async function getServerProductsPopular() {
     const result = await axios.get(`${URL}/${endPoint}`);
     return result.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 async function getServerProductsById(id) {
@@ -50,7 +42,7 @@ async function getServerProductsById(id) {
     const result = await axios.get(`${URL}/${endPoint}/${id}`);
     return result.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 
@@ -70,7 +62,7 @@ async function getServerProducts(page, key, category, limit) {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   }
   if (key !== undefined && key !== null) {
@@ -83,7 +75,7 @@ async function getServerProducts(page, key, category, limit) {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   } else if (array.includes(category)) {
     try {
@@ -95,7 +87,7 @@ async function getServerProducts(page, key, category, limit) {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   } else {
     try {
@@ -106,7 +98,7 @@ async function getServerProducts(page, key, category, limit) {
       const result = await axios.get(`${URL}/${endPoint}?${params}`);
       return result.data;
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   }
 }
@@ -122,3 +114,12 @@ function getLimit() {
   }
   return limit;
 }
+
+export {
+  getServerProductsCategories,
+  getServerProductsDiscount,
+  getServerProductsPopular,
+  getServerProductsById,
+  getServerProducts,
+  getLimit
+};
