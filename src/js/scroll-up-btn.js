@@ -1,7 +1,9 @@
-const btnToUp = document.querySelector('.btn-up');
-btnToUp.addEventListener('click', () => {
+const scrollToTop = () => {
   window.scrollTo(0, 0);
-});
+};
+
+const btnToUp = document.querySelector('.btn-up');
+btnToUp.addEventListener('click', scrollToTop);
 
 window.onscroll = () => {
   if (window.scrollY > 600) {
@@ -12,4 +14,4 @@ window.onscroll = () => {
   }
 };
 
-export { btnToUp };
+export { scrollToTop };

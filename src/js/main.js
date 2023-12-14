@@ -12,8 +12,8 @@ import { filterCategories, filterProducts } from './filters.js';
 filterCategories();
 filterProducts();
 import { onSubmit } from './subscribeEmail';
-import { btnToUp } from './scroll-up-btn.js';
+import {scrollToTop } from './scroll-up-btn'
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);
 
-btnToUp()
+scrollToTop()
