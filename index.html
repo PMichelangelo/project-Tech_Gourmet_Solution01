@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/project-Tech_Gourmet_Solution01/assets/favicon-65b6091f.svg" />
+  <link rel="icon" type="image/png" href="/project-Tech_Gourmet_Solution01/assets/favicon-65b6091f.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="FoodBoutique - ваше джерело для свіжих та смачних продуктів, що пропонуються з любов'ю та турботою. Замовте зараз та насолоджуйтесь натуральними смаками! 🥦🍓" />
+  <title>FoodBoutique 🥦🍓</title>
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
+  <script type="module" crossorigin src="/project-Tech_Gourmet_Solution01/commonHelpers2.js"></script>
+  <link rel="modulepreload" crossorigin href="/project-Tech_Gourmet_Solution01/assets/vendor-466561f8.js">
+  <link rel="modulepreload" crossorigin href="/project-Tech_Gourmet_Solution01/assets/subscribeEmail-7423cf80.js">
+  <link rel="stylesheet" href="/project-Tech_Gourmet_Solution01/assets/subscribeEmail-c90cd1c0.css">
+</head>
+
+<body>
+  <!--Dmitro-->
+  <header class="header">
+  <div class="container header-container">
+    <a href="./index.html" class="header-logo" aria-label="Home Page">
+      <svg class="header-logo-img">
+        <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-logo-desc-tablet"></use>
+      </svg>
+    </a>
+
+    <div class="header-navigation">
+      <a class="to-home" href="./index.html" role="link" aria-label="Home Page">
+        Home
+      </a>
+
+      <div class="header-cart">
+        <a class="header-cart-link" href="./cartPage.html" role="link">
+          <div class="header-cart-btn">
+            <svg class="header-cart-icon">
+              <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-cart"></use>
+            </svg>
+          </div>
+        </a>
+        <a
+          class="header-cart-text"
+          href="./cartPage.html"
+          role=" link"
+          aria-label="Cart Page"
+        >
+          CART (<span class="header-counter"></span>)</a
+        >
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <!--Valeriy-->
+  <section class="hero-sect">
+  <div class="container hero-container">
+    <h1 class="hero-title">Welcome to the <span>Food</span> Boutique!</h1>
+    <p class="hero-text">
+      With Food Boutique, you're not just subscribing to food, you're signing up
+      for a fresher, fitter, and happier you.
+    </p>
+    <picture>
+      <source srcset="/project-Tech_Gourmet_Solution01/assets/hero-picture-mobile-0464827a.jpg 1x, /project-Tech_Gourmet_Solution01/assets/hero-picture-mobile-2x-494c8589.jpg 2x" media="(min-width: 375px) and (max-width: 767px)" loading="lazy" />
+      <source srcset="/project-Tech_Gourmet_Solution01/assets/hero-picture-tablet-444cf103.jpg 1x, /project-Tech_Gourmet_Solution01/assets/hero-picture-tablet-2x-dbde4a81.jpg 2x" media="(min-width: 768px) and (max-width: 1439px)" loading="lazy" />
+      <source srcset="/project-Tech_Gourmet_Solution01/assets/hero-picture-desktop-a11e4265.jpg 1x, /project-Tech_Gourmet_Solution01/assets/hero-picture-desktop-2x-a402c0ef.jpg 2x" media="(min-width: 1440px)" loading="lazy" />
+      <img src="/project-Tech_Gourmet_Solution01/assets/hero-picture-mobile-0464827a.jpg" alt="vegetables in a box" class="hero-img" loading="lazy" />
+    </picture>
+    <svg class="icon-organic-food">
+      <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-organic-food"></use>
+    </svg>
+  </div>
+</section>
+
+  <!--Victor-->
+  <section class="section-filters container">
+  <form name="filters" autocomplete="off" class="filters-form">
+    <label for="filters-input" class="filters-label">Filters:</label>
+    <div class="filters-form-wrap">
+      <div class="filters-input-wrap">
+        <input
+          type="text"
+          name="keyword"
+          placeholder="Search for anything"
+          class="filters-input"
+          id="filters-input"
+        />
+        <button
+          type="submit"
+          class="filters-btn"
+          title="search"
+          aria-label="search"
+        >
+          <svg class="icon-magnifying-glass" width="15" height="15">
+            <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="filters-select-wrap">
+        <button
+          type="button"
+          class="filters-select"
+          aria-label="Categories"
+          title="Categories"
+        >
+          Categories
+        </button>
+        <ul class="filters-options filters-visually-hidden"></ul>
+        <input
+          type="text"
+          name="category"
+          class="filters-select-input filters-visually-hidden"
+        />
+        <svg class="icon-chevron-down" width="11" height="11">
+          <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-chevron-down"></use>
+        </svg>
+      </div>
+    </div>
+  </form>
+</section>
+
+
+  <!--Oleg-->
+  <section class="products-section container">
+  <div class="products-container js-products-container hidden">
+    <div class="products-pagination-content">
+      <ul class="product-list list"></ul>
+      <div class="products-pagination filters-visually-hidden">
+        <button type="button" class="pagination-btn-decrement pag-btn-common" title="Back" aria-label="Back">
+          <svg width="11" height="11">
+            <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-chevron-down"></use>
+          </svg>
+        </button>
+        <ul class="pagination-btn-list"></ul>
+        <button type="button" class="pagination-btn-increment pag-btn-common" title="Forward" aria-label="Forward">
+          <svg width="11" height="11">
+            <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-chevron-down"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="aside-products">
+      <section class="container-popular">
+  <aside class="aside">
+    <h2 class="popular-products-title">Popular products</h2>
+    <div class="container-aside-cards js-popular-product-cards"></div>
+
+    <h2 class="discount-products-title">Discount products</h2>
+    <div
+      class="container-discount-product-cards js-discount-product-cards"
+    ></div>
+  </aside>
+</section>
+
+
+    </div>
+  </div>
+</section>
+
+  <!--Vitaliy-->
+  <footer class="basement">
+  <div class="container">
+    <div class="basement-wrap">
+      <div class="footer-logo-social">
+        <a class="logo-link" href="./index.html">
+          <svg class="logo-icon">
+            <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-logo-desc-tablet-w"></use>
+          </svg>
+        </a>
+        <ul class="footer-socials-list">
+          <li class="footer-socials-item">
+            <a
+              class="footer-socials-link"
+              href="https://www.facebook.com/goITclub/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Facebook"
+            >
+              <svg class="footer-socials-icon">
+                <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="footer-socials-item">
+            <a
+              class="footer-socials-link"
+              href="https://www.instagram.com/goitclub/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Instagram"
+            >
+              <svg class="footer-socials-icon">
+                <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-insta"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="footer-socials-item">
+            <a
+              class="footer-socials-link"
+              href="https://www.youtube.com/c/GoIT"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Youtube"
+            >
+              <svg class="footer-socials-icon">
+                <use href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-youtube"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="description-form-wrap">
+        <div class="footer-description">
+          <h2 class="footer-description-title">
+            Discover the Variety of Flavors and Quality
+          </h2>
+          <p class="footer-description-text">
+            An online store where you will find fresh, natural and delicious
+            products for a healthy life and unforgettable gastronomic
+            adventures.
+          </p>
+        </div>
+        <div class="footer-form-wrap">
+          <p class="footer-form-text">
+            Subscribe and learn about new products!
+          </p>
+          <form class="footer-form">
+            <div class="footer-field">
+              <input
+                type="email"
+                name="footer-email"
+                class="footer-input"
+                placeholder="Email"
+                required
+              />
+              <!-- <svg class="footer-input-icon" width="24" height="24">
+            <use href="img/symbol-defs.svg#icon-error-outline"></use>
+          </svg> -->
+            </div>
+            <button
+              type="submit"
+              class="footer-submit-btn"
+              title="Send email"
+              aria-label="Send email"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-terms">
+      <p class="footer-terms-text">Food Boutique. All rights reserved.</p>
+      <p class="footer-terms-link">
+        <a href="#">Privacy Policy</a> / <a href="#">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <div class="loader-container visually-hidden">
+    <span class="loader"></span>
+  </div>
+  <button class="btn-up visually-hidden">
+    <svg class="arrow-up" width="44" height="44">
+      <use class="arrow-up-icon" xlink:href="/project-Tech_Gourmet_Solution01/assets/icons-0a0825a5.svg#icon-caret-small-left"></use>
+    </svg>
+  </button>
+  
+</body>
+
+</html>
