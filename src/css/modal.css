@@ -141,26 +141,6 @@
       border-radius 0.3s ease;
   }
 
-  .modal-button.added-to-cart {
-    background: var(--white-txt);
-  }
-  .modal-button.added-to-cart .modal-button-text {
-    color: var(--green-bg);
-  }
-
-  .modal-button.added-to-cart {
-    background: var(--white-txt);
-  }
-
-  .modal-button.added-to-cart .modal-button-text {
-    color: red;
-  }
-
-  .modal-button.added-to-cart .modal-button-icon {
-    stroke: red;
-    stroke-width: 2px;
-  }
-
   .img-order {
     filter: drop-shadow(4px 4px 5px #666);
   }
