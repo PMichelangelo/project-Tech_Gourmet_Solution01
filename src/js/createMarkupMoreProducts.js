@@ -1,10 +1,6 @@
-import {
-  getServerProductsPopular,
-  getServerProductsDiscount,
-} from './fetchProducts';
+import {getServerProductsPopular,getServerProductsDiscount} from './fetchProducts';
 import icons from '../img/icons.svg';
 import { openModal } from './modal';
-import { addToCart, updateCardState } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
 import { checkIsItemInCart, toggleBtn } from './createMarkup';
 
@@ -15,7 +11,7 @@ const refs = {
 
 /*Popular Products fnct*/
 
-export async function appendPopularProductsMarkup() {
+async function appendPopularProductsMarkup() {
   try {
     const data = await getServerProductsPopular();
     refs.popularProductCards.insertAdjacentHTML(
@@ -29,10 +25,8 @@ export async function appendPopularProductsMarkup() {
       const btn = event.target.closest('.products-card-btn');
       if (card) {
         const productId = card.getAttribute('id');
-        console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log('Button clicked within the product card');
           toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
@@ -103,7 +97,7 @@ function createPopularMarkup(results) {
 
 /*Discount Products fnct*/
 
-export async function appendDiscountProductsMarkup() {
+async function appendDiscountProductsMarkup() {
   try {
     const data = await getServerProductsDiscount();
     refs.discountProductCards.insertAdjacentHTML(
@@ -117,10 +111,8 @@ export async function appendDiscountProductsMarkup() {
       const btn = event.target.closest('.discount-product-card-btn');
       if (card) {
         const productId = card.getAttribute('id');
-        console.log('Product clicked:', productId);
 
         if (btn) {
-          console.log('Button clicked within the product card');
           toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
@@ -171,3 +163,5 @@ function createDiscountMarkup(results) {
     )
     .join('');
 }
+
+export {appendDiscountProductsMarkup, appendPopularProductsMarkup }

@@ -38,7 +38,7 @@ async function getCardProducts(productsList) {
     const cartMarkup = cartOrder(products);
     cartOrderList.insertAdjacentHTML('afterbegin', cartMarkup);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -61,7 +61,6 @@ async function calculateTotalPrice() {
       );
     }
   }
-  // return totalPrice;
   return +totalPrice.toFixed(2);
 }
 

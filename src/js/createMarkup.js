@@ -1,38 +1,24 @@
-import { getServerProducts } from './fetchProducts';
 import { openModal } from './modal';
 import { addToCart, updateCardState, removeFromCart } from './cartStorage';
 import { updateCartCounterOnLoad } from './updateCartCounter';
-import { checkIfProductInCart } from './modal';
 import icons from '../img/icons.svg';
 
 const productCard = document.querySelector('.product-list');
 
 async function createProductsMarkup() {
-  console.log('Creating products markup');
 
   try {
-    // const data = await getServerProducts(1, null, null);
-    // checkIsItemInCart();
-    // productCard.innerHTML = createMarkup(data.results);
-    //if (data.results) {
-    //  checkIsItemInCart()
-    //}
-    //const productCards = document.querySelectorAll('.js-card');
-    //console.log("Number of product cards:", productCards.length);
-
     productCard.addEventListener('click', event => {
       const card = event.target.closest('.js-card');
       const btn = event.target.closest('.js-btn');
 
       if (card) {
         const productId = card.getAttribute('data-id');
-        console.log('Product clicked:', productId);
 
         if (btn) {
           toggleBtn(productId);
           updateCardState(productId);
           updateCartCounterOnLoad();
-          //disabledBtn(btn);
           checkIsItemInCart();
         } else {
           openModal(productId);
@@ -44,13 +30,6 @@ async function createProductsMarkup() {
     console.error(error);
   }
 }
-
-// function disabledBtn(btn) {
-//  {
-//     btn.classList.remove('added')
-//   } else {
-//     btn.classList.add('added')
-//   }
 
 function toggleBtn(productId) {
   const storage = JSON.parse(localStorage.getItem('cartData'));
@@ -71,12 +50,9 @@ async function checkIsItemInCart() {
   itemsArr.forEach(item => {
     const itemId = item.dataset.id;
     cartItems.forEach(id => {
-      console.log(id === itemId);
       if (itemId === id) {
         const matchedItem = document.querySelector(`.js-btn[data-id='${id}']`);
-        console.log(matchedItem);
         matchedItem.classList.add('added');
-        //matchedItem.setAttribute("disabled", "disabled")
       }
     });
   });

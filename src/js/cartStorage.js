@@ -26,14 +26,11 @@ function updateCardState(productId) {
 
 
   const btnElementArr = Array.from(btnElement)
-  console.log(productId)
   btnElementArr.forEach((btn) => {
     if (checkIfProductInCart(productId)) {
       btn.classList.add('added');
-      //btn.setAttribute('disabled', 'disabled');
     } else {
       btn.classList.remove('added');
-      //btn.removeAttribute('disabled');
     }
   })
 };

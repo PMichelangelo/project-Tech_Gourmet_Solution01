@@ -25,7 +25,6 @@ function removeProduct(event) {
 
   if (cartEl) {
     const productId = cartEl.getAttribute('data-id');
-    console.log('Product clicked:', productId);
 
     if (removeBtn) {
       removeFromCart(productId);
@@ -37,7 +36,6 @@ function removeProduct(event) {
       }
 
       setTimeout(none, 500);
-      //cartEl.style.display = 'none';
 
       calculateTotalPrice().then(data => (total.textContent = `$${data}`));
 
@@ -45,12 +43,7 @@ function removeProduct(event) {
       if (!storage.length) {
         nullCart();
       }
-
-      // disabledBtn(btn);
     }
-    // else {
-    //   openModal(productId);
-    // }
   }
 }
 
@@ -77,91 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-///////////sendForm/////////////////
 
-//const form = document.querySelector('.cart_checkout_btn');
-//const form = document.getElementById('checkoutBtn');
-//console.log(form);
-//form.addEventListener('submit', sendData);
-//async function sendData() {
-//  console.log(1);
-//}
-
-// const emailInput = event.target.........
-//const email = emailInput.value;
-
-// const form = document.querySelector('.cart_checkout_btn')
-// import { getServerProductsById } from './fetchProducts'
-// form.addEventListener('submit', onForm)
-// async function onForm(event){
-//   event.preventDefault();
-//   if (!cartProductsList.length){form.disabled = false }
-//   else {form.disabled = true}
-//   emailInput = document.querySelector('.cart-basket-input');
-//   const email = emailInput.value.trim() ;if(email.length===0){
-//     return alert('Please enter the correct email!');
-//   }
-//   try {
-//     const  getArray=await getArray(cartProductsList)
-//     const foodItems = await Promise.all(
-//       cartProductsList.map(productId => getServerProductsById(productId))
-//     );
-//     const transformedData = foodItems.map(item => {
-//       return {
-//         productId: item._id,
-//         price: item.price
-//       };});
-//       console.log(transformedData);
-//   }
-//   catch (error) {
-//     console.log(error);
-//   }
-// }
 const form = document.querySelector('.cart_checkout');
 const button = document.querySelector('.cart_checkout_btn');
 
-//form.addEventListener('submit', senndForm)
-
-// async function senndForm(event) {
-//   event.preventDefault();
-//   let findproduct=JSON.parse(localStorage.getItem('cartData'));
-//   const emailInput = document.querySelector('.cart-basket-input');
-//   let emailOut=emailInput.value.trim()
-//   if (emailOut.length === 0) {
-//     return alert('Please enter the correct email!')           }
-
-//     const foodItems = await Promise.all(
-//       findproduct.map(productId => getServerProductsById(productId))
-//       );
-//      const transformedData = foodItems.map(item => {
-//      return {
-//       productId: item._id,
-//       amount: item.price
-//       };});
-//       let order ={
-//         email: emailOut,
-//         products:transformedData}
-//         openCardPageModal()
-//         console.log('Form submitted!');
-//         console.log(order);
-//         form.reset();
-//         //sendFormData(order)
-// };
-// function sendFormData(order) {
-//   const serverUrl = 'https://food-boutique.b.goit.study/api/orders';
-//   console.log(order);
-//   axios
-//     .post(serverUrl, order)
-//     .then(response => {
-//       openCardPageModal();
-//     })
-//     .catch(error => {
-//       if (error.message.includes('409')) {
-//         openErrorModal();
-//       }
-//     })
-
-// }
 
 form.addEventListener('submit', senndForm);
 let emailOut;
@@ -217,20 +129,5 @@ function sendFormData(order) {
     });
 }
 
-// Note: If you want to handle a click event on the button as well, you can use the following code:
-// button.addEventListener('click', () => {
-//   // Add your button click logic here
-//   console.log('Button clicked!');
-// });
-// console.log(email);
-
-//
-//   const orderProducts = cartProductsList.map(product => {
-//     return {
-//       productId: product._id,
-//       amount: product.price,
-//     };
-//   });
-//
 const emailFInput = document.querySelector('.footer-submit-btn');
 emailFInput.addEventListener('click', onSubmit);

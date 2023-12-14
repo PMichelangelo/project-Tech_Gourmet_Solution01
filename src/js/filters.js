@@ -1,8 +1,4 @@
-import {
-    getServerProductsCategories,
-    getServerProducts,
-    getLimit
-} from "./fetchProducts.js";
+import {getServerProductsCategories, getServerProducts, getLimit} from "./fetchProducts.js";
 import { createMarkup, checkIsItemInCart } from "./createMarkup.js";
 import { save, load } from "./storage.js";
 import { createPagination } from "./pagination.js"
