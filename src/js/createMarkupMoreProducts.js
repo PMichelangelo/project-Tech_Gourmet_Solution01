@@ -3,7 +3,7 @@ import icons from '../img/icons.svg';
 import { openModal } from './modal';
 import { updateCartCounterOnLoad } from './updateCartCounter';
 import { checkIsItemInCart, toggleBtn } from './createMarkup';
-
+import { updateCardState } from './cartStorage';
 const refs = {
   popularProductCards: document.querySelector('.js-popular-product-cards'),
   discountProductCards: document.querySelector('.js-discount-product-cards'),
