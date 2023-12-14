@@ -1,4 +1,3 @@
-
 .basicLightbox {
   position: fixed;
   display: flex;
@@ -58,7 +57,7 @@
 }
 @media screen and (min-width: 320px) {
   .modal-container {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     border-radius: 20px;
     margin: 20px;
     padding-top: 40px;
@@ -68,84 +67,94 @@
     max-width: 295px;
   }
 
+  .modal-img-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 295px;
+    height: 212px;
+    background-color: var(--white-txt);
+    border-radius: 10px;
+  }
 
-.modal-img-container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  max-width: 295px;
-  height: 212px;
-  background-color: var(--white-txt);
-  border-radius: 10px;
-}
+  .modal-img {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    max-width: 160px;
+    height: 160px;
+  }
 
-.modal-img{
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  max-width: 160px;
-  height: 160px;
-}
+  .modal-name {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 
-.modal-name {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
+  .modal-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: rgba(1, 1, 1, 0.3);
+    font-size: 12px;
+    line-height: 1.16;
+  }
 
-.modal-info-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  color: rgba(1, 1, 1, 0.30);
-  font-size: 12px; 
-  line-height: 1.16;
-}
+  .modal-span-info {
+    color: var(--black-txt);
+  }
 
-.modal-span-info {
-  color: var(--black-txt);
-}
+  .modal-desc {
+    color: rgba(1, 1, 1, 0.7);
+    font-size: 14px;
+    line-height: 1.28;
+    margin-top: 20px;
+    max-height: 120px;
+    overflow-y: auto;
+  }
 
-.modal-desc {
-  color: rgba(1, 1, 1, 0.70);
-font-size: 14px;
-line-height: 1.28;
-margin-top: 20px;
-}
+  .modal-price-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
 
-.modal-price-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
+  .modal-price {
+    display: flex;
+    flex-direction: column-reverse;
+    color: var(--black-txt);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
 
-.modal-price {
-  display: flex;
-  flex-direction: column-reverse;
-  color: var(--black-txt);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
+  .modal-button-icon {
+    stroke: #e8e8e2;
+    color: white;
+  }
 
 .modal-button-icon {
   color: white;
 }
+  .modal-button {
+    display: flex;
+    border: none;
+    border-radius: 30px;
+    background: #6d8434;
+    cursor: pointer;
+    padding-top: 12px;
+    padding-left: 24px;
+    padding-bottom: 12px;
+    padding-right: 24px;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-radius 0.3s ease;
+  }
 
-.modal-button {
-  display: flex;
-  border: none;
-  border-radius: 30px;
-  background: #6d8434;
-  cursor: pointer;
-  padding-top: 12px;
-  padding-left: 24px;
-  padding-bottom: 12px;
-  padding-right: 24px;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-radius 0.3s ease;
- 
-}
+  .modal-button.added-to-cart {
+    background: var(--white-txt);
+  }
+  .modal-button.added-to-cart .modal-button-text {
+    color: var(--green-bg);
+  }
 
 .modal-button.added-to-cart {
   background: #586F1F;
@@ -157,37 +166,37 @@ margin-top: 20px;
 }
 
 
-.modal-button-text {
-  color: var(--white-txt);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.28;
-  margin-right: 10px;
-}
-.modal-name-container {
-  margin-top: 20px;
-}
-.close-modal {
-  position: fixed;
-  top: 5%;
-  right: 8%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: inherit;
-  border: none;
-  transition: all 0.5s ease;
-}
-.close-modal:hover,
-.close-modal:focus {
-  transform: scale(1.5);
-  animation: pulse 2s ease-in-out infinite;
-}
-.close-modal-icon {
-  width: 12px;
-  height: 12px;
-}
+  .modal-button-text {
+    color: var(--white-txt);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.28;
+    margin-right: 10px;
+  }
+  .modal-name-container {
+    margin-top: 20px;
+  }
+  .close-modal {
+    position: fixed;
+    top: 5%;
+    right: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    border: none;
+    transition: all 0.5s ease;
+  }
+  .close-modal:hover,
+  .close-modal:focus {
+    transform: scale(1.5);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .close-modal-icon {
+    width: 12px;
+    height: 12px;
+  }
 }
 /* ================================================ */
 
@@ -204,55 +213,54 @@ margin-top: 20px;
     gap: 24px;
   }
 
-.modal-img-container {
-  width: 240px;
-  height: 212px;
-  margin: 0;
-}
+  .modal-img-container {
+    width: 240px;
+    height: 212px;
+    margin: 0;
+  }
 
-.modal-name-container {
-  max-width: 256px;
-  margin-top: 0;
-}
+  .modal-name-container {
+    max-width: 256px;
+    margin-top: 0;
+  }
 
-.modal-name {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-top: 0;
-}
-.modal-desc {
-  font-size: 16px;
-  line-height: 1.25;
-  margin-top: 24px;
-}
+  .modal-name {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0;
+  }
+  .modal-desc {
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 24px;
+  }
 
-.modal-price-container {
-  margin-top: 48px;
-}
+  .modal-price-container {
+    margin-top: 48px;
+  }
 
-.modal-button {
-  padding-top: 10px;
-  padding-left: 28px;
-  padding-bottom: 10px;
-  padding-right: 28px;
-}
+  .modal-button {
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-bottom: 10px;
+    padding-right: 28px;
+  }
 
-.modal-price {
-  font-size: 20px;
-  line-height: 1.2;
-}
+  .modal-price {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 
-.close-modal {
-  top: 8%;
-  right: 6%;
-}
+  .close-modal {
+    top: 8%;
+    right: 6%;
+  }
 
-.close-modal-icon {
-  width: 15px;
-  height: 15px;
+  .close-modal-icon {
+    width: 15px;
+    height: 15px;
+  }
 }
-}
-
 
 /* @media screen and (min-width: 1440px) {}; */

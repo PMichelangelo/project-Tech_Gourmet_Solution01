@@ -16,7 +16,7 @@ const refs = {
     selectDropdown: document.querySelector(".filters-options"),
     selectedCategory: document.querySelector(".filters-select-input"),
     productCard: document.querySelector(".product-list"),
-    selectList: document.querySelector(".filters-options-list"),
+    pagination: document.querySelector(".products-pagination"),
 }
 
 
@@ -31,14 +31,14 @@ async function filterCategories () {
             return `<li class="filters-option" data-value="${el}">${newEl}</li>`
         }).join("");
         const str = strCategories + `<li class="filters-option" data-value="null">Show all</li>`
-        refs.selectList.insertAdjacentHTML("beforeend", str);
+        refs.selectDropdown.insertAdjacentHTML("beforeend", str);
 
         refs.selectBtn.addEventListener("click", e => {
             e.stopPropagation();
             refs.selectDropdown.classList.toggle("filters-visually-hidden");
         })
 
-        refs.selectList.addEventListener("click", e => {
+        refs.selectDropdown.addEventListener("click", e => {
             const categoryForUser = e.target.textContent;
             const categoryForUs = e.target.dataset.value;
             refs.selectBtn.textContent = categoryForUser;
@@ -60,14 +60,16 @@ function filterProducts() {
         const maxPage = Math.ceil(totalPages / perPage);
         if (maxPage < page) {
             getServerProducts(maxPage, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
-              refs.productCard.innerHTML = createMarkup(results);
-              createPagination(totalPages, page, perPage);
-              checkIsItemInCart()
+                refs.productCard.innerHTML = createMarkup(results);
+                createPagination(totalPages, page, perPage);
+                checkIsItemInCart();
+                showContent();
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
-          createPagination(totalPages, page, perPage);
-          checkIsItemInCart()
+            createPagination(totalPages, page, perPage);
+            checkIsItemInCart();
+            showContent();
         }
     })
 
@@ -81,7 +83,6 @@ function onSubmit (event) {
     const limit = getLimit();
     const keyword = refs.input.value || null;
     const category = refs.selectedCategory.value || null;
-    save("filtersOfProducts", { keyword, category, page: 1, limit });
     getServerProducts(1, keyword, category, limit).then(({ results, totalPages, page, perPage }) => {
         if (totalPages === 0) {
             const str =
@@ -91,17 +92,24 @@ function onSubmit (event) {
             </li>`;
             refs.productCard.innerHTML = str;
             refs.productCard.classList.add("product-list-not-found");
-            refs.form.reset();
-            refs.selectBtn.textContent = "Categories";
+            // refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
+            refs.pagination.classList.add("filters-visually-hidden");
+            showContent();
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
         refs.productCard.innerHTML = createMarkup(results);
+        checkIsItemInCart();
+        showContent();
+        save("filtersOfProducts", { keyword, category, page: 1, limit });
         createPagination(totalPages, page, perPage);
-        refs.form.reset();
         refs.submitBtn.disabled = false;
     })
+}
+
+function showContent() {
+    document.querySelector('.js-products-container').classList.remove('hidden');
 }
 
 export {

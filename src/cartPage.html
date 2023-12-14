@@ -1,89 +1,73 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
-    <link rel="icon" type="image/png" href="public/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodBoutique 🥦🍓</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
-  </head>
 
-  <body>
-    <!--Dmitro-->
-    <load src="partials/header.html" />
-    <main>
-      <section class="cart-list">
-        <div class="container">
-          <div class="cart-ware-count">
-            <span class="cart-svg-span">
-              <svg class="cart-count-icon" width="18" height="18">
-                <use
-                  class="cart_logo_svg"
-                  href="./img/icons.svg#icon-cart"
-                ></use>
-              </svg>
-            </span>
-            <span class="cart-count">
-              CART (<span class="cart-counter">0</span>)
-            </span>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+  <link rel="icon" type="image/png" href="public/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodBoutique 🥦🍓</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/modal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
+</head>
+
+<body>
+  <!--Dmitro-->
+  <load src="partials/header.html" />
+  <main>
+    <section class="cart-list">
+      <div class="container">
+        <div class="cart-ware-count">
+          <span class="cart-svg-span">
+            <svg class="cart-count-icon" width="18" height="18">
+              <use class="cart_logo_svg" href="./img/icons.svg#icon-cart"></use>
+            </svg>
+          </span>
+          <span class="cart-count">
+            CART (<span class="cart-counter">0</span>)
+          </span>
+        </div>
+        <!--розмітка сторінки яка має приходити коли пустий кошик-->
+        <div class="cart-empty"></div>
+
+        <div class="cart-list-total">
+          <div class="cart-filled-list">
+            <button class="cart-clear-btn" type="button">
+              Delete all
+              <span class="cart-clear-span">
+                <svg class="cart-clear-icon" width="14" height="14">
+                  <use class="cart-clear-svg" xlink:href="./img/icons.svg#icon-close-btn"></use>
+                </svg>
+              </span>
+            </button>
+
+            <ul class="cart-order-list"></ul>
           </div>
-          <!--розмітка сторінки яка має приходити коли пустий кошик-->
-          <div class="cart-empty"></div>
 
-          <div class="cart-list-total">
-            <div class="cart-filled-list">
-              <button class="cart-clear-btn" type="button">
-                Delete all
-                <span class="cart-clear-span">
-                  <svg class="cart-clear-icon" width="14" height="14">
-                    <use
-                      class="cart-clear-svg"
-                      xlink:href="./img/icons.svg#icon-close-btn"
-                    ></use>
-                  </svg>
-                </span>
-              </button>
+          <div class="cart_total_order">
+            <p class="total-form-title">Your Order</p>
 
-              <ul class="cart-order-list"></ul>
+            <div id="total-price">
+              <p class="cart_total_input">Total</p>
+              <p class="cart_total_sum">
+                Sum:<span class="total_price" id="cart_total">$0</span>
+              </p>
             </div>
 
-            <div class="cart_total_order">
-              <p class="total-form-title">Your Order</p>
-
-              <div id="total-price">
-                <p class="cart_total_input">Total</p>
-                <p class="cart_total_sum">
-                  Sum:<span class="total_price" id="cart_total">$0</span>
-                </p>
-              </div>
-
-              <div class="input-container-main">
-                <form
-                  card="cart_checkout"
-                  id="checkoutForm"
-                  class="cart_checkout"
-                >
-                  <div class="cart_input_container">
-                    <input
-                      type="email"
-                      name="cart-client-email"
-                      class="cart-basket-input"
-                      placeholder="Enter your email"
-                    />
-                    <span class="placeholder-text">Mail:</span>
-                  </div>
-                  <button
-                    class="cart_checkout_btn"
-                    type="submit"
-                    aria-label="Checkout cart"
-                    id="checkoutBtn"
-                  >
-                    Checkout
-                  </button>
-                </form>
-              </div>
-              <!--<form id="checkoutForm">
+            <div class="input-container-main">
+              <form card="cart_checkout" id="checkoutForm" class="cart_checkout">
+                <div class="cart_input_container">
+                  <input type="email" name="cart-client-email" class="cart-basket-input"
+                    placeholder="Enter your email" />
+                  <span class="placeholder-text">Mail:</span>
+                </div>
+                <button class="cart_checkout_btn" type="submit" aria-label="Checkout cart" id="checkoutBtn">
+                  Checkout
+                </button>
+              </form>
+            </div>
+            <!--<form id="checkoutForm">
               <div class="cart_total_order">
                 <p class="total-form-title">Your Order</p>
 
@@ -114,26 +98,23 @@
 
                           <button class="button-checkout" type="submit">Checkout</button>
                                 </form> -->
-            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <!--Vitaliy-->
-    <load src="partials/footer.html" />
-    <div class="loader-container visually-hidden">
-      <span class="loader"></span>
-    </div>
-      <button class="btn-up visually-hidden">
-        <svg class="arrow-up" width="44" height="44">
-          <use
-            class="arrow-up-icon"
-            xlink:href="./img/icons.svg#icon-caret-small-left"
-          ></use>
-        </svg>
-      </button>
-    <script type="module" src="js/cartPage.js"></script>
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <!--Vitaliy-->
+  <load src="partials/footer.html" />
+  <div class="loader-container visually-hidden">
+    <span class="loader"></span>
+  </div>
+  <button class="btn-up visually-hidden">
+    <svg class="arrow-up" width="44" height="44">
+      <use class="arrow-up-icon" xlink:href="./img/icons.svg#icon-caret-small-left"></use>
+    </svg>
+  </button>
+  <script type="module" src="js/cartPage.js"></script>
+</body>
+
 </html>
