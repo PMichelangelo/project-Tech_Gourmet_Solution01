@@ -25,10 +25,10 @@ async function createProductsMarkup() {
         }
       }
     });
-    document.querySelector('.js-products-container').classList.remove('hidden');
   } catch (error) {
     console.error(error);
   }
+
 }
 
 function toggleBtn(productId) {

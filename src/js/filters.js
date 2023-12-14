@@ -59,13 +59,13 @@ function filterProducts() {
                 refs.productCard.innerHTML = createMarkup(results);
                 createPagination(totalPages, page, perPage);
                 checkIsItemInCart();
-                showContent();
+              showContent();
             })
         } else {
             refs.productCard.innerHTML = createMarkup(results);
             createPagination(totalPages, page, perPage);
             checkIsItemInCart();
-            showContent();
+          showContent();
         }
     })
 
@@ -91,13 +91,13 @@ function onSubmit (event) {
             // refs.selectBtn.textContent = "Categories";
             refs.submitBtn.disabled = false;
             refs.pagination.classList.add("filters-visually-hidden");
-            showContent();
+          showContent();
             return
         }
         refs.productCard.classList.remove("product-list-not-found");
         refs.productCard.innerHTML = createMarkup(results);
         checkIsItemInCart();
-        showContent();
+      showContent();
         save("filtersOfProducts", { keyword, category, page: 1, limit });
         createPagination(totalPages, page, perPage);
         refs.submitBtn.disabled = false;
@@ -105,8 +105,10 @@ function onSubmit (event) {
 }
 
 function showContent() {
-    document.querySelector('.js-products-container').classList.remove('hidden');
+  document.querySelector('.js-products-container').classList.remove('hidden');
 }
+
+
 
 export {
     filterCategories,

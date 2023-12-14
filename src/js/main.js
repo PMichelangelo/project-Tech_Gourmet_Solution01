@@ -8,6 +8,7 @@ appendDiscountProductsMarkup();
 import { createProductsMarkup } from './createMarkup.js';
 createProductsMarkup(1, null, null);
 
+
 import { filterCategories, filterProducts } from './filters.js';
 filterCategories();
 filterProducts();

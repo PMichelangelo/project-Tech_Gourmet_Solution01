@@ -6,6 +6,7 @@ const refs = {
     paginationBtnDecr: document.querySelector(".pagination-btn-decrement"),
 }
 
+
 import { createMarkup } from "./createMarkup.js";
 import { save, load } from "./storage.js";
 import { getLimit, getServerProducts } from "./fetchProducts.js";
